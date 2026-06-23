@@ -648,6 +648,45 @@ input[type="submit"],
 	min-width: 100%;
 }
 
+.acartechs-adsense-unit {
+	background: #ffffff;
+	border: 1px solid #dbe4ef;
+	border-radius: 8px;
+	box-sizing: border-box;
+	margin: 32px 0;
+	min-height: 180px;
+	overflow: hidden;
+	padding: 24px 12px 12px;
+	position: relative;
+	width: 100%;
+}
+
+.acartechs-adsense-unit.is-box {
+	min-height: 280px;
+}
+
+.acartechs-adsense-unit.is-vertical {
+	margin: 0;
+	min-height: 600px;
+}
+
+.acartechs-adsense-unit .acartechs-ad-disclosure {
+	left: 12px;
+	margin: 0;
+	position: absolute;
+	top: 7px;
+}
+
+.acartechs-adsense-unit .adsbygoogle {
+	display: block;
+	min-height: 150px;
+	width: 100%;
+}
+
+.acartechs-adsense-unit.is-vertical .adsbygoogle {
+	min-height: 560px;
+}
+
 .acartechs-page-content {
 	margin-bottom: 36px;
 }
