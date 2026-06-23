@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /wp-admin/
 Allow: /wp-admin/admin-ajax.php
-Sitemap: https://acartechs.com/wp-sitemap.xml
+Sitemap: /wp-sitemap.xml
