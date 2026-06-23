@@ -148,8 +148,8 @@ var woocommerce_params = {"ajax_url":"/acartechs/wp-admin/admin-ajax.php","wc_aj
 				aria-label="Search for..."
 									role="combobox"
 					aria-autocomplete="list"
-					aria-controls="ct-search-results-b79"
-					aria-describedby="ct-search-status-b79"
+					aria-controls="ct-search-results-97c"
+					aria-describedby="ct-search-status-97c"
 					aria-expanded="false"
 											>
 
@@ -185,7 +185,7 @@ var woocommerce_params = {"ajax_url":"/acartechs/wp-admin/admin-ajax.php","wc_aj
 
 			<div
 			class="screen-reader-text"
-			id="ct-search-status-b79"
+			id="ct-search-status-97c"
 			aria-live="polite"
 			role="status">
 			No results		</div>
@@ -509,7 +509,6 @@ var woocommerce_params = {"ajax_url":"/acartechs/wp-admin/admin-ajax.php","wc_aj
 				data-ad-slot="6468864091"
 				data-ad-format="auto"
 				data-full-width-responsive="true"></ins>
-			<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 		</aside>
 		
 	<section class="acartechs-single-layout">
@@ -552,7 +551,6 @@ var woocommerce_params = {"ajax_url":"/acartechs/wp-admin/admin-ajax.php","wc_aj
 				data-ad-slot="5763121236"
 				data-ad-format="auto"
 				data-full-width-responsive="true"></ins>
-			<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 		</aside>
 					</div>
 
@@ -561,7 +559,6 @@ var woocommerce_params = {"ajax_url":"/acartechs/wp-admin/admin-ajax.php","wc_aj
 <p class="wp-block-paragraph">Yeni nesil yapay zeka araçları, şirketlerin hızını ve verimliliğini artırıyor. İçerik üretimi, veri analizi, müşteri desteği ve yazılım geliştirme gibi alanlarda bu araçlar artık daha sık kullanılıyor. Özellikle küçük ekipler, yapay zeka desteği sayesinde daha kısa sürede daha fazla iş çıkarabiliyor.</p>		<aside class="acartechs-adsense-unit is-horizontal placement-article" aria-label="Reklam">
 			<span class="acartechs-ad-disclosure">Reklam</span>
 			<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4367344438750629" data-ad-slot="5763121236" data-ad-format="auto" data-full-width-responsive="true"></ins>
-			(adsbygoogle = window.adsbygoogle || []).push({});
 		</aside>
 		
 				<h2>Bu gelisme neden onemli?</h2>
@@ -587,9 +584,9 @@ var woocommerce_params = {"ajax_url":"/acartechs/wp-admin/admin-ajax.php","wc_aj
 				<ol>
 												<li><a href="/donanim-pazarinda-fiyat-ve-performans-dengesi-degisiyor/">Donanim pazarinda fiyat ve performans dengesi degisiyor</a></li>
 														<li><a href="/haftanin-kisa-teknoloji-ozeti-yayinda/">Haftanin kisa teknoloji ozeti: Yapay zeka, mobil ve oyun dunyasinda one cikanlar</a></li>
+														<li><a href="/teknoloji-gundeminde-bugun-one-cikan-basliklar/">Teknoloji gundeminde bugun one cikan basliklar</a></li>
+														<li><a href="/dijital-servislerde-yeni-abonelik-paketleri-gundemde/">Dijital servislerde yeni abonelik paketleri gundemde</a></li>
 														<li><a href="/teknoloji-alisverisinde-kampanya-donemi-basladi/">Teknoloji alisverisinde kampanya donemi basladi</a></li>
-														<li><a href="/sosyal-medya-uygulamalarinda-guvenlik-ozellikleri-artiyor/">Sosyal medya uygulamalarinda guvenlik ozellikleri artiyor</a></li>
-														<li><a href="/yerli-girisimler-yapay-zeka-destekli-cozumler-gelistiriyor/">Yerli girisimler yapay zeka destekli cozumler gelistiriyor</a></li>
 											</ol>
 			</div>
 					<aside class="acartechs-adsense-unit is-vertical placement-sidebar" aria-label="Reklam">
@@ -600,7 +597,6 @@ var woocommerce_params = {"ajax_url":"/acartechs/wp-admin/admin-ajax.php","wc_aj
 				data-ad-slot="1165400672"
 				data-ad-format="auto"
 				data-full-width-responsive="true"></ins>
-			<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 		</aside>
 					<div class="acartechs-newsletter">
 				<span>ACARTECHS BULTEN</span>
@@ -909,6 +905,18 @@ var wc_order_attribution = {"params":{"lifetime":1.0e-5,"session":30,"base64":fa
 //# sourceURL=wc-order-attribution-js-extra
 </script>
 <script id="wc-order-attribution-js" src="/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js?ver=10.7.0"></script>
-
+		<script>
+			(function () {
+				var ads = document.querySelectorAll('.acartechs-adsense-unit .adsbygoogle:not([data-acartechs-pushed])');
+				window.adsbygoogle = window.adsbygoogle || [];
+				ads.forEach(function (ad) {
+					ad.setAttribute('data-acartechs-pushed', '1');
+					try {
+						window.adsbygoogle.push({});
+					} catch (error) {}
+				});
+			})();
+		</script>
+		
 </body>
 </html>

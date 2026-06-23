@@ -148,8 +148,8 @@ var woocommerce_params = {"ajax_url":"/acartechs/wp-admin/admin-ajax.php","wc_aj
 				aria-label="Search for..."
 									role="combobox"
 					aria-autocomplete="list"
-					aria-controls="ct-search-results-a9d"
-					aria-describedby="ct-search-status-a9d"
+					aria-controls="ct-search-results-f08"
+					aria-describedby="ct-search-status-f08"
 					aria-expanded="false"
 											>
 
@@ -185,7 +185,7 @@ var woocommerce_params = {"ajax_url":"/acartechs/wp-admin/admin-ajax.php","wc_aj
 
 			<div
 			class="screen-reader-text"
-			id="ct-search-status-a9d"
+			id="ct-search-status-f08"
 			aria-live="polite"
 			role="status">
 			No results		</div>
@@ -509,7 +509,6 @@ var woocommerce_params = {"ajax_url":"/acartechs/wp-admin/admin-ajax.php","wc_aj
 				data-ad-slot="6468864091"
 				data-ad-format="auto"
 				data-full-width-responsive="true"></ins>
-			<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 		</aside>
 		
 	<section class="acartechs-single-layout">
@@ -552,7 +551,6 @@ var woocommerce_params = {"ajax_url":"/acartechs/wp-admin/admin-ajax.php","wc_aj
 				data-ad-slot="5763121236"
 				data-ad-format="auto"
 				data-full-width-responsive="true"></ins>
-			<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 		</aside>
 					</div>
 
@@ -569,7 +567,6 @@ var woocommerce_params = {"ajax_url":"/acartechs/wp-admin/admin-ajax.php","wc_aj
 <p class="wp-block-paragraph">Neque egestas congue quisque egestas diam in arcu cursus. Neque aliquam vestibulum morbi blandit cursus risus. Ultrices dui sapien eget mi proin sed. Diam volutpat commodo sed egestas egestas. Tincidunt augue interdum velit euismod in pellentesque massa placerat. Eu non diam phasellus vestibulum lorem sed risus. Nisl condimentum id venenatis a. Tristique magna sit amet purus gravida quis blandit turpis cursus. Nibh venenatis cras sed felis. Elit duis tristique sollicitudin nibh. Porttitor leo a diam sollicitudin tempor. Non sodales neque sodales ut etiam sit. Et odio pellentesque diam volutpat commodo sed egestas egestas. Nam aliquam sem et tortor consequat id porta nibh. Aenean euismod elementum nisi quis eleifend quam. Hac habitasse platea dictumst vestibulum rhoncus. Commodo ullamcorper a lacus vestibulum sed arcu non odio. Augue interdum velit euismod in pellentesque massa placerat duis ultricies. Mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor.</p>		<aside class="acartechs-adsense-unit is-horizontal placement-article" aria-label="Reklam">
 			<span class="acartechs-ad-disclosure">Reklam</span>
 			<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4367344438750629" data-ad-slot="5763121236" data-ad-format="auto" data-full-width-responsive="true"></ins>
-			(adsbygoogle = window.adsbygoogle || []).push({});
 		</aside>
 		
 
@@ -612,7 +609,6 @@ var woocommerce_params = {"ajax_url":"/acartechs/wp-admin/admin-ajax.php","wc_aj
 				data-ad-slot="1165400672"
 				data-ad-format="auto"
 				data-full-width-responsive="true"></ins>
-			<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 		</aside>
 					<div class="acartechs-newsletter">
 				<span>ACARTECHS BULTEN</span>
@@ -921,6 +917,18 @@ var wc_order_attribution = {"params":{"lifetime":1.0e-5,"session":30,"base64":fa
 //# sourceURL=wc-order-attribution-js-extra
 </script>
 <script id="wc-order-attribution-js" src="/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js?ver=10.7.0"></script>
-
+		<script>
+			(function () {
+				var ads = document.querySelectorAll('.acartechs-adsense-unit .adsbygoogle:not([data-acartechs-pushed])');
+				window.adsbygoogle = window.adsbygoogle || [];
+				ads.forEach(function (ad) {
+					ad.setAttribute('data-acartechs-pushed', '1');
+					try {
+						window.adsbygoogle.push({});
+					} catch (error) {}
+				});
+			})();
+		</script>
+		
 </body>
 </html>
