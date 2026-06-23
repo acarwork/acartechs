@@ -846,6 +846,12 @@ input[type="submit"],
 	aspect-ratio: 16 / 9.5;
 }
 
+.acartechs-category-list img.acartechs-category-image {
+	aspect-ratio: auto;
+	height: 270px !important;
+	object-fit: cover;
+}
+
 .acartechs-category-list article,
 .acartechs-category-list article > a {
 	height: 100%;
@@ -1234,7 +1240,6 @@ img.acartechs-feed-image {
 }
 
 img.acartechs-category-image {
-	aspect-ratio: inherit;
 	height: auto !important;
 }
 
