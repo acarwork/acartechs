@@ -883,11 +883,13 @@ input[type="submit"],
 
 .acartechs-category-list .acartechs-category-image {
 	aspect-ratio: 16 / 9.5;
+	height: 230px;
+	object-fit: cover;
 }
 
 .acartechs-category-list img.acartechs-category-image {
-	aspect-ratio: auto;
-	height: 270px !important;
+	aspect-ratio: 16 / 9.5;
+	height: 230px !important;
 	object-fit: cover;
 }
 
@@ -902,6 +904,9 @@ input[type="submit"],
 }
 
 .acartechs-category-list div {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
 	padding: 14px 14px 16px;
 }
 
@@ -924,6 +929,7 @@ input[type="submit"],
 .acartechs-category-list small {
 	color: #64748b;
 	font-size: 12px;
+	margin-top: auto;
 }
 
 .acartechs-category-list small b {
@@ -1279,7 +1285,7 @@ img.acartechs-feed-image {
 }
 
 img.acartechs-category-image {
-	height: auto !important;
+	height: 100%;
 }
 
 img.acartechs-feed-image {
