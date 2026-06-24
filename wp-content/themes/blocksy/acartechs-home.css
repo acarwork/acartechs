@@ -561,11 +561,21 @@ input[type="submit"],
 	white-space: nowrap;
 }
 
-.acartechs-live-strip div {
+.acartechs-live-marquee {
+	mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+	overflow: hidden;
+	position: relative;
+}
+
+.acartechs-live-track {
+	animation: acartechsLiveMarquee 34s linear infinite;
 	display: flex;
 	gap: 12px;
-	overflow-x: auto;
-	padding-bottom: 2px;
+	width: max-content;
+}
+
+.acartechs-live-strip:hover .acartechs-live-track {
+	animation-play-state: paused;
 }
 
 .acartechs-live-strip a {
@@ -597,6 +607,15 @@ input[type="submit"],
 	font-size: 11px;
 	font-weight: 900;
 	text-transform: uppercase;
+}
+
+@keyframes acartechsLiveMarquee {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(calc(-50% - 6px));
+	}
 }
 
 .acartechs-hot-tags,
@@ -1552,6 +1571,13 @@ img.acartechs-feed-image:after {
 	position: relative;
 }
 
+.acartechs-feature-slide > a {
+	color: inherit;
+	display: block;
+	height: 100%;
+	text-decoration: none;
+}
+
 .acartechs-feature-art {
 	background:
 		radial-gradient(circle at 67% 35%, rgba(38, 201, 244, 0.55), transparent 22%),
@@ -1568,6 +1594,24 @@ img.acartechs-feed-image:after {
 	content: "";
 	inset: 0;
 	position: absolute;
+}
+
+.acartechs-feature-art.has-image {
+	background-color: #061b31;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.acartechs-feature-art.has-image:after {
+	background:
+		linear-gradient(90deg, rgba(6, 27, 49, 0.96), rgba(6, 27, 49, 0.62) 58%, rgba(6, 27, 49, 0.22)),
+		linear-gradient(180deg, rgba(6, 27, 49, 0.12), rgba(6, 27, 49, 0.78));
+}
+
+.acartechs-feature-art.has-image .acartechs-device,
+.acartechs-feature-art.has-image .acartechs-orbit {
+	opacity: 0.42;
 }
 
 .acartechs-feature-art.is-cyan {
@@ -2453,29 +2497,36 @@ body:has(.acartechs-page) #header {
 
 .ct-trending-block {
 	background:
-		linear-gradient(135deg, rgba(33, 136, 246, 0.09), rgba(38, 201, 244, 0.05)),
-		#f8fbff;
-	border-top: 5px solid var(--blue);
+		linear-gradient(135deg, rgba(33, 136, 246, 0.10), rgba(38, 201, 244, 0.06)),
+		#eef7ff;
+	border-top: 0;
 	box-shadow: inset 0 1px 0 rgba(255,255,255,0.9);
 	margin-top: 0;
-	padding: 24px 0;
+	padding: 22px 0 30px;
 }
 
 .ct-trending-block > .ct-container {
 	align-items: center;
+	background:
+		linear-gradient(135deg, rgba(38, 201, 244, 0.12), transparent 34%),
+		linear-gradient(160deg, #062b4f 0%, #061b31 100%);
+	border: 1px solid rgba(56, 189, 248, 0.16);
+	border-radius: 8px;
+	box-shadow: 0 18px 44px rgba(15, 23, 42, 0.10);
 	display: grid;
-	gap: 22px 34px;
+	gap: 18px 22px;
 	grid-template-columns: 190px repeat(4, minmax(0, 1fr));
 	max-width: 1380px;
+	padding: 22px;
 }
 
 .ct-trending-block .ct-module-title {
 	align-items: center;
-	background: #ffffff;
-	border: 1px solid rgba(33, 136, 246, 0.18);
+	background: rgba(255,255,255,0.08);
+	border: 1px solid rgba(56, 189, 248, 0.22);
 	border-radius: 8px;
-	box-shadow: 0 12px 34px rgba(15, 23, 42, 0.07);
-	color: #07111f;
+	box-shadow: none;
+	color: #ffffff;
 	display: flex;
 	font-size: 19px;
 	font-weight: 900;
@@ -2487,7 +2538,7 @@ body:has(.acartechs-page) #header {
 }
 
 .ct-trending-block .ct-module-title > svg {
-	color: #2188f6;
+	color: #26c9f4;
 	height: 15px;
 	margin-inline-start: 10px;
 	width: 15px;
@@ -2499,10 +2550,10 @@ body:has(.acartechs-page) #header {
 
 .ct-trending-block [class*="ct-arrow"] {
 	align-items: center;
-	background: #eef6ff;
-	border: 1px solid rgba(33, 136, 246, 0.28);
+	background: rgba(255,255,255,0.09);
+	border: 1px solid rgba(56, 189, 248, 0.28);
 	border-radius: 6px;
-	color: #2188f6;
+	color: #d6eeff;
 	display: inline-flex;
 	height: 26px;
 	justify-content: center;
@@ -2511,11 +2562,11 @@ body:has(.acartechs-page) #header {
 
 .ct-trending-block-item {
 	align-items: center;
-	background: #ffffff;
-	border: 1px solid rgba(148, 163, 184, 0.2);
+	background: rgba(255,255,255,0.075);
+	border: 1px solid rgba(56, 189, 248, 0.18);
 	border-radius: 8px;
-	box-shadow: 0 12px 34px rgba(15, 23, 42, 0.07);
-	min-height: 92px;
+	box-shadow: none;
+	min-height: 96px;
 	overflow: hidden;
 	padding: 12px;
 	transition: border-color .2s ease, transform .2s ease;
@@ -2558,7 +2609,7 @@ body:has(.acartechs-page) #header {
 .ct-trending-block-item .ct-post-title {
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 3;
-	color: #102033;
+	color: #ffffff;
 	display: -webkit-box;
 	font-size: 16px;
 	font-weight: 900;
@@ -2733,7 +2784,7 @@ body:has(.acartechs-page) #header {
 		padding: 12px;
 	}
 
-	.acartechs-live-strip div {
+	.acartechs-live-track {
 		gap: 10px;
 	}
 
