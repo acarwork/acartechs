@@ -824,7 +824,7 @@ input[type="submit"],
 }
 
 .acartechs-category-main-card > div {
-	background: linear-gradient(135deg, #061b31, #062b4f);
+	background: linear-gradient(135deg, #061b31 0%, #07345f 100%);
 	color: #ffffff;
 	padding: 18px 20px 20px;
 }
@@ -840,15 +840,17 @@ input[type="submit"],
 }
 
 .acartechs-category-main-card h2 {
+	color: #ffffff;
 	font-size: clamp(24px, 3vw, 40px);
 	font-weight: 900;
 	letter-spacing: 0;
 	line-height: 1.05;
 	margin: 0 0 10px;
+	text-shadow: 0 2px 12px rgba(0, 0, 0, 0.34);
 }
 
 .acartechs-category-main-card p {
-	color: #cbd5e1;
+	color: #e2eefc;
 	font-size: 15px;
 	line-height: 1.55;
 	margin: 0;
