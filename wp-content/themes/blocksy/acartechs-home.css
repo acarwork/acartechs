@@ -1262,6 +1262,25 @@ input[type="submit"],
 	margin: 0;
 }
 
+.acartechs-source-note {
+	margin-top: 36px;
+	padding-top: 14px;
+	border-top: 1px solid rgba(9, 32, 54, 0.1);
+	color: #6d7a8c;
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+.acartechs-source-note a {
+	color: #2388ff;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.acartechs-source-note a:hover {
+	text-decoration: underline;
+}
+
 .acartechs-single-sidebar {
 	align-content: start;
 	display: grid;
