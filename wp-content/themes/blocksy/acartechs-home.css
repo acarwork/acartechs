@@ -916,7 +916,7 @@ input[type="submit"],
 	display: block;
 	height: 300px;
 	min-height: 300px;
-	object-fit: contain;
+	object-fit: cover;
 	object-position: center;
 	width: 100%;
 }
@@ -979,7 +979,7 @@ input[type="submit"],
 	display: block;
 	height: 165px;
 	min-height: 165px;
-	object-fit: contain;
+	object-fit: cover;
 	object-position: center;
 	width: 100%;
 }
@@ -1006,7 +1006,7 @@ input[type="submit"],
 	display: block;
 	height: 230px;
 	min-height: 230px;
-	object-fit: contain;
+	object-fit: cover;
 	object-position: center;
 	width: 100%;
 }
@@ -1017,7 +1017,7 @@ input[type="submit"],
 	display: block;
 	height: 230px !important;
 	min-height: 230px;
-	object-fit: contain;
+	object-fit: cover;
 	object-position: center;
 }
 
@@ -1453,7 +1453,7 @@ img.acartechs-feed-image {
 img.acartechs-category-image {
 	background: #07162a;
 	height: 100%;
-	object-fit: contain !important;
+	object-fit: cover !important;
 	object-position: center;
 }
 
