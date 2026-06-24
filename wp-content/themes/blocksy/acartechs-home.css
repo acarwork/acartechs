@@ -1738,10 +1738,18 @@ img.acartechs-feed-image:after {
 	background: rgba(255,255,255,0.055);
 	border: 1px solid rgba(38, 201, 244, 0.28);
 	border-radius: 8px;
+	color: inherit;
 	display: grid;
 	gap: 16px;
 	grid-template-columns: 126px 1fr;
 	padding: 16px;
+	text-decoration: none;
+	transition: border-color .2s ease, transform .2s ease;
+}
+
+.acartechs-pick-main:hover {
+	border-color: rgba(38, 201, 244, 0.6);
+	transform: translateY(-2px);
 }
 
 .acartechs-pick-image {
@@ -1749,9 +1757,15 @@ img.acartechs-feed-image:after {
 	background:
 		radial-gradient(circle at 68% 28%, #26c9f4, transparent 24%),
 		linear-gradient(135deg, #061b31, #2188f6);
+	background-position: center;
+	background-size: cover;
 	border-radius: 8px;
 	display: block;
 	min-height: 98px;
+}
+
+.acartechs-pick-image.has-image {
+	background-color: #061b31;
 }
 
 .acartechs-cards span {
@@ -2364,8 +2378,14 @@ img.acartechs-feed-image:after {
 	background:
 		radial-gradient(circle at 50% 50%, rgba(56,189,248,0.75), transparent 24%),
 		linear-gradient(135deg, #061b31, #2188f6);
+	background-position: center;
+	background-size: cover;
 	display: block;
 	aspect-ratio: 16 / 9;
+}
+
+.acartechs-videos article span.has-image {
+	background-color: #061b31;
 }
 
 .acartechs-videos h3 {
