@@ -815,8 +815,11 @@ input[type="submit"],
 
 .acartechs-category-main-card .acartechs-category-image {
 	aspect-ratio: 16 / 8.6;
+	display: block;
 	height: 300px;
 	min-height: 300px;
+	object-fit: cover;
+	object-position: center;
 	width: 100%;
 }
 
@@ -872,8 +875,11 @@ input[type="submit"],
 
 .acartechs-category-mini-grid .acartechs-category-image {
 	aspect-ratio: 16 / 10;
+	display: block;
 	height: 165px;
 	min-height: 165px;
+	object-fit: cover;
+	object-position: center;
 	width: 100%;
 }
 
@@ -895,17 +901,21 @@ input[type="submit"],
 
 .acartechs-category-list .acartechs-category-image {
 	aspect-ratio: 16 / 9.5;
+	display: block;
 	height: 230px;
 	min-height: 230px;
 	object-fit: cover;
+	object-position: center;
 	width: 100%;
 }
 
 .acartechs-category-list img.acartechs-category-image {
 	aspect-ratio: 16 / 9.5;
+	display: block;
 	height: 230px !important;
 	min-height: 230px;
 	object-fit: cover;
+	object-position: center;
 }
 
 .acartechs-category-list article,
@@ -1155,9 +1165,11 @@ input[type="submit"],
 }
 
 .acartechs-single-cover.has-image img {
+	aspect-ratio: 16 / 9;
 	display: block;
-	height: auto;
+	height: min(520px, 52vw);
 	object-fit: cover;
+	object-position: center;
 	width: 100%;
 }
 
@@ -1178,7 +1190,24 @@ input[type="submit"],
 	line-height: 1.72;
 	margin: 0 auto;
 	max-width: 860px;
+	overflow-wrap: anywhere;
 	padding: 0 0 54px;
+}
+
+.acartechs-single-body img,
+.acartechs-single-body figure,
+.acartechs-single-body .wp-block-image {
+	box-sizing: border-box;
+	display: block;
+	height: auto;
+	max-width: 100%;
+	overflow: hidden;
+}
+
+.acartechs-single-body img {
+	border-radius: 8px;
+	object-fit: cover;
+	width: 100%;
 }
 
 .acartechs-single-body p {
