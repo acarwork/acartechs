@@ -809,12 +809,15 @@ input[type="submit"],
 	border-radius: 8px;
 	box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
 	display: grid;
-	grid-template-rows: auto 1fr;
+	grid-template-rows: 300px minmax(230px, 1fr);
 	overflow: hidden;
 }
 
 .acartechs-category-main-card .acartechs-category-image {
 	aspect-ratio: 16 / 8.6;
+	height: 300px;
+	min-height: 300px;
+	width: 100%;
 }
 
 .acartechs-category-main-card > div {
@@ -862,8 +865,16 @@ input[type="submit"],
 	overflow: hidden;
 }
 
+.acartechs-category-mini-grid a {
+	display: grid;
+	grid-template-rows: 165px minmax(74px, 1fr);
+}
+
 .acartechs-category-mini-grid .acartechs-category-image {
 	aspect-ratio: 16 / 10;
+	height: 165px;
+	min-height: 165px;
+	width: 100%;
 }
 
 .acartechs-category-mini-grid strong {
@@ -877,6 +888,7 @@ input[type="submit"],
 
 .acartechs-category-list {
 	display: grid;
+	align-items: stretch;
 	gap: 18px;
 	grid-template-columns: repeat(3, 1fr);
 }
@@ -884,12 +896,15 @@ input[type="submit"],
 .acartechs-category-list .acartechs-category-image {
 	aspect-ratio: 16 / 9.5;
 	height: 230px;
+	min-height: 230px;
 	object-fit: cover;
+	width: 100%;
 }
 
 .acartechs-category-list img.acartechs-category-image {
 	aspect-ratio: 16 / 9.5;
 	height: 230px !important;
+	min-height: 230px;
 	object-fit: cover;
 }
 
