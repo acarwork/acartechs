@@ -2355,16 +2355,18 @@ img.acartechs-feed-image:after {
 }
 
 .acartechs-videos article {
-	background: #062b4f;
+	background: #ffffff;
 	border-radius: 8px;
-	color: #ffffff;
+	box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+	color: #07111f;
 	overflow: hidden;
 	transition: box-shadow .2s ease, transform .2s ease;
 }
 
 .acartechs-videos article a {
 	color: inherit;
-	display: block;
+	display: grid;
+	grid-template-rows: 170px 1fr;
 	height: 100%;
 	text-decoration: none;
 }
@@ -2381,14 +2383,31 @@ img.acartechs-feed-image:after {
 	background-position: center;
 	background-size: cover;
 	display: block;
-	aspect-ratio: 16 / 9;
+	height: 170px;
+	position: relative;
 }
 
 .acartechs-videos article span.has-image {
 	background-color: #061b31;
+	background-size: cover !important;
+	background-position: center !important;
+}
+
+.acartechs-videos article span::after {
+	background: linear-gradient(180deg, transparent 54%, rgba(6, 27, 49, 0.72));
+	bottom: 0;
+	content: "ACARTECHS";
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: 900;
+	letter-spacing: 0;
+	padding: 0 12px 12px;
+	position: absolute;
+	right: 0;
 }
 
 .acartechs-videos h3 {
+	color: #07111f;
 	font-size: 18px;
 	letter-spacing: 0;
 	line-height: 1.28;
@@ -2442,11 +2461,12 @@ body:has(.acartechs-page) #header {
 
 .acartechs-trending {
 	background:
-		linear-gradient(135deg, rgba(20, 125, 255, 0.15), transparent 38%),
-		linear-gradient(180deg, #062b4f, #061b31);
-	border: 1px solid rgba(56, 189, 248, 0.18);
+		linear-gradient(135deg, rgba(33, 136, 246, 0.18), rgba(38, 201, 244, 0.08)),
+		#eef7ff;
+	border: 1px solid rgba(33, 136, 246, 0.18);
 	border-radius: 8px;
-	color: #ffffff;
+	box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+	color: #07111f;
 	margin-top: 28px;
 	padding: 26px;
 }
@@ -2459,15 +2479,22 @@ body:has(.acartechs-page) #header {
 }
 
 .acartechs-trending-head strong {
+	background: linear-gradient(145deg, #26c9f4, #2188f6);
+	border-radius: 999px;
+	color: #020617;
 	font-size: 16px;
 	font-weight: 900;
+	padding: 12px 18px;
+	white-space: nowrap;
 }
 
 .acartechs-trending-head span {
-	background: linear-gradient(90deg, #26c9f4, transparent);
-	display: block;
+	color: #334155;
+	display: inline;
 	flex: 1;
-	height: 2px;
+	font-size: 14px;
+	font-weight: 800;
+	height: auto;
 }
 
 .acartechs-trending-list {
@@ -2478,10 +2505,11 @@ body:has(.acartechs-page) #header {
 
 .acartechs-trending-list a {
 	align-items: center;
-	background: rgba(255,255,255,0.06);
-	border: 1px solid rgba(148, 163, 184, 0.22);
+	background: #ffffff;
+	border: 1px solid rgba(148, 163, 184, 0.20);
 	border-radius: 8px;
-	color: #ffffff;
+	box-shadow: 0 10px 26px rgba(15, 23, 42, 0.07);
+	color: #07111f;
 	display: grid;
 	gap: 14px;
 	grid-template-columns: 58px 1fr;
@@ -2498,6 +2526,8 @@ body:has(.acartechs-page) #header {
 .acartechs-trending-list span {
 	align-items: center;
 	background: linear-gradient(145deg, #26c9f4, #2188f6);
+	background-position: center !important;
+	background-size: cover !important;
 	border-radius: 999px;
 	color: #020617;
 	display: flex;
@@ -2508,11 +2538,26 @@ body:has(.acartechs-page) #header {
 	width: 58px;
 }
 
+.acartechs-trending-list span.has-image {
+	color: transparent;
+}
+
 .acartechs-trending-list p {
+	color: #07111f;
 	font-size: 15px;
 	font-weight: 800;
 	line-height: 1.35;
 	margin: 0;
+}
+
+.acartechs-trending-list small {
+	color: #2188f6;
+	display: block;
+	font-size: 11px;
+	font-weight: 900;
+	letter-spacing: 0;
+	margin-bottom: 4px;
+	text-transform: uppercase;
 }
 
 .ct-trending-block {
@@ -2526,27 +2571,25 @@ body:has(.acartechs-page) #header {
 }
 
 .ct-trending-block > .ct-container {
-	align-items: center;
-	background:
-		linear-gradient(135deg, rgba(38, 201, 244, 0.12), transparent 34%),
-		linear-gradient(160deg, #062b4f 0%, #061b31 100%);
-	border: 1px solid rgba(56, 189, 248, 0.16);
+	align-items: stretch;
+	background: #ffffff;
+	border: 1px solid rgba(33, 136, 246, 0.14);
 	border-radius: 8px;
 	box-shadow: 0 18px 44px rgba(15, 23, 42, 0.10);
 	display: grid;
-	gap: 18px 22px;
-	grid-template-columns: 190px repeat(4, minmax(0, 1fr));
+	gap: 18px;
+	grid-template-columns: 220px repeat(4, minmax(0, 1fr));
 	max-width: 1380px;
 	padding: 22px;
 }
 
 .ct-trending-block .ct-module-title {
 	align-items: center;
-	background: rgba(255,255,255,0.08);
-	border: 1px solid rgba(56, 189, 248, 0.22);
+	background: linear-gradient(145deg, #26c9f4, #2188f6);
+	border: 0;
 	border-radius: 8px;
 	box-shadow: none;
-	color: #ffffff;
+	color: #020617;
 	display: flex;
 	font-size: 19px;
 	font-weight: 900;
@@ -2581,14 +2624,16 @@ body:has(.acartechs-page) #header {
 }
 
 .ct-trending-block-item {
-	align-items: center;
-	background: rgba(255,255,255,0.075);
-	border: 1px solid rgba(56, 189, 248, 0.18);
+	align-items: stretch;
+	background: #ffffff;
+	border: 1px solid rgba(148, 163, 184, 0.20);
 	border-radius: 8px;
-	box-shadow: none;
-	min-height: 96px;
+	box-shadow: 0 10px 26px rgba(15, 23, 42, 0.07);
+	display: grid !important;
+	grid-template-rows: 140px 1fr;
+	min-height: 244px;
 	overflow: hidden;
-	padding: 12px;
+	padding: 0;
 	transition: border-color .2s ease, transform .2s ease;
 }
 
@@ -2599,12 +2644,13 @@ body:has(.acartechs-page) #header {
 
 .ct-trending-block-item .ct-media-container {
 	background: #071a30;
-	border-radius: 999px;
-	flex: 0 0 66px;
-	height: 66px;
-	margin-inline-end: 16px;
+	border-radius: 0;
+	display: block !important;
+	flex: none;
+	height: 140px !important;
+	margin: 0 !important;
 	overflow: hidden;
-	width: 66px;
+	width: 100% !important;
 }
 
 .ct-trending-block-item .ct-media-container img {
@@ -2615,10 +2661,11 @@ body:has(.acartechs-page) #header {
 
 .ct-trending-block-item-content {
 	min-width: 0;
+	padding: 14px 16px 16px;
 }
 
 .ct-trending-block-item-content .entry-meta {
-	color: #26c9f4;
+	color: #2188f6;
 	font-size: 11px;
 	font-weight: 900;
 	letter-spacing: 0;
@@ -2629,7 +2676,7 @@ body:has(.acartechs-page) #header {
 .ct-trending-block-item .ct-post-title {
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 3;
-	color: #ffffff;
+	color: #07111f;
 	display: -webkit-box;
 	font-size: 16px;
 	font-weight: 900;
