@@ -993,6 +993,22 @@ input[type="submit"],
 	padding: 12px;
 }
 
+.acartechs-category-mini-grid strong,
+.acartechs-category-list h3,
+.acartechs-category-main-card h2 {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-box-orient: vertical;
+}
+
+.acartechs-category-mini-grid strong {
+	-webkit-line-clamp: 4;
+}
+
+.acartechs-category-main-card h2 {
+	-webkit-line-clamp: 3;
+}
+
 .acartechs-category-list {
 	display: grid;
 	align-items: stretch;
@@ -1045,6 +1061,7 @@ input[type="submit"],
 	letter-spacing: 0;
 	line-height: 1.25;
 	margin: 0 0 9px;
+	-webkit-line-clamp: 3;
 }
 
 .acartechs-category-list p {
@@ -1052,6 +1069,10 @@ input[type="submit"],
 	font-size: 13px;
 	line-height: 1.45;
 	margin: 0 0 12px;
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
 }
 
 .acartechs-category-list small {
@@ -1455,6 +1476,27 @@ img.acartechs-category-image {
 	height: 100%;
 	object-fit: cover !important;
 	object-position: center;
+}
+
+/* Category pages use many official screenshots and logo-heavy images.
+   Keep the card frame stable while showing the full visual without ugly crops. */
+.acartechs-category-page img.acartechs-category-image {
+	background:
+		radial-gradient(circle at 58% 42%, rgba(38, 201, 244, 0.2), transparent 30%),
+		linear-gradient(135deg, #061b31, #123f72);
+	display: block;
+	height: 100% !important;
+	max-height: 100%;
+	max-width: 100%;
+	object-fit: contain !important;
+	object-position: center center !important;
+	width: 100% !important;
+}
+
+.acartechs-category-page .acartechs-category-main-card img.acartechs-category-image,
+.acartechs-category-page .acartechs-category-mini-grid img.acartechs-category-image,
+.acartechs-category-page .acartechs-category-list img.acartechs-category-image {
+	padding: 0;
 }
 
 img.acartechs-feed-image {
