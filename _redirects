@@ -1,2 +1,12 @@
 /wp-admin/* / 302
 /wp-login.php / 302
+/tag/* /haberler/ 301
+/author/* / 301
+/category/haberler/ /haberler/ 301
+/category/yazilim/ /yazilim/ 301
+/category/yapay-zeka/ /yapay-zeka/ 301
+/category/teknoloji/ /teknoloji/ 301
+/category/bilgisayar/ /bilgisayar/ 301
+/category/mobil/ /mobil/ 301
+/category/oyun/ /oyun/ 301
+/category/sinema-dizi/ /sinema-dizi/ 301
