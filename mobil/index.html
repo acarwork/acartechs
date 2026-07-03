@@ -90,10 +90,7 @@ var woocommerce_params = {"ajax_url":"/acartechs/wp-admin/admin-ajax.php","wc_aj
 </style>
 <link rel='stylesheet' id='wc-blocks-style-css' href='/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks.css?ver=wc-10.7.0' media='all' />
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4367344438750629" crossorigin="anonymous"></script>
-<style id="acartechs-static-hosting">
-.acartechs-login,.acartechs-login-modal{display:none!important}
-</style>
+<style id="acartechs-static-hosting">.acartechs-login,.acartechs-login-modal{display:none!important}</style>
 </head>
 <body class="wp-singular page-template-default page page-id-3328 wp-custom-logo wp-embed-responsive wp-theme-blocksy theme-blocksy stk--is-blocksy-theme stk-has-block-style-inheritance woocommerce-no-js">
 <a class="skip-link screen-reader-text" href="#main">Skip to content</a>
@@ -126,7 +123,7 @@ var woocommerce_params = {"ajax_url":"/acartechs/wp-admin/admin-ajax.php","wc_aj
 </li>
 <li id="menu-item-3336" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3336"><a href="/oyun/">Oyun</a></li>
 <li id="menu-item-3335" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3335"><a href="/sinema-dizi/">Sinema-Dizi</a></li>
-<li id="menu-item-3312" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3312"><a href="/haberler/">Uygulamalar</a></li>
+<li id="menu-item-3312" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3312"><a href="/uygulamalar/">Uygulamalar</a></li>
 </ul>		</nav>
 
 		<div class="acartechs-actions">
@@ -203,7 +200,7 @@ var woocommerce_params = {"ajax_url":"/acartechs/wp-admin/admin-ajax.php","wc_aj
 				<a class="is-active" href="#acartechs-register-modal">Kayıt Ol</a>
 			</div>
 			<form class="acartechs-auth-form" action="/#acartechs-register-modal" method="post">
-				<input type="hidden" id="acartechs_register_nonce" name="acartechs_register_nonce" value="146c364fcd" /><input type="hidden" name="_wp_http_referer" value="/acartechs/mobil/" />				<input type="hidden" name="acartechs_register" value="1">
+				<input type="hidden" id="acartechs_register_nonce" name="acartechs_register_nonce" value="e402929fbe" /><input type="hidden" name="_wp_http_referer" value="/acartechs/mobil/" />				<input type="hidden" name="acartechs_register" value="1">
 				<label>
 					<span>Kullanici adiniz</span>
 					<input name="user_login" type="text" autocomplete="username" placeholder="Kullanici adiniz" required>
@@ -410,6 +407,316 @@ var woocommerce_params = {"ajax_url":"/acartechs/wp-admin/admin-ajax.php","wc_aj
 							</section>
 
 				</section>
+
+	<script>
+	(function () {
+		var workspaces = document.querySelectorAll('[data-acartechs-tool]');
+		if (!workspaces.length) {
+			return;
+		}
+
+		var loaders = {};
+		function loadScript(src) {
+			if (!loaders[src]) {
+				loaders[src] = new Promise(function (resolve, reject) {
+					var script = document.createElement('script');
+					script.src = src;
+					script.async = true;
+					script.onload = resolve;
+					script.onerror = reject;
+					document.head.appendChild(script);
+				});
+			}
+			return loaders[src];
+		}
+
+		function bytes(size) {
+			if (!size) {
+				return '';
+			}
+			if (size < 1024 * 1024) {
+				return Math.round(size / 1024) + ' KB';
+			}
+			return (size / (1024 * 1024)).toFixed(1) + ' MB';
+		}
+
+		function downloadBlob(blob, fileName) {
+			var url = URL.createObjectURL(blob);
+			var link = document.createElement('a');
+			link.href = url;
+			link.download = fileName;
+			document.body.appendChild(link);
+			link.click();
+			link.remove();
+			setTimeout(function () {
+				URL.revokeObjectURL(url);
+			}, 800);
+		}
+
+		function message(root, text, type) {
+			var box = root.querySelector('[data-tool-output="message"]');
+			if (!box) {
+				return;
+			}
+			box.textContent = text || '';
+			box.className = 'acartechs-tool-message' + (type ? ' is-' + type : '');
+		}
+
+		function imageToBlob(file, format, quality) {
+			return new Promise(function (resolve, reject) {
+				var img = new Image();
+				var url = URL.createObjectURL(file);
+				img.onload = function () {
+					var canvas = document.createElement('canvas');
+					canvas.width = img.naturalWidth;
+					canvas.height = img.naturalHeight;
+					canvas.getContext('2d').drawImage(img, 0, 0);
+					URL.revokeObjectURL(url);
+					canvas.toBlob(function (blob) {
+						if (!blob) {
+							reject(new Error('Görsel dönüştürülemedi.'));
+							return;
+						}
+						resolve(blob);
+					}, format, quality);
+				};
+				img.onerror = function () {
+					URL.revokeObjectURL(url);
+					reject(new Error('Görsel okunamadı.'));
+				};
+				img.src = url;
+			});
+		}
+
+		function extFromFormat(format) {
+			if (format === 'image/png') {
+				return 'png';
+			}
+			if (format === 'image/jpeg') {
+				return 'jpg';
+			}
+			return 'webp';
+		}
+
+		workspaces.forEach(function (root) {
+			var tool = root.getAttribute('data-acartechs-tool');
+
+			if (tool === 'pdf-birlestirici') {
+				var mergeFiles = [];
+				var input = root.querySelector('[data-tool-input="pdf-merge"]');
+				var list = root.querySelector('[data-tool-output="file-list"]');
+				function renderList() {
+					list.innerHTML = '';
+					if (!mergeFiles.length) {
+						return;
+					}
+					mergeFiles.forEach(function (file, index) {
+						var row = document.createElement('div');
+						row.className = 'acartechs-file-row';
+						row.innerHTML = '<span>' + (index + 1) + '</span><strong></strong><small>' + bytes(file.size) + '</small><button type="button" data-up>Yukarı</button><button type="button" data-down>Aşağı</button><button type="button" data-remove>Sil</button>';
+						row.querySelector('strong').textContent = file.name;
+						row.querySelector('[data-up]').disabled = index === 0;
+						row.querySelector('[data-down]').disabled = index === mergeFiles.length - 1;
+						row.querySelector('[data-up]').addEventListener('click', function () {
+							var previous = mergeFiles[index - 1];
+							mergeFiles[index - 1] = mergeFiles[index];
+							mergeFiles[index] = previous;
+							renderList();
+						});
+						row.querySelector('[data-down]').addEventListener('click', function () {
+							var next = mergeFiles[index + 1];
+							mergeFiles[index + 1] = mergeFiles[index];
+							mergeFiles[index] = next;
+							renderList();
+						});
+						row.querySelector('[data-remove]').addEventListener('click', function () {
+							mergeFiles.splice(index, 1);
+							renderList();
+						});
+						list.appendChild(row);
+					});
+				}
+				input.addEventListener('change', function () {
+					Array.prototype.forEach.call(input.files || [], function (file) {
+						mergeFiles.push(file);
+					});
+					input.value = '';
+					message(root, '');
+					renderList();
+				});
+				root.querySelector('[data-tool-action="clear"]').addEventListener('click', function () {
+					mergeFiles = [];
+					renderList();
+					message(root, '');
+				});
+				root.querySelector('[data-tool-action="merge-pdf"]').addEventListener('click', function () {
+					if (mergeFiles.length < 2) {
+						message(root, 'Birleştirmek için en az iki PDF ekle.', 'error');
+						return;
+					}
+					message(root, 'PDF dosyaları hazırlanıyor...');
+					loadScript('https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js').then(function () {
+						return PDFLib.PDFDocument.create();
+					}).then(function (mergedPdf) {
+						var chain = Promise.resolve();
+						mergeFiles.forEach(function (file) {
+							chain = chain.then(function () {
+								return file.arrayBuffer();
+							}).then(function (buffer) {
+								return PDFLib.PDFDocument.load(buffer);
+							}).then(function (pdf) {
+								return mergedPdf.copyPages(pdf, pdf.getPageIndices());
+							}).then(function (pages) {
+								pages.forEach(function (page) {
+									mergedPdf.addPage(page);
+								});
+							});
+						});
+						return chain.then(function () {
+							return mergedPdf.save();
+						});
+					}).then(function (bytesData) {
+						downloadBlob(new Blob([bytesData], { type: 'application/pdf' }), 'acartechs-birlestirilmis.pdf');
+						message(root, 'PDF indirildi.', 'success');
+					}).catch(function () {
+						message(root, 'PDF birleştirme sırasında hata oluştu.', 'error');
+					});
+				});
+			}
+
+			if (tool === 'pdf-word-excel-donusturucu') {
+				root.querySelector('[data-tool-action="extract-pdf"]').addEventListener('click', function () {
+					var file = root.querySelector('[data-tool-input="pdf-extract"]').files[0];
+					var outputFormat = root.querySelector('[data-tool-input="pdf-output-format"]').value;
+					if (!file) {
+						message(root, 'Önce PDF dosyası seç.', 'error');
+						return;
+					}
+					message(root, 'PDF metni çıkarılıyor...');
+					loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js').then(function () {
+						pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+						return file.arrayBuffer();
+					}).then(function (buffer) {
+						return pdfjsLib.getDocument({ data: buffer }).promise;
+					}).then(function (pdf) {
+						var pages = [];
+						for (var i = 1; i <= pdf.numPages; i++) {
+							pages.push(pdf.getPage(i).then(function (page) {
+								return page.getTextContent();
+							}).then(function (content) {
+								return content.items.map(function (item) { return item.str; }).join(' ');
+							}));
+						}
+						return Promise.all(pages);
+					}).then(function (pages) {
+						var text = pages.join('\n\n');
+						var html;
+						var mime;
+						var ext;
+						if (outputFormat === 'xls') {
+							html = '<table><tr><th>Sayfa</th><th>Metin</th></tr>' + pages.map(function (page, index) {
+								return '<tr><td>' + (index + 1) + '</td><td>' + page.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</td></tr>';
+							}).join('') + '</table>';
+							mime = 'application/vnd.ms-excel';
+							ext = 'xls';
+						} else {
+							html = '<html><body><pre style="white-space:pre-wrap;font-family:Arial">' + text.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</pre></body></html>';
+							mime = 'application/msword';
+							ext = 'doc';
+						}
+						downloadBlob(new Blob([html], { type: mime + ';charset=utf-8' }), 'acartechs-pdf-metin.' + ext);
+						message(root, 'Dosya indirildi.', 'success');
+					}).catch(function () {
+						message(root, 'PDF metni çıkarılamadı. Taranmış PDF için OCR aracını dene.', 'error');
+					});
+				});
+			}
+
+			if (tool === 'gorselden-metne-ocr') {
+				var output = root.querySelector('[data-tool-output="ocr-text"]');
+				root.querySelector('[data-tool-action="ocr"]').addEventListener('click', function () {
+					var file = root.querySelector('[data-tool-input="ocr-image"]').files[0];
+					if (!file) {
+						message(root, 'Önce görsel seç.', 'error');
+						return;
+					}
+					message(root, 'Görsel okunuyor...');
+					loadScript('https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js').then(function () {
+						return Tesseract.recognize(file, 'tur+eng');
+					}).then(function (result) {
+						output.value = result.data.text.trim();
+						message(root, output.value ? 'Metin çıkarıldı.' : 'Okunabilir metin bulunamadı.', output.value ? 'success' : 'error');
+					}).catch(function () {
+						message(root, 'OCR işlemi tamamlanamadı.', 'error');
+					});
+				});
+				root.querySelector('[data-tool-action="copy-text"]').addEventListener('click', function () {
+					if (!output.value.trim()) {
+						message(root, 'Kopyalanacak metin yok.', 'error');
+						return;
+					}
+					navigator.clipboard.writeText(output.value);
+					message(root, 'Metin kopyalandı.', 'success');
+				});
+			}
+
+			if (tool === 'format-donusturucu' || tool === 'gorsel-sikistirici') {
+				root.querySelector('[data-tool-action="' + (tool === 'gorsel-sikistirici' ? 'compress-image' : 'convert-image') + '"]').addEventListener('click', function () {
+					var file = root.querySelector('[data-tool-input="image-file"]').files[0];
+					var format = root.querySelector('[data-tool-input="image-format"]').value;
+					var result = root.querySelector('[data-tool-output="image-result"]');
+					if (!file) {
+						message(root, 'Önce görsel seç.', 'error');
+						return;
+					}
+					message(root, 'Görsel hazırlanıyor...');
+					imageToBlob(file, format, tool === 'gorsel-sikistirici' ? 0.76 : 0.92).then(function (blob) {
+						var fileName = 'acartechs-gorsel.' + extFromFormat(format);
+						result.classList.remove('is-hidden');
+						result.innerHTML = '<strong>Hazır</strong><span>Orijinal: ' + bytes(file.size) + '</span><span>Yeni: ' + bytes(blob.size) + '</span><button type="button">İndir</button>';
+						result.querySelector('button').addEventListener('click', function () {
+							downloadBlob(blob, fileName);
+						});
+						downloadBlob(blob, fileName);
+						message(root, 'Görsel indirildi.', 'success');
+					}).catch(function () {
+						message(root, 'Görsel işlenemedi.', 'error');
+					});
+				});
+			}
+
+			if (tool === 'kelime-karakter-sayici') {
+				var textInput = root.querySelector('[data-tool-input="counter-text"]');
+				var counter = root.querySelector('[data-tool-output="counter-result"]');
+				function renderCounter() {
+					var text = textInput.value || '';
+					if (!text.trim()) {
+						counter.classList.add('is-hidden');
+						counter.innerHTML = '';
+						return;
+					}
+					var words = text.trim().split(/\s+/).filter(Boolean);
+					var charsNoSpace = text.replace(/\s/g, '').length;
+					var sentences = (text.match(/[.!?]+/g) || []).length;
+					var paragraphs = text.split(/\n+/).filter(function (line) { return line.trim(); }).length;
+					var minutes = Math.max(1, Math.ceil(words.length / 220));
+					counter.classList.remove('is-hidden');
+					counter.innerHTML = [
+						['Kelime', words.length],
+						['Karakter', text.length],
+						['Boşluksuz', charsNoSpace],
+						['Cümle', sentences],
+						['Paragraf', paragraphs],
+						['Okuma', minutes + ' dk']
+					].map(function (item) {
+						return '<article><strong>' + item[1] + '</strong><span>' + item[0] + '</span></article>';
+					}).join('');
+				}
+				textInput.addEventListener('input', renderCounter);
+			}
+		});
+	})();
+	</script>
 
 			<section class="acartechs-footer-panel">
 			<div class="acartechs-footer-brand">
