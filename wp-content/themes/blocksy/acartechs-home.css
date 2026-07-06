@@ -15,6 +15,18 @@
 	width: 100%;
 }
 
+.acartechs-visually-hidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
 /* Editorial polish pass: make the portal feel image-led and less template-like. */
 .acartechs-feature,
 .acartechs-editor-picks,
@@ -48,9 +60,11 @@
 	max-width: 760px;
 }
 
-.acartechs-feature h1 {
+.acartechs-feature h1,
+.acartechs-feature h2 {
 	font-size: clamp(30px, 3vw, 48px);
 	line-height: 1.05;
+	margin: 0;
 	text-transform: none;
 	text-wrap: balance;
 }
@@ -201,7 +215,8 @@
 		right: 20px;
 	}
 
-	.acartechs-feature h1 {
+	.acartechs-feature h1,
+	.acartechs-feature h2 {
 		font-size: clamp(28px, 8vw, 38px);
 		line-height: 1.08;
 	}
@@ -1190,6 +1205,13 @@ input[type="submit"],
 	max-width: 760px;
 }
 
+.acartechs-category-head .acartechs-category-seo-text {
+	border-top: 1px solid #e2edf8;
+	color: #48627c;
+	margin-top: 14px;
+	padding-top: 14px;
+}
+
 .acartechs-dot-separator {
 	color: var(--blue);
 	font-weight: 900;
@@ -2008,6 +2030,7 @@ img.acartechs-feed-image:after {
 }
 
 .acartechs-feature h1,
+.acartechs-feature h2,
 .acartechs-editor-picks h2,
 .acartechs-cards h3 {
 	letter-spacing: 0;
@@ -2150,7 +2173,8 @@ img.acartechs-feed-image:after {
 	z-index: 2;
 }
 
-.acartechs-feature h1 {
+.acartechs-feature h1,
+.acartechs-feature h2 {
 	color: #ffffff;
 	font-size: clamp(28px, 3.2vw, 44px);
 	line-height: 1.02;
@@ -3813,6 +3837,7 @@ body:has(.acartechs-page) #header {
 	}
 
 	.acartechs-feature h1,
+	.acartechs-feature h2,
 	.acartechs-editor-picks h2 {
 		font-size: 28px;
 	}
@@ -4100,3 +4125,4 @@ body:has(.acartechs-page) #header {
 		min-height: 74px !important;
 	}
 }
+
