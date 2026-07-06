@@ -202,10 +202,13 @@
 		height: 430px;
 	}
 
+	.acartechs-feature-art.has-image {
+		background-position: center center !important;
+		background-size: cover;
+	}
+
 	.acartechs-feature-art.has-image:after {
-		background:
-			linear-gradient(180deg, rgba(2, 6, 23, 0.12), rgba(2, 6, 23, 0.88) 64%),
-			linear-gradient(90deg, rgba(2, 6, 23, 0.56), rgba(2, 6, 23, 0.18));
+		background: linear-gradient(180deg, rgba(2, 6, 23, 0.08), rgba(2, 6, 23, 0.78) 72%) !important;
 	}
 
 	.acartechs-feature-copy {
@@ -2261,7 +2264,7 @@ img.acartechs-feed-image:after {
 }
 
 .acartechs-pick-image.has-image {
-	aspect-ratio: 16 / 9;
+	aspect-ratio: auto;
 	background: #061b31;
 	min-height: 0;
 }
@@ -2269,9 +2272,10 @@ img.acartechs-feed-image:after {
 .acartechs-pick-image img {
 	border-radius: 8px;
 	display: block;
-	height: 100%;
+	height: auto;
 	margin: 0 auto;
-	object-fit: cover;
+	max-width: 100%;
+	object-fit: contain;
 	object-position: center center;
 	width: 100%;
 }
@@ -4246,11 +4250,24 @@ body:has(.acartechs-page) #header {
 	width: 100% !important;
 }
 
+.acartechs-editor-picks .acartechs-pick-image {
+	align-items: center !important;
+	display: flex !important;
+	justify-content: center !important;
+}
+
+.acartechs-editor-picks .acartechs-pick-image.has-image {
+	aspect-ratio: auto !important;
+	height: auto !important;
+}
+
 .acartechs-editor-picks .acartechs-pick-image img {
 	display: block !important;
+	height: auto !important;
 	margin-left: auto !important;
 	margin-right: auto !important;
-	object-fit: cover !important;
+	max-width: 100% !important;
+	object-fit: contain !important;
 	object-position: center center !important;
 	width: 100% !important;
 }
