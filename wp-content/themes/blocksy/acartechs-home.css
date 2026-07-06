@@ -204,11 +204,11 @@
 
 	.acartechs-feature-art.has-image {
 		background-position: center center !important;
-		background-size: cover;
+		background-size: contain !important;
 	}
 
 	.acartechs-feature-art.has-image:after {
-		background: linear-gradient(180deg, rgba(2, 6, 23, 0.08), rgba(2, 6, 23, 0.78) 72%) !important;
+		background: linear-gradient(180deg, rgba(2, 6, 23, 0.04), rgba(2, 6, 23, 0.55) 78%) !important;
 	}
 
 	.acartechs-feature-copy {
@@ -235,7 +235,8 @@
 	}
 
 	.acartechs-pick-image img {
-		aspect-ratio: 16 / 9;
+		aspect-ratio: auto;
+		height: auto;
 		min-height: 0;
 		width: 100%;
 	}
