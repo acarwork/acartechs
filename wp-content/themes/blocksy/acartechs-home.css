@@ -89,6 +89,23 @@
 	grid-template-columns: 150px 1fr;
 }
 
+.acartechs-editor-picks .acartechs-pick-main {
+	grid-template-columns: 1fr;
+	justify-items: center;
+}
+
+.acartechs-editor-picks .acartechs-pick-image {
+	justify-self: center;
+	max-width: 100%;
+	width: 100%;
+}
+
+.acartechs-editor-picks .acartechs-pick-main > div {
+	justify-self: stretch;
+	text-align: left;
+	width: 100%;
+}
+
 .acartechs-pick-image,
 .acartechs-trending-list span.has-image,
 .acartechs-videos article span.has-image,
@@ -2244,6 +2261,12 @@ img.acartechs-feed-image:after {
 	padding: 16px;
 	text-decoration: none;
 	transition: border-color .2s ease, transform .2s ease;
+}
+
+.acartechs-editor-picks .acartechs-pick-main {
+	align-items: stretch;
+	grid-template-columns: 1fr;
+	justify-items: center;
 }
 
 .acartechs-pick-main:hover {
