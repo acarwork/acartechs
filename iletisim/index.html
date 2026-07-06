@@ -149,7 +149,7 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 				<a class="is-active" href="#acartechs-login-modal">Giriş Yap</a>
 				<a href="#acartechs-register-modal">Kayıt Ol</a>
 			</div>
-			<form class="acartechs-auth-form" action="/wp-login.php?redirect_to=https%3A%2F%2Facartechs.com%2Filetisim%2F" method="post">
+			<form class="acartechs-auth-form" action="#acartechs-login-modal" method="post">
 				<label>
 					<span>Kullanici adiniz</span>
 					<input name="log" type="text" autocomplete="username" placeholder="Kullanici adiniz" required>
@@ -167,7 +167,7 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 				</div>
 				<button type="submit">Giriş Yap</button>
 			</form>
-			<a class="acartechs-google-login" href="/wp-login.php?redirect_to=https%3A%2F%2Facartechs.com%2Filetisim%2F">
+			<a class="acartechs-google-login" href="#acartechs-login-modal">
 				<span>G</span>
 				Google ile Giriş Yap
 			</a>
@@ -241,7 +241,7 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 			<div class="acartechs-auth-tabs is-single">
 				<a class="is-active" href="#acartechs-forgot-modal">Şifremi Unuttum</a>
 			</div>
-			<form class="acartechs-auth-form" action="/wp-login.php?action=lostpassword" method="post">
+			<form class="acartechs-auth-form" action="#acartechs-login-modal" method="post">
 				<label>
 					<span>Kullanici adi veya e-posta</span>
 					<input name="user_login" type="text" autocomplete="username" placeholder="Kullanici adi veya e-posta" required>

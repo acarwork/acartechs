@@ -85,6 +85,15 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 <link rel='stylesheet' id='wc-blocks-style-css' href='/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks.css?ver=wc-10.7.0' media='all' />
 
 <style id="acartechs-static-hosting">.acartechs-login,.acartechs-login-modal{display:none!important}</style>
+
+<script id="acartechs-search-noindex">
+if (/[?&]s=/.test(location.search)) {
+  var robots = document.createElement('meta');
+  robots.name = 'robots';
+  robots.content = 'noindex, follow';
+  document.head.appendChild(robots);
+}
+</script>
 </head>
 <body class="home wp-singular page-template-default page page-id-3306 wp-custom-logo wp-embed-responsive wp-theme-blocksy theme-blocksy stk--is-blocksy-theme stk-has-block-style-inheritance woocommerce-no-js">
 <a class="skip-link screen-reader-text" href="#main">Skip to content</a>
@@ -147,7 +156,7 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 				<a class="is-active" href="#acartechs-login-modal">Giriş Yap</a>
 				<a href="#acartechs-register-modal">Kayıt Ol</a>
 			</div>
-			<form class="acartechs-auth-form" action="/wp-login.php?redirect_to=https%3A%2F%2Facartechs.com%2F" method="post">
+			<form class="acartechs-auth-form" action="#acartechs-login-modal" method="post">
 				<label>
 					<span>Kullanici adiniz</span>
 					<input name="log" type="text" autocomplete="username" placeholder="Kullanici adiniz" required>
@@ -165,7 +174,7 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 				</div>
 				<button type="submit">Giriş Yap</button>
 			</form>
-			<a class="acartechs-google-login" href="/wp-login.php?redirect_to=https%3A%2F%2Facartechs.com%2F">
+			<a class="acartechs-google-login" href="#acartechs-login-modal">
 				<span>G</span>
 				Google ile Giriş Yap
 			</a>
@@ -239,7 +248,7 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 			<div class="acartechs-auth-tabs is-single">
 				<a class="is-active" href="#acartechs-forgot-modal">Şifremi Unuttum</a>
 			</div>
-			<form class="acartechs-auth-form" action="/wp-login.php?action=lostpassword" method="post">
+			<form class="acartechs-auth-form" action="#acartechs-login-modal" method="post">
 				<label>
 					<span>Kullanici adi veya e-posta</span>
 					<input name="user_login" type="text" autocomplete="username" placeholder="Kullanici adi veya e-posta" required>
