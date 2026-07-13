@@ -678,7 +678,15 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 var ct_localizations = {"ajax_url":"/wp-admin/admin-ajax.php","public_url":"/wp-content/themes/blocksy/static/bundle/","rest_url":"/wp-json/","search_url":"/search/QUERY_STRING/","show_more_text":"Show more","more_text":"More","search_live_results":"Search results","search_live_no_results":"No results","search_live_results_closed":"Search results closed.","search_live_no_result":"No results","search_live_one_result":"You got %s result. Please press Tab to select it.","search_live_many_results":"You got %s results. Please press Tab to select one.","search_live_stock_status_texts":{"instock":"In stock","outofstock":"Out of stock"},"clipboard_copied":"Copied!","clipboard_failed":"Failed to Copy","expand_submenu":"Expand dropdown menu","collapse_submenu":"Collapse dropdown menu","dynamic_js_chunks":[{"id":"blocksy_ext_trending","selector":".ct-trending-block [class*=\"ct-arrow\"]","url":"/wp-content/plugins/blocksy-companion/framework/extensions/trending/static/bundle/main.js?ver=2.1.44","trigger":"click","version":"2.1.44"},{"id":"blocksy_sticky_header","selector":"header [data-sticky]","url":"/wp-content/plugins/blocksy-companion/static/bundle/sticky.js?ver=2.1.44","version":"2.1.44"}],"dynamic_styles":{"lazy_load":"/wp-content/themes/blocksy/static/bundle/non-critical-styles.min.css?ver=2.1.46","search_lazy":"/wp-content/themes/blocksy/static/bundle/non-critical-search-styles.min.css?ver=2.1.46","back_to_top":"/wp-content/themes/blocksy/static/bundle/back-to-top.min.css?ver=2.1.46"},"dynamic_styles_selectors":[{"selector":".ct-header-cart, #woo-cart-panel","url":"/wp-content/themes/blocksy/static/bundle/cart-header-element-lazy.min.css?ver=2.1.46"},{"selector":".flexy","url":"/wp-content/themes/blocksy/static/bundle/flexy.min.css?ver=2.1.46"},{"selector":".ct-pagination","url":"/wp-content/themes/blocksy/static/bundle/pagination.min.css?ver=2.1.46"},{"selector":"#account-modal","url":"/wp-content/plugins/blocksy-companion/static/bundle/header-account-modal-lazy.min.css?ver=2.1.44"},{"selector":".ct-header-account","url":"/wp-content/plugins/blocksy-companion/static/bundle/header-account-dropdown-lazy.min.css?ver=2.1.44"}],"login_generic_error_msg":"An unexpected error occurred. Please try again later."};
 //# sourceURL=ct-scripts-js-extra
 </script>
-<script id="ct-scripts-js" src="/wp-content/themes/blocksy/static/bundle/main.js?ver=2.1.46"></script>
+<script id="acartechs-static-blocksy-fixes">
+(function(){
+  if (window.ct_localizations) {
+    window.ct_localizations.dynamic_js_chunks = [];
+    window.ct_localizations.dynamic_styles = {};
+    window.ct_localizations.dynamic_styles_selectors = [];
+  }
+})();
+</script><script id="ct-scripts-js" src="/wp-content/themes/blocksy/static/bundle/main.js?ver=2.1.46"></script>
 <script id="sourcebuster-js-js" src="/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js?ver=10.7.0"></script>
 <script id="wc-order-attribution-js-extra">
 var wc_order_attribution = {"params":{"lifetime":1.0e-5,"session":30,"base64":false,"ajaxurl":"/wp-admin/admin-ajax.php","prefix":"wc_order_attribution_","allowTracking":true},"fields":{"source_type":"current.typ","referrer":"current_add.rf","utm_campaign":"current.cmp","utm_source":"current.src","utm_medium":"current.mdm","utm_content":"current.cnt","utm_id":"current.id","utm_term":"current.trm","utm_source_platform":"current.plt","utm_creative_format":"current.fmt","utm_marketing_tactic":"current.tct","session_entry":"current_add.ep","session_start_time":"current_add.fd","session_pages":"session.pgs","session_count":"udata.vst","user_agent":"udata.uag"}};
@@ -699,3 +707,4 @@ var wc_order_attribution = {"params":{"lifetime":1.0e-5,"session":30,"base64":fa
 		</script>
 		</body>
 </html>
+
