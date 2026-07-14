@@ -53,6 +53,40 @@ function withSearchNoindex(html) {
   return html.replace('<head>', "<head>\n<meta name='robots' content='noindex, follow' />");
 }
 
+function withAdReviewCleanup(html) {
+  if (html.includes('acartechs-ad-review-cleanup')) {
+    return html;
+  }
+
+  const style = `<style id="acartechs-ad-review-cleanup">
+.acartechs-adsense-shell.is-ad-empty{display:none!important}
+.acartechs-adsense-shell.is-ad-checking{background:transparent!important;border:0!important;box-shadow:none!important;min-height:0!important;padding:0!important}
+</style>`;
+
+  const script = `<script id="acartechs-ad-review-cleanup-script">
+(function(){
+  function markEmptyAds(){
+    document.querySelectorAll('.acartechs-adsense-shell').forEach(function(shell){
+      var unit=shell.querySelector('.adsbygoogle');
+      if(!unit){return;}
+      var status=unit.getAttribute('data-ad-status');
+      var hasFrame=!!shell.querySelector('iframe');
+      if(status==='filled'||hasFrame){shell.classList.remove('is-ad-empty','is-ad-checking');return;}
+      if(status==='unfilled'||unit.childElementCount===0){shell.classList.add('is-ad-empty');}
+    });
+  }
+  window.addEventListener('load',function(){
+    window.setTimeout(markEmptyAds,4500);
+    window.setTimeout(markEmptyAds,9000);
+  });
+})();
+</script>`;
+
+  return html
+    .replace('</head>', `${style}\n</head>`)
+    .replace('</body>', `${script}\n</body>`);
+}
+
 export async function onRequest(context) {
   const url = new URL(context.request.url);
 
@@ -69,16 +103,17 @@ export async function onRequest(context) {
 
   const response = await context.next();
 
-  if (!url.searchParams.has('s') || !url.searchParams.get('s')) {
-    return response;
-  }
-
   const contentType = response.headers.get('content-type') || '';
   if (!contentType.includes('text/html') || response.status !== 200) {
     return response;
   }
 
-  const html = withSearchNoindex(await response.text());
+  let html = await response.text();
+  if (url.searchParams.has('s') && url.searchParams.get('s')) {
+    html = withSearchNoindex(html);
+  }
+  html = withAdReviewCleanup(html);
+
   const headers = new Headers(response.headers);
   headers.set('content-type', 'text/html; charset=utf-8');
   return new Response(html, {
