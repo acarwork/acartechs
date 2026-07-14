@@ -1,0 +1,21 @@
+# Acartechs
+
+Acartechs, teknoloji, yapay zeka, mobil, yazilim, oyun ve dijital medya alanlarindaki gelismeleri sade bir dille aktaran Turkce teknoloji haber sitesidir.
+
+Site: https://acartechs.com/
+Sitemap: https://acartechs.com/sitemap.xml
+Iletisim: acarr.ffatih@gmail.com
+
+## Ana bolumler
+
+- Yapay Zeka: https://acartechs.com/yapay-zeka/
+- Yazilim: https://acartechs.com/yazilim/
+- Teknoloji: https://acartechs.com/teknoloji/
+- Mobil: https://acartechs.com/mobil/
+- Oyun: https://acartechs.com/oyun/
+- Sinema-Dizi: https://acartechs.com/sinema-dizi/
+- Uygulamalar: https://acartechs.com/uygulamalar/
+
+## Kullanim notu
+
+Icerikler kullanicilara teknoloji haberlerini ve resmi duyurulari ozetlemek icin hazirlanir. Kaynak gostererek kisa alinti ve baglamsal ozetleme yapilabilir.

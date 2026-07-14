@@ -1,13 +1,12 @@
 User-agent: *
 Disallow: /wp-admin/
+Disallow: /*?s=
+Disallow: /*?p=
+Disallow: /wp-json/
+Disallow: /xmlrpc.php
 Allow: /wp-admin/admin-ajax.php
 
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://acartechs.com/wp-sitemap.xml
-Disallow: /*?s=
-Disallow: /*?p=
-Disallow: /wp-json/
-Disallow: /xmlrpc.php
 Sitemap: https://acartechs.com/sitemap.xml
