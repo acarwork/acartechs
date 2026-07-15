@@ -44,3 +44,13 @@ html,body{max-width:100%;overflow-x:hidden;}
   .acartechs-editor-picks{padding:18px !important;}
 }
 .acartechs-editorial-depth{background:linear-gradient(135deg,rgba(33,136,246,.08),rgba(38,201,244,.06)),#f8fbff;border:1px solid #dbeafe;border-left:5px solid #2188f6;border-radius:8px;margin:30px 0;padding:26px}.acartechs-editorial-depth h2{color:#061b31;font-size:clamp(24px,2.3vw,34px);font-weight:900;line-height:1.15;margin:26px 0 12px}.acartechs-editorial-depth h2:first-child{margin-top:0}.acartechs-editorial-depth p{color:#1f344d;font-size:18px;line-height:1.75;margin:0 0 16px}.acartechs-editorial-depth ul{display:grid;gap:10px;margin:0 0 18px;padding:0}.acartechs-editorial-depth li{background:#fff;border:1px solid rgba(33,136,246,.14);border-radius:8px;color:#1f344d;font-size:17px;line-height:1.55;list-style:none;padding:12px 14px 12px 42px;position:relative}.acartechs-editorial-depth li:before{background:#26c9f4;border-radius:999px;content:"";height:8px;left:18px;position:absolute;top:22px;width:8px}@media (max-width:680px){.acartechs-editorial-depth{margin:24px 0;padding:20px}.acartechs-editorial-depth p{font-size:17px}.acartechs-editorial-depth li{font-size:16px;padding-left:36px}}
+
+/* Acartechs quality hardening for AdSense review */
+.acartechs-single-top-ad .acartechs-adsense-shell{margin:24px 0 30px !important;min-height:118px !important;}
+.acartechs-single-top-ad .acartechs-adsense-shell .adsbygoogle{min-height:82px !important;}
+.acartechs-single-body>.acartechs-adsense-shell.placement-article{display:none !important;}
+.acartechs-adsense-shell.placement-sidebar{min-height:320px !important;}
+.acartechs-adsense-shell.placement-sidebar .acartechs-adsense-unit,.acartechs-adsense-shell.placement-sidebar .adsbygoogle{min-height:280px !important;}
+.acartechs-category-mini-grid .acartechs-category-image,.acartechs-category-list img.acartechs-category-image,.acartechs-videos article span.has-image,.acartechs-trending-list span.has-image,.acartechs-editor-picks .acartechs-pick-image.has-image{background-size:cover !important;object-fit:cover !important;}
+.acartechs-editor-picks .acartechs-pick-image img{aspect-ratio:16/9 !important;height:100% !important;object-fit:cover !important;width:100% !important;}
+@media (max-width:900px){.acartechs-adsense-shell.placement-sidebar{min-height:220px !important;}.acartechs-adsense-shell.placement-sidebar .acartechs-adsense-unit,.acartechs-adsense-shell.placement-sidebar .adsbygoogle{min-height:190px !important;}.acartechs-feature-art.has-image{background-size:cover !important;}}
