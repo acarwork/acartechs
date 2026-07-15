@@ -62,6 +62,191 @@ const REDIRECTS = new Map([
   ['/yeni-nesil-dizustu-bilgisayarlar-daha-hafif-geliyor/', '/yeni-nesil-dizustu-bilgisayarlar-daha-hafif-ve-guclu-geliyor/'],
 ]);
 
+const DYNAMIC_HEAD = `
+<style id="acartechs-dynamic-css">
+.acartechs-live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 0 rgba(34,197,94,.7);animation:acarPulse 1.6s infinite;margin-right:8px;vertical-align:middle}
+@keyframes acarPulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.55)}70%{box-shadow:0 0 0 10px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+.acartechs-live-strip strong{gap:6px}
+.acartechs-now-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#0f172a,#1e3a5f);color:#e2e8f0;border-radius:999px;font-size:12px;font-weight:700;padding:6px 12px;letter-spacing:.02em}
+.acartechs-now-badge time{color:#7dd3fc;font-variant-numeric:tabular-nums}
+.acartechs-read-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:99999;background:linear-gradient(90deg,#2188f6,#26c9f4);box-shadow:0 0 12px rgba(33,136,246,.55);transition:width .08s linear}
+.acartechs-news-feed article a,.acartechs-trending-list a,.acartechs-feature-slide a{transition:transform .25s ease,box-shadow .25s ease}
+.acartechs-news-feed article:hover a,.acartechs-trending-list a:hover{transform:translateY(-2px)}
+.acartechs-fresh-pill{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;background:#dcfce7;color:#166534;font-size:11px;font-weight:800;vertical-align:middle}
+.acartechs-adsense-shell.is-ad-empty{display:none!important}
+.acartechs-adsense-shell.is-ad-checking{background:transparent!important;border:0!important;box-shadow:none!important;min-height:0!important;padding:0!important}
+body.acar-ready .acartechs-home{animation:acarFade .45s ease}
+@keyframes acarFade{from{opacity:.001;transform:translateY(4px)}to{opacity:1;transform:none}}
+.acartechs-back-top{position:fixed;right:18px;bottom:22px;z-index:9999;width:44px;height:44px;border:0;border-radius:999px;background:linear-gradient(135deg,#2188f6,#26c9f4);color:#fff;font-size:20px;cursor:pointer;box-shadow:0 10px 28px rgba(33,136,246,.35);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
+.acartechs-back-top.is-on{opacity:1;pointer-events:auto}
+.acartechs-back-top:hover{transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){
+  .acartechs-live-track,.acartechs-feature-track,.acartechs-live-dot,body.acar-ready .acartechs-home{animation:none!important}
+}
+</style>
+`;
+
+const DYNAMIC_BODY = `
+<script id="acartechs-dynamic-js">
+(function(){
+  if (window.__acarDynamic) return;
+  window.__acarDynamic = true;
+
+  function ready(fn){
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
+    else fn();
+  }
+
+  function relTime(iso){
+    var d = new Date(iso + 'T12:00:00');
+    if (isNaN(d.getTime())) return null;
+    var now = Date.now();
+    var diff = Math.round((now - d.getTime()) / 1000);
+    if (diff < 0) diff = 0;
+    if (diff < 90) return 'az önce';
+    if (diff < 3600) return Math.floor(diff/60) + ' dk önce';
+    if (diff < 86400) return Math.floor(diff/3600) + ' saat önce';
+    if (diff < 86400*2) return 'dün';
+    if (diff < 86400*7) return Math.floor(diff/86400) + ' gün önce';
+    if (diff < 86400*30) return Math.floor(diff/86400/7) + ' hafta önce';
+    return null;
+  }
+
+  function enhanceDates(){
+    document.querySelectorAll('time[data-acar-date], time[datetime]').forEach(function(el){
+      var iso = el.getAttribute('datetime');
+      if (!iso) return;
+      var r = relTime(iso);
+      if (!r) return;
+      if (!el.dataset.original) el.dataset.original = el.textContent.trim();
+      el.textContent = r;
+      el.title = el.dataset.original;
+      var dayDiff = (Date.now() - new Date(iso + 'T12:00:00').getTime()) / 86400000;
+      if (dayDiff <= 2 && !el.parentElement.querySelector('.acartechs-fresh-pill')) {
+        var pill = document.createElement('span');
+        pill.className = 'acartechs-fresh-pill';
+        pill.textContent = dayDiff < 1 ? 'Yeni' : 'Taze';
+        el.insertAdjacentElement('afterend', pill);
+      }
+    });
+  }
+
+  function liveDot(){
+    var strong = document.querySelector('.acartechs-live-strip strong');
+    if (!strong || strong.querySelector('.acartechs-live-dot')) return;
+    var dot = document.createElement('span');
+    dot.className = 'acartechs-live-dot';
+    dot.setAttribute('aria-hidden', 'true');
+    strong.prepend(dot);
+  }
+
+  function nowBadge(){
+    if (document.querySelector('.acartechs-now-badge')) return;
+    var top = document.querySelector('.acartechs-topbar .acartechs-actions') || document.querySelector('.acartechs-topbar');
+    if (!top) return;
+    var badge = document.createElement('div');
+    badge.className = 'acartechs-now-badge';
+    badge.innerHTML = '<span>Canlı</span> <time id="acar-now-clock"></time>';
+    top.prepend(badge);
+    function tick(){
+      var el = document.getElementById('acar-now-clock');
+      if (!el) return;
+      el.textContent = new Date().toLocaleString('tr-TR', {
+        weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'
+      });
+    }
+    tick();
+    setInterval(tick, 30000);
+  }
+
+  function readingProgress(){
+    if (document.querySelector('.acartechs-read-progress')) return;
+    var bar = document.createElement('div');
+    bar.className = 'acartechs-read-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(bar);
+    function onScroll(){
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      var p = max > 0 ? (h.scrollTop / max) * 100 : 0;
+      bar.style.width = p + '%';
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  }
+
+  function backTop(){
+    if (document.querySelector('.acartechs-back-top')) return;
+    var btn = document.createElement('button');
+    btn.className = 'acartechs-back-top';
+    btn.type = 'button';
+    btn.setAttribute('aria-label', 'Yukarı çık');
+    btn.textContent = '↑';
+    btn.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+    document.body.appendChild(btn);
+    window.addEventListener('scroll', function(){
+      btn.classList.toggle('is-on', window.scrollY > 480);
+    }, {passive:true});
+  }
+
+  function markEmptyAds(){
+    document.querySelectorAll('.acartechs-adsense-shell').forEach(function(shell){
+      var unit = shell.querySelector('.adsbygoogle');
+      if (!unit) return;
+      var status = unit.getAttribute('data-ad-status');
+      var hasFrame = !!shell.querySelector('iframe');
+      if (status === 'filled' || hasFrame) {
+        shell.classList.remove('is-ad-empty', 'is-ad-checking');
+        return;
+      }
+      if (status === 'unfilled' || unit.childElementCount === 0) {
+        shell.classList.add('is-ad-empty');
+      }
+    });
+  }
+
+  function humanBylines(){
+    document.querySelectorAll('body').forEach(function(){});
+    // leftover admin strings
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(function(n){
+      if (n.nodeValue && /acaradmin/i.test(n.nodeValue)) {
+        n.nodeValue = n.nodeValue.replace(/acaradmin/gi, 'Acartechs Editör');
+      }
+    });
+  }
+
+  function pauseMarqueeOnFocus(){
+    document.querySelectorAll('.acartechs-live-marquee a').forEach(function(a){
+      a.addEventListener('focus', function(){
+        var track = document.querySelector('.acartechs-live-track');
+        if (track) track.style.animationPlayState = 'paused';
+      });
+      a.addEventListener('blur', function(){
+        var track = document.querySelector('.acartechs-live-track');
+        if (track) track.style.animationPlayState = '';
+      });
+    });
+  }
+
+  ready(function(){
+    document.body.classList.add('acar-ready');
+    humanBylines();
+    enhanceDates();
+    liveDot();
+    nowBadge();
+    readingProgress();
+    backTop();
+    pauseMarqueeOnFocus();
+    window.setTimeout(markEmptyAds, 4000);
+    window.setTimeout(markEmptyAds, 9000);
+  });
+})();
+</script>
+`;
+
 function normalizePath(pathname) {
   if (!pathname || pathname === '/') {
     return '/';
@@ -94,6 +279,22 @@ function withSearchNoindex(html) {
     return html;
   }
   return html.replace('<head>', "<head>\n<meta name='robots' content='noindex, follow' />");
+}
+
+function withDynamicPolish(html) {
+  if (html.includes('id="acartechs-dynamic-js"')) {
+    return html;
+  }
+  let out = html;
+  if (out.includes('</head>')) {
+    out = out.replace('</head>', `${DYNAMIC_HEAD}\n</head>`);
+  }
+  if (out.includes('</body>')) {
+    out = out.replace('</body>', `${DYNAMIC_BODY}\n</body>`);
+  }
+  // Soft human byline fallback in HTML source
+  out = out.replace(/acaradmin/gi, 'Acartechs Editör');
+  return out;
 }
 
 export default {
@@ -130,18 +331,20 @@ export default {
     }
 
     const response = await env.ASSETS.fetch(request);
-    if (!url.searchParams.has('s') || !url.searchParams.get('s')) {
-      return response;
-    }
-
     const contentType = response.headers.get('content-type') || '';
-    if (!contentType.includes('text/html') || response.status !== 200) {
+    if (!contentType.includes('text/html') || response.status >= 400) {
       return response;
     }
 
-    const html = withSearchNoindex(await response.text());
+    let html = await response.text();
+    if (url.searchParams.has('s') && url.searchParams.get('s')) {
+      html = withSearchNoindex(html);
+    }
+    html = withDynamicPolish(html);
+
     const headers = new Headers(response.headers);
     headers.set('content-type', 'text/html; charset=utf-8');
+    headers.set('cache-control', 'public, max-age=120, stale-while-revalidate=600');
     return new Response(html, {
       status: response.status,
       statusText: response.statusText,
