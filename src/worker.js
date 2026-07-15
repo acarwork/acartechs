@@ -1,16 +1,38 @@
 const ROBOTS = `User-agent: *
 Disallow: /wp-admin/
-Allow: /wp-admin/admin-ajax.php
 Disallow: /*?s=
 Disallow: /*?p=
 Disallow: /wp-json/
 Disallow: /xmlrpc.php
+Allow: /wp-admin/admin-ajax.php
 
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://acartechs.com/wp-sitemap.xml
 Sitemap: https://acartechs.com/sitemap.xml
+`;
+
+const LLMS = `# Acartechs
+
+Acartechs, teknoloji, yapay zeka, mobil, yazilim, oyun ve dijital medya alanlarindaki gelismeleri sade bir dille aktaran Turkce teknoloji haber sitesidir.
+
+Site: https://acartechs.com/
+Sitemap: https://acartechs.com/sitemap.xml
+Iletisim: acarr.ffatih@gmail.com
+
+## Ana bolumler
+
+- Yapay Zeka: https://acartechs.com/yapay-zeka/
+- Yazilim: https://acartechs.com/yazilim/
+- Teknoloji: https://acartechs.com/teknoloji/
+- Mobil: https://acartechs.com/mobil/
+- Oyun: https://acartechs.com/oyun/
+- Sinema-Dizi: https://acartechs.com/sinema-dizi/
+- Uygulamalar: https://acartechs.com/uygulamalar/
+
+## Kullanim notu
+
+Icerikler kullanicilara teknoloji haberlerini ve resmi duyurulari ozetlemek icin hazirlanir. Kaynak gostererek kisa alinti ve baglamsal ozetleme yapilabilir.
 `;
 
 const REDIRECTS = new Map([
@@ -49,6 +71,12 @@ function normalizePath(pathname) {
 
 function redirectForPath(pathname) {
   const normalized = normalizePath(pathname);
+  if (normalized === '/feed/' || normalized === '/comments/feed/') {
+    return '/haberler/';
+  }
+  if (normalized.startsWith('/wp-json/') || normalized === '/wp-json/' || pathname === '/xmlrpc.php') {
+    return '/';
+  }
   if (normalized.startsWith('/wp-admin/')) {
     return '/';
   }
@@ -80,6 +108,15 @@ export default {
 
     if (url.pathname === '/robots.txt') {
       return new Response(ROBOTS, {
+        headers: {
+          'content-type': 'text/plain; charset=utf-8',
+          'cache-control': 'public, max-age=300',
+        },
+      });
+    }
+
+    if (url.pathname === '/llms.txt') {
+      return new Response(LLMS, {
         headers: {
           'content-type': 'text/plain; charset=utf-8',
           'cache-control': 'public, max-age=300',
