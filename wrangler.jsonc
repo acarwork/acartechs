@@ -4,7 +4,8 @@
   "compatibility_date": "2026-06-23",
   "main": "src/worker.js",
   "assets": {
-    "directory": "./",
+    // Only public site files — never repo root (avoids .git pack > 25 MiB on CI)
+    "directory": "./public",
     "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page"

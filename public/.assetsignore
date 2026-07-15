@@ -1,0 +1,5 @@
+# Safety net: nothing from build tooling should land here.
+.git
+.wrangler
+node_modules
+*.md
