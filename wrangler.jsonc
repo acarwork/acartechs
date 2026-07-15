@@ -1,15 +1,12 @@
 {
-  "$schema": "https://raw.githubusercontent.com/cloudflare/workers-sdk/main/packages/wrangler/config-schema.json",
   "name": "acartechs-git",
   "compatibility_date": "2026-06-23",
   "main": "src/worker.js",
   "assets": {
-    // Only public site files — never repo root (avoids .git pack > 25 MiB on CI)
     "directory": "./public",
     "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page",
-    // Worker runs first so redirects + live HTML polish always apply
     "run_worker_first": true
   }
 }
