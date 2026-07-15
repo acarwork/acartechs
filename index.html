@@ -45,9 +45,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <link rel='stylesheet' id='ct-wpforms-styles-css' href='/wp-content/themes/blocksy/static/bundle/wpforms.min.css?ver=2.1.46' media='all' />
 <link rel='stylesheet' id='acartechs-home-css' href='/wp-content/themes/blocksy/acartechs-home.min.css?ver=1783359793' media='all' />
 <style id="acartechs-trending-two-rows-css">
-.acartechs-trending-list>a:nth-child(n+9){display:none}
-@media (max-width:1120px){.acartechs-trending-list>a:nth-child(n+5){display:none}}
-@media (max-width:680px){.acartechs-trending-list>a:nth-child(n+3){display:none}}
+.acartechs-trending-list{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+.acartechs-trending-list>a:nth-child(n+9){display:none!important}
+@media (max-width:1120px){.acartechs-trending-list{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media (max-width:680px){.acartechs-trending-list{grid-template-columns:1fr!important}}
 .acartechs-quality-panel{background:#fff;border:1px solid #dbeafe;border-radius:10px;box-shadow:0 18px 44px rgba(15,23,42,.07);display:grid;gap:24px;grid-template-columns:minmax(280px,.9fr) 1.1fr;margin:28px auto;max-width:1360px;padding:30px;width:100%}
 .acartechs-quality-panel h2{color:#061b31;font-size:clamp(28px,3vw,42px);font-weight:900;letter-spacing:0;line-height:1.12;margin:0 0 14px}
 .acartechs-quality-panel p{color:#334155;font-size:17px;line-height:1.7;margin:0}
@@ -750,21 +751,7 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 						<small>Yapay Zeka</small>
 						2026’da Öne Çıkan Yapay Zekâ Modelleri: Hangisi Ne İşe Yarıyor?					</p>
 				</a>
-								<a href="/google-i-o-2026-gelistirici-oturumlarinda-yapay-zeka-araclari-one-cikti/">
-					<span class="has-image" style="background-image: url(/wp-content/uploads/2026/07/GoogleForDevelopers-ComboIO-Wagta.2e16d0ba.fill-1200x600_984jqJ0.png);">
-						Te					</span>
-					<p>
-						<small>Teknoloji</small>
-						Google I/O 2026 geliştirici oturumlarında yapay zekâ araçları öne çıktı					</p>
-				</a>
-								<a href="/xbox-wire-temmuz-ayi-indie-selects-listesini-yayimladi/">
-					<span class="has-image" style="background-image: url(/wp-content/uploads/2026/07/IndieSelects_July2026_Laurel_Wire-95ba9d698f0d81336d6b.jpg);">
-						Oy					</span>
-					<p>
-						<small>Oyun</small>
-						Xbox Wire temmuz ayı Indie Selects listesini yayımladı					</p>
-				</a>
-						</div>
+					</div>
 	</section>
 
 	<section class="acartechs-quality-panel" aria-label="Acartechs yayın yaklaşımı">
