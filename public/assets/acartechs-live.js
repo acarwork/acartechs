@@ -7,9 +7,8 @@
     document.querySelectorAll('time[data-acar-date],time[datetime]').forEach(function(el){
       var iso=el.getAttribute('datetime');if(!iso)return;var r=relTime(iso);if(!r)return;
       if(!el.dataset.original)el.dataset.original=el.textContent.trim();el.textContent=r;el.title=el.dataset.original;
-      var dayDiff=(Date.now()-new Date(iso+'T12:00:00').getTime())/86400000;
-      if(dayDiff<=2&&!el.parentElement.querySelector('.acartechs-fresh-pill')){var p=document.createElement('span');p.className='acartechs-fresh-pill';p.textContent=dayDiff<1?'Yeni':'Taze';el.insertAdjacentElement('afterend',p)}
     });
+    document.querySelectorAll('.acartechs-fresh-pill').forEach(function(el){el.remove();});
     var strong=document.querySelector('.acartechs-live-strip strong');
     if(strong&&!strong.querySelector('.acartechs-live-dot')){var d=document.createElement('span');d.className='acartechs-live-dot';d.setAttribute('aria-hidden','true');strong.prepend(d)}
     var top=document.querySelector('.acartechs-topbar .acartechs-actions')||document.querySelector('.acartechs-topbar');

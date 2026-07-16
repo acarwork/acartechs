@@ -72,7 +72,7 @@ const DYNAMIC_HEAD = `
 .acartechs-read-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:99999;background:linear-gradient(90deg,#2188f6,#26c9f4);box-shadow:0 0 12px rgba(33,136,246,.55);transition:width .08s linear}
 .acartechs-news-feed article a,.acartechs-trending-list a,.acartechs-feature-slide a{transition:transform .25s ease,box-shadow .25s ease}
 .acartechs-news-feed article:hover a,.acartechs-trending-list a:hover{transform:translateY(-2px)}
-.acartechs-fresh-pill{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;background:#dcfce7;color:#166534;font-size:11px;font-weight:800;vertical-align:middle}
+.acartechs-fresh-pill{display:none!important}
 .acartechs-adsense-shell.is-ad-empty{display:none!important}
 .acartechs-adsense-shell.is-ad-checking{background:transparent!important;border:0!important;box-shadow:none!important;min-height:0!important;padding:0!important}
 body.acar-ready .acartechs-home{animation:acarFade .45s ease}
@@ -121,14 +121,8 @@ const DYNAMIC_BODY = `
       if (!el.dataset.original) el.dataset.original = el.textContent.trim();
       el.textContent = r;
       el.title = el.dataset.original;
-      var dayDiff = (Date.now() - new Date(iso + 'T12:00:00').getTime()) / 86400000;
-      if (dayDiff <= 2 && !el.parentElement.querySelector('.acartechs-fresh-pill')) {
-        var pill = document.createElement('span');
-        pill.className = 'acartechs-fresh-pill';
-        pill.textContent = dayDiff < 1 ? 'Yeni' : 'Taze';
-        el.insertAdjacentElement('afterend', pill);
-      }
     });
+    document.querySelectorAll('.acartechs-fresh-pill').forEach(function(el){ el.remove(); });
   }
 
   function liveDot(){
