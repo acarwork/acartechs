@@ -76,11 +76,55 @@ LABEL_HINTS = [
     ("Sinema", "sinema-dizi"),
 ]
 
+TR_MONTHS = {
+    "ocak": 1,
+    "subat": 2,
+    "şubat": 2,
+    "mart": 3,
+    "nisan": 4,
+    "mayis": 5,
+    "mayıs": 5,
+    "haziran": 6,
+    "temmuz": 7,
+    "agustos": 8,
+    "ağustos": 8,
+    "eylul": 9,
+    "eylül": 9,
+    "ekim": 10,
+    "kasim": 11,
+    "kasım": 11,
+    "aralik": 12,
+    "aralık": 12,
+}
+
+TR_DATE_RE = re.compile(
+    r"(\d{1,2})\s+"
+    r"(Ocak|Şubat|Subat|Mart|Nisan|Mayıs|Mayis|Haziran|Temmuz|Ağustos|Agustos|"
+    r"Eylül|Eylul|Ekim|Kasım|Kasim|Aralık|Aralik)\s+"
+    r"(20\d{2})",
+    re.I,
+)
+
 
 def clean(text: str) -> str:
     text = re.sub(r"<[^>]+>", " ", text or "")
     text = unescape(text)
     return re.sub(r"\s+", " ", text).strip()
+
+
+def parse_tr_date(text: str) -> datetime | None:
+    m = TR_DATE_RE.search(text or "")
+    if not m:
+        return None
+    day = int(m.group(1))
+    month = TR_MONTHS.get(m.group(2).lower())
+    year = int(m.group(3))
+    if not month:
+        return None
+    try:
+        return datetime(year, month, day, 12, 0, 0, tzinfo=TR)
+    except ValueError:
+        return None
 
 
 def guess_category(slug: str, html: str) -> tuple[str, str]:
@@ -103,50 +147,93 @@ def parse_article(path: Path) -> dict | None:
     except OSError:
         return None
 
-    # Require a real article signal
-    time_m = re.search(r'<time[^>]*datetime="([^"]+)"[^>]*>(.*?)</time>', html, re.I | re.S)
-    if not time_m:
-        # fallback meta
+    # Real single-article pages use this meta block (category pages don't).
+    is_single = "acartechs-single-meta" in html or "acartechs-single" in html
+    if not is_single:
+        # Still allow classic WP time tags
+        if not re.search(r"<time[^>]*datetime=", html, re.I):
+            return None
+
+    dt: datetime | None = None
+    date_label = ""
+
+    time_m = re.search(
+        r'<time[^>]*datetime="([^"]+)"[^>]*>(.*?)</time>',
+        html,
+        re.I | re.S,
+    )
+    if time_m:
+        date_raw = time_m.group(1)
+        date_label = clean(time_m.group(2)) or date_raw[:10]
+        try:
+            iso_full = date_raw
+            if "T" not in iso_full:
+                iso_full = f"{date_raw[:10]}T12:00:00+03:00"
+            elif iso_full.endswith("Z"):
+                iso_full = iso_full.replace("Z", "+00:00")
+            dt = datetime.fromisoformat(iso_full)
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=TR)
+        except ValueError:
+            dt = None
+
+    if dt is None:
         meta_t = re.search(
             r'property="article:published_time"\s+content="([^"]+)"',
             html,
             re.I,
         )
-        if not meta_t:
-            return None
-        date_raw = meta_t.group(1)
-        date_label = date_raw[:10]
-    else:
-        date_raw = time_m.group(1)
-        date_label = clean(time_m.group(2)) or date_raw[:10]
+        if meta_t:
+            try:
+                raw = meta_t.group(1)
+                if raw.endswith("Z"):
+                    raw = raw.replace("Z", "+00:00")
+                if "T" not in raw:
+                    raw = f"{raw[:10]}T12:00:00+03:00"
+                dt = datetime.fromisoformat(raw)
+                if dt.tzinfo is None:
+                    dt = dt.replace(tzinfo=TR)
+                date_label = dt.strftime("%d %B %Y")
+            except ValueError:
+                dt = None
 
-    date = date_raw[:10]
-    try:
-        datetime.fromisoformat(date)
-    except ValueError:
+    if dt is None:
+        # Turkish visible date in single meta: "21 Temmuz 2026"
+        meta_block = re.search(
+            r'class="acartechs-single-meta"[^>]*>([\s\S]{0,800}?)</div>',
+            html,
+            re.I,
+        )
+        hay = meta_block.group(1) if meta_block else html[:12000]
+        dt = parse_tr_date(hay)
+        if dt:
+            m = TR_DATE_RE.search(hay)
+            date_label = m.group(0) if m else dt.date().isoformat()
+
+    if dt is None:
         return None
 
+    date = dt.astimezone(TR).date().isoformat()
+
     title_m = re.search(r"<h1[^>]*>(.*?)</h1>", html, re.I | re.S)
-    if not title_m:
+    if title_m:
+        title = clean(title_m.group(1))
+    else:
         title_m = re.search(r'property="og:title"\s+content="([^"]+)"', html, re.I)
         title = clean(title_m.group(1)) if title_m else ""
-    else:
-        title = clean(title_m.group(1))
+        title = re.sub(r"\s*[–-]\s*AcarTechs\s*$", "", title, flags=re.I).strip()
     if not title or len(title) < 8:
         return None
 
     desc_m = re.search(r'name="description"\s+content="([^"]+)"', html, re.I)
     if not desc_m:
         desc_m = re.search(r'property="og:description"\s+content="([^"]+)"', html, re.I)
+    if not desc_m:
+        # first paragraph after h1
+        desc_m = re.search(r"<h1[^>]*>[\s\S]*?</h1>\s*<p>(.*?)</p>", html, re.I)
     excerpt = clean(desc_m.group(1))[:240] if desc_m else ""
 
     img_m = re.search(r'property="og:image"\s+content="([^"]+)"', html, re.I)
-    if not img_m:
-        img_m = re.search(
-            r'<img[^>]+class="[^"]*acartechs[^"]*"[^>]+src="([^"]+)"',
-            html,
-            re.I,
-        )
     if not img_m:
         img_m = re.search(r'<img[^>]+src="(/wp-content/uploads/[^"]+)"', html, re.I)
     image = img_m.group(1) if img_m else ""
@@ -155,31 +242,16 @@ def parse_article(path: Path) -> dict | None:
 
     cat, cat_label = guess_category(slug, html)
 
-    # ISO datetime
-    iso_full = date_raw
-    if "T" not in iso_full:
-        iso_full = f"{date}T12:00:00+03:00"
-    elif iso_full.endswith("Z"):
-        iso_full = iso_full.replace("Z", "+00:00")
-    try:
-        dt = datetime.fromisoformat(iso_full)
-        if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=TR)
-    except ValueError:
-        dt = datetime.fromisoformat(f"{date}T12:00:00").replace(tzinfo=TR)
-
-    # Breaking rules:
-    # 1) explicit marker in HTML
-    # 2) or published within last 12 hours
     explicit = bool(
         re.search(
-            r'data-breaking=["\']?(true|1|yes)|acartechs-breaking|son\s*dakika',
-            html[:5000],
+            r'data-breaking=["\']?(true|1|yes)|acartechs-breaking-flag|<!--\s*breaking\s*-->',
+            html[:8000],
             re.I,
         )
     )
     age_h = (datetime.now(TR) - dt.astimezone(TR)).total_seconds() / 3600
-    breaking = explicit or (0 <= age_h <= 12)
+    # Soft-breaking for last 24h so son dakika stays useful on publish day
+    breaking = explicit or (0 <= age_h <= 24)
 
     return {
         "id": slug,

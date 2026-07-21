@@ -9,7 +9,7 @@
 
   var FEED_URL = "/data/live-feed.json";
   var POLL_MS = 75000;
-  var BREAKING_MAX_AGE_H = 12;
+  var BREAKING_MAX_AGE_H = 24;
   var lastUpdatedAt = "";
   var knownIds = Object.create(null);
 
