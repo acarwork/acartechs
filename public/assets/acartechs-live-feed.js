@@ -67,9 +67,9 @@
     el = document.createElement("span");
     el.className = "acartechs-live-status";
     el.setAttribute("title", "Canlı gündem");
-    el.innerHTML =
-      '<i class="acartechs-live-status-dot" aria-hidden="true"></i><em data-live-status-text>Canlı</em>';
-    // Inside blue pill → grid stays 2 columns: [Son Gelişmeler+Canlı] | marquee
+    el.setAttribute("aria-label", "Canlı");
+    // Pulse only (no text) so "Son Gelişmeler" stays clean and readable
+    el.innerHTML = '<i class="acartechs-live-status-dot" aria-hidden="true"></i><em data-live-status-text>Canlı</em>';
     strong.appendChild(el);
     return el;
   }
