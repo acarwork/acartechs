@@ -242,17 +242,6 @@ def parse_article(path: Path) -> dict | None:
 
     cat, cat_label = guess_category(slug, html)
 
-    explicit = bool(
-        re.search(
-            r'data-breaking=["\']?(true|1|yes)|acartechs-breaking-flag|<!--\s*breaking\s*-->',
-            html[:8000],
-            re.I,
-        )
-    )
-    age_h = (datetime.now(TR) - dt.astimezone(TR)).total_seconds() / 3600
-    # Soft-breaking for last 24h so son dakika stays useful on publish day
-    breaking = explicit or (0 <= age_h <= 24)
-
     return {
         "id": slug,
         "title": title,
@@ -263,7 +252,6 @@ def parse_article(path: Path) -> dict | None:
         "iso": dt.astimezone(TR).isoformat(timespec="seconds"),
         "excerpt": excerpt,
         "image": image,
-        "breaking": breaking,
         "_sort": dt.timestamp(),
     }
 
@@ -279,14 +267,6 @@ def export_feed(public: Path, out: Path, limit: int = 20) -> dict:
     items = items[:limit]
     for it in items:
         it.pop("_sort", None)
-
-    # Cap breaking to top 3 freshest
-    breaking_seen = 0
-    for it in items:
-        if it.get("breaking"):
-            breaking_seen += 1
-            if breaking_seen > 3:
-                it["breaking"] = False
 
     payload = {
         "updatedAt": datetime.now(TR).isoformat(timespec="seconds"),
@@ -335,14 +315,10 @@ def main(argv: list[str] | None = None) -> int:
 
     payload = export_feed(public, out, limit=args.limit)
     print(f"Wrote {out} ({len(payload['items'])} items)")
-    breaking = [i["title"] for i in payload["items"] if i.get("breaking")]
-    if breaking:
-        print("breaking:")
-        for t in breaking:
-            print(f"  - {t}")
+    if payload["items"]:
+        print("latest:", payload["items"][0]["title"][:80])
 
     if args.check and old is not None:
-        # ignore updatedAt-only drift: compare items
         try:
             old_items = json.loads(old).get("items")
         except json.JSONDecodeError:

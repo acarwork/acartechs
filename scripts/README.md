@@ -24,11 +24,4 @@ pwsh scripts/export-live-feed.ps1
 - **Deploy workflow**: regenerates feed before Cloudflare deploy.
 - **`npm run deploy`**: `predeploy` regenerates feed first.
 
-### Breaking / son dakika
-
-An item is `breaking: true` when:
-
-1. Page HTML has `data-breaking="true"` (or similar marker), or  
-2. Publish time is within the last **12 hours**.
-
-Max 3 breaking items are kept.
+Homepage uses only the existing **Son Gelişmeler** strip (no separate son dakika bar).

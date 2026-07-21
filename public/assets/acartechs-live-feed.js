@@ -1,7 +1,7 @@
 /**
- * AcarTechs live feed + son dakika bandı
- * - Does not rebuild page layout
- * - Only updates existing marquee/feed nodes + optional breaking strip above live-strip
+ * AcarTechs live feed
+ * Updates existing "Son Gelişmeler" marquee + news feed from /data/live-feed.json
+ * Does not add extra strips or change page layout.
  */
 (function () {
   if (window.__acarLiveFeed) return;
@@ -9,7 +9,6 @@
 
   var FEED_URL = "/data/live-feed.json";
   var POLL_MS = 75000;
-  var BREAKING_MAX_AGE_H = 24;
   var lastUpdatedAt = "";
   var knownIds = Object.create(null);
 
@@ -25,7 +24,6 @@
     if (!iso) return null;
     var d = new Date(iso);
     if (isNaN(d.getTime())) {
-      // date-only fallback
       d = new Date(iso + "T12:00:00");
     }
     if (isNaN(d.getTime())) return null;
@@ -39,36 +37,12 @@
     return null;
   }
 
-  function ageHours(iso) {
-    var d = new Date(iso);
-    if (isNaN(d.getTime())) d = new Date(String(iso).slice(0, 10) + "T12:00:00");
-    if (isNaN(d.getTime())) return 9999;
-    return (Date.now() - d.getTime()) / 3600000;
-  }
-
   function esc(s) {
     return String(s == null ? "" : s)
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;");
-  }
-
-  function ensureBreakingShell() {
-    var existing = document.querySelector(".acartechs-breaking");
-    if (existing) return existing;
-
-    var live = document.querySelector(".acartechs-live-strip");
-    if (!live || !live.parentNode) return null;
-
-    var bar = document.createElement("section");
-    bar.className = "acartechs-breaking";
-    bar.setAttribute("aria-label", "Son dakika");
-    bar.innerHTML =
-      '<span class="acartechs-breaking-pill">Son dakika</span>' +
-      '<div class="acartechs-breaking-track" data-breaking-track></div>';
-    live.parentNode.insertBefore(bar, live);
-    return bar;
   }
 
   function ensureUpdatedLabel(liveStrip) {
@@ -87,35 +61,10 @@
     return el;
   }
 
-  function renderBreaking(items) {
-    var bar = ensureBreakingShell();
-    if (!bar) return;
-
-    var fresh = (items || []).filter(function (it) {
-      return it && it.breaking && ageHours(it.iso || it.date) <= BREAKING_MAX_AGE_H;
-    }).slice(0, 3);
-
-    var track = bar.querySelector("[data-breaking-track]");
-    if (!fresh.length) {
-      bar.classList.remove("is-on");
-      if (track) track.innerHTML = "";
-      return;
-    }
-
-    track.innerHTML = fresh
-      .map(function (it) {
-        var cat = it.categoryLabel || it.category || "";
-        return (
-          '<a href="' +
-          esc(it.url) +
-          '">' +
-          (cat ? "<span>" + esc(cat) + "</span>" : "") +
-          esc(it.title) +
-          "</a>"
-        );
-      })
-      .join("");
-    bar.classList.add("is-on");
+  function removeBreakingIfAny() {
+    document.querySelectorAll(".acartechs-breaking").forEach(function (el) {
+      el.parentNode && el.parentNode.removeChild(el);
+    });
   }
 
   function renderMarquee(items) {
@@ -123,7 +72,6 @@
     if (!track || !items || !items.length) return;
 
     var list = items.slice(0, 10);
-    // Keep marquee motion: duplicate content if site CSS expects long track
     var html = list
       .map(function (it) {
         return (
@@ -137,6 +85,7 @@
         );
       })
       .join("");
+    // Duplicate for seamless marquee CSS
     track.innerHTML = html + html;
   }
 
@@ -180,13 +129,10 @@
       if (a) existingHrefs[a.getAttribute("href")] = true;
     });
 
-    // First successful live paint: only sync known ids, don't rebuild whole feed
-    // (preserves SSR structure / images already on page)
     if (isFirstPaint) {
       items.forEach(function (it) {
         knownIds[it.id || it.url] = true;
       });
-      // Soft-update times only
       existing.forEach(function (art) {
         var time = art.querySelector("time[datetime]");
         if (!time) return;
@@ -199,10 +145,8 @@
       return;
     }
 
-    // Subsequent polls: prepend brand-new items only
-    var newestFirst = items.slice();
     var toPrepend = [];
-    newestFirst.forEach(function (it) {
+    items.forEach(function (it) {
       var key = it.id || it.url;
       var href = it.url;
       if (knownIds[key] || existingHrefs[href]) {
@@ -215,19 +159,16 @@
 
     if (!toPrepend.length) return;
 
-    // Insert after section title, newest of the new batch first
     var anchor = titleRow ? titleRow.nextSibling : feed.firstChild;
     toPrepend.reverse().forEach(function (it) {
       var node = buildArticle(it, true);
       feed.insertBefore(node, anchor);
       anchor = node.nextSibling;
-      // remove "Yeni" class after a while
       setTimeout(function () {
         node.classList.remove("is-live-new");
       }, 12000);
     });
 
-    // Keep feed from growing unbounded
     var all = feed.querySelectorAll("article");
     for (var i = all.length - 1; i >= 12; i--) {
       all[i].parentNode.removeChild(all[i]);
@@ -239,7 +180,7 @@
     var label = ensureUpdatedLabel(live);
     if (!label) return;
     var r = relTime(updatedAt);
-    label.textContent = r ? "Güncellendi · " + r : "Canlı gündem";
+    label.textContent = r ? "Güncellendi · " + r : "Canlı";
   }
 
   function applyPayload(data, isFirstPaint) {
@@ -247,10 +188,10 @@
     if (data.updatedAt && data.updatedAt === lastUpdatedAt && !isFirstPaint) return;
     lastUpdatedAt = data.updatedAt || lastUpdatedAt;
 
-    renderBreaking(data.items);
+    removeBreakingIfAny();
     renderMarquee(data.items);
     renderFeed(data.items, isFirstPaint);
-    setUpdatedLabel(data.updatedAt || data.items[0] && data.items[0].iso);
+    setUpdatedLabel(data.updatedAt || (data.items[0] && data.items[0].iso));
   }
 
   function fetchFeed(isFirstPaint) {
@@ -265,12 +206,13 @@
         applyPayload(data, !!isFirstPaint);
       })
       .catch(function () {
-        /* silent: keep static SSR content */
+        /* keep SSR content */
       });
   }
 
   ready(function () {
-    // Only run where live strip or news feed exists (homepage primarily)
+    removeBreakingIfAny();
+
     if (
       !document.querySelector(".acartechs-live-strip") &&
       !document.querySelector(".acartechs-news-feed")
