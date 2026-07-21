@@ -1,22 +1,54 @@
-/* Live feed polish — uses existing Son Gelişmeler strip only */
+/* Live status for existing Son Gelişmeler strip */
 
-.acartechs-live-strip .acartechs-live-updated {
-  font-size: 11px;
-  font-weight: 600;
-  color: #94a3b8;
-  white-space: nowrap;
-  opacity: 0.95;
-}
-
-.acartechs-live-strip > strong {
+.acartechs-live-status {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+  gap: 6px;
+  margin-left: 2px;
+  padding: 5px 10px 5px 8px;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.28);
+  color: #15803d;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
 }
 
+.acartechs-live-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55);
+  animation: acarLiveStatusPulse 1.6s infinite;
+  flex: 0 0 auto;
+}
+
+.acartechs-live-status em {
+  font-style: normal;
+  font-weight: 800;
+}
+
+.acartechs-live-status.is-updated {
+  background: rgba(33, 136, 246, 0.1);
+  border-color: rgba(33, 136, 246, 0.3);
+  color: #1d4ed8;
+}
+
+.acartechs-live-status.is-updated .acartechs-live-status-dot {
+  background: #2188f6;
+  box-shadow: none;
+  animation: none;
+}
+
+/* Soft “new item” cue in news feed — no layout change */
 .acartechs-news-feed article.is-live-new {
-  animation: acarFeedIn 0.45s ease;
+  animation: acarFeedIn 0.4s ease;
 }
 
 .acartechs-news-feed article.is-live-new h3::after {
@@ -33,10 +65,22 @@
   letter-spacing: 0.02em;
 }
 
+@keyframes acarLiveStatusPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
 @keyframes acarFeedIn {
   from {
     opacity: 0.01;
-    transform: translateY(-6px);
+    transform: translateY(-5px);
   }
   to {
     opacity: 1;
@@ -45,12 +89,13 @@
 }
 
 @media (max-width: 720px) {
-  .acartechs-live-strip .acartechs-live-updated {
-    display: none;
+  .acartechs-live-status em {
+    /* keep only the green dot on very small screens if needed */
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .acartechs-live-status-dot,
   .acartechs-news-feed article.is-live-new {
     animation: none !important;
   }

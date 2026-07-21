@@ -45,18 +45,29 @@
       .replace(/"/g, "&quot;");
   }
 
-  function ensureUpdatedLabel(liveStrip) {
+  function ensureLiveStatus(liveStrip) {
     if (!liveStrip) return null;
-    var el = liveStrip.querySelector(".acartechs-live-updated");
+    // Remove old noisy label if present
+    liveStrip.querySelectorAll(".acartechs-live-updated").forEach(function (n) {
+      n.parentNode && n.parentNode.removeChild(n);
+    });
+    var el = liveStrip.querySelector(".acartechs-live-status");
     if (el) return el;
-    el = document.createElement("small");
-    el.className = "acartechs-live-updated";
+    el = document.createElement("span");
+    el.className = "acartechs-live-status";
     el.setAttribute("aria-live", "polite");
-    var strong = liveStrip.querySelector("strong");
-    if (strong) {
-      strong.appendChild(el);
+    el.innerHTML =
+      '<i class="acartechs-live-status-dot" aria-hidden="true"></i><em data-live-status-text>Canlı</em>';
+    var strong = liveStrip.querySelector(":scope > strong") || liveStrip.querySelector("strong");
+    if (strong && strong.parentNode === liveStrip) {
+      // Place right after the blue "Son Gelişmeler" pill
+      if (strong.nextSibling) {
+        liveStrip.insertBefore(el, strong.nextSibling);
+      } else {
+        liveStrip.appendChild(el);
+      }
     } else {
-      liveStrip.appendChild(el);
+      liveStrip.insertBefore(el, liveStrip.firstChild);
     }
     return el;
   }
@@ -175,23 +186,37 @@
     }
   }
 
-  function setUpdatedLabel(updatedAt) {
+  function setLiveStatus(isFreshUpdate) {
     var live = document.querySelector(".acartechs-live-strip");
-    var label = ensureUpdatedLabel(live);
-    if (!label) return;
-    var r = relTime(updatedAt);
-    label.textContent = r ? "Güncellendi · " + r : "Canlı";
+    var el = ensureLiveStatus(live);
+    if (!el) return;
+    var text = el.querySelector("[data-live-status-text]");
+    if (!text) return;
+
+    if (isFreshUpdate) {
+      el.classList.add("is-updated");
+      text.textContent = "Güncellendi";
+      clearTimeout(el._acarStatusTimer);
+      el._acarStatusTimer = setTimeout(function () {
+        el.classList.remove("is-updated");
+        text.textContent = "Canlı";
+      }, 3500);
+    } else {
+      el.classList.remove("is-updated");
+      text.textContent = "Canlı";
+    }
   }
 
   function applyPayload(data, isFirstPaint) {
     if (!data || !Array.isArray(data.items)) return;
     if (data.updatedAt && data.updatedAt === lastUpdatedAt && !isFirstPaint) return;
+    var changed = !isFirstPaint && !!lastUpdatedAt && data.updatedAt !== lastUpdatedAt;
     lastUpdatedAt = data.updatedAt || lastUpdatedAt;
 
     removeBreakingIfAny();
     renderMarquee(data.items);
     renderFeed(data.items, isFirstPaint);
-    setUpdatedLabel(data.updatedAt || (data.items[0] && data.items[0].iso));
+    setLiveStatus(changed);
   }
 
   function fetchFeed(isFirstPaint) {
