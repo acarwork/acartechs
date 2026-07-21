@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-21T23:50:39+03:00",
+  "updatedAt": "2026-07-21T23:57:09+03:00",
   "items": [
     {
       "id": "openai-chatgpt-agent-ile-gorevleri-tek-akista-topluyor",
@@ -24,37 +24,48 @@
       "image": "/wp-content/uploads/2026/07/xbox-next-week-july-20-24-2026.jpg"
     },
     {
-      "id": "github-copilot-vscode-haziran-2026-guncellemelerini-duyurdu",
-      "title": "GitHub Copilot, VS Code’da Haziran 2026 güncellemelerini duyurdu",
-      "url": "/github-copilot-vscode-haziran-2026-guncellemelerini-duyurdu/",
-      "category": "yapay-zeka",
-      "categoryLabel": "Yapay Zeka",
-      "date": "2026-07-14",
-      "iso": "2026-07-14T12:00:00+03:00",
-      "excerpt": "GitHub Copilot, VS Code’da Haziran 2026 güncellemelerini duyurdu: GitHub, Visual Studio Code içindeki Copilot deneyimini tarayıcı araçları, paralel ajan...",
-      "image": "/wp-content/uploads/2026/07/github-copilot-vscode-haziran-2026.jpg"
-    },
-    {
       "id": "github-copilot-uygulamasina-guvenlik-incelemesi-ozelligi-geldi",
       "title": "GitHub Copilot uygulamasına güvenlik incelemesi özelliği geldi",
       "url": "/github-copilot-uygulamasina-guvenlik-incelemesi-ozelligi-geldi/",
-      "category": "yapay-zeka",
-      "categoryLabel": "Yapay Zeka",
+      "category": "yazilim",
+      "categoryLabel": "Yazılım",
       "date": "2026-07-14",
       "iso": "2026-07-14T12:00:00+03:00",
       "excerpt": "GitHub Copilot uygulamasına güvenlik incelemesi özelliği geldi: GitHub, Copilot uygulamasına güvenlik incelemesi özelliği ekleyerek kod...",
       "image": "/wp-content/uploads/2026/07/github-copilot-security-review-2026.jpeg"
     },
     {
+      "id": "github-copilot-vscode-haziran-2026-guncellemelerini-duyurdu",
+      "title": "GitHub Copilot, VS Code’da Haziran 2026 güncellemelerini duyurdu",
+      "url": "/github-copilot-vscode-haziran-2026-guncellemelerini-duyurdu/",
+      "category": "yazilim",
+      "categoryLabel": "Yazılım",
+      "date": "2026-07-14",
+      "iso": "2026-07-14T12:00:00+03:00",
+      "excerpt": "GitHub Copilot, VS Code’da Haziran 2026 güncellemelerini duyurdu: GitHub, Visual Studio Code içindeki Copilot deneyimini tarayıcı araçları, paralel ajan...",
+      "image": "/wp-content/uploads/2026/07/github-copilot-vscode-haziran-2026.jpg"
+    },
+    {
       "id": "microsoft-copilot-cowork-genel-kullanima-acildi-kurumsal-yapay-zeka-ajanlarinda-yeni-donem",
       "title": "Microsoft Copilot Cowork genel kullanıma açıldı: Kurumsal yapay zeka ajanlarında yeni dönem",
       "url": "/microsoft-copilot-cowork-genel-kullanima-acildi-kurumsal-yapay-zeka-ajanlarinda-yeni-donem/",
-      "category": "yapay-zeka",
-      "categoryLabel": "Yapay Zeka",
+      "category": "yazilim",
+      "categoryLabel": "Yazılım",
       "date": "2026-07-13",
       "iso": "2026-07-13T12:00:00+03:00",
       "excerpt": "Microsoft Copilot Cowork genel kullanıma açıldı: Kurumsal yapay zeka ajanlarında yeni dönem: Microsoft, Copilot Cowork aracını dünya genelinde kullanıma...",
       "image": "/wp-content/uploads/2026/07/microsoft-copilot-cowork-genel-kullanim.webp"
+    },
+    {
+      "id": "github-copilot-uygulamasi-tum-kullanicilar-icin-acildi",
+      "title": "GitHub Copilot uygulaması tüm kullanıcılar için kullanıma açıldı",
+      "url": "/github-copilot-uygulamasi-tum-kullanicilar-icin-acildi/",
+      "category": "yazilim",
+      "categoryLabel": "Yazılım",
+      "date": "2026-07-12",
+      "iso": "2026-07-12T12:00:00+03:00",
+      "excerpt": "GitHub Copilot uygulaması tüm kullanıcılar için kullanıma açıldı: GitHub, Copilot uygulamasını tüm kullanıcılar için erişime açarak kodlama yardımını.",
+      "image": "/wp-content/uploads/2026/07/github-copilot-app-available-to-all.jpg"
     },
     {
       "id": "samsung-temmuz-2026-galaxy-unpacked-icin-yeni-katlanabilir-donemini-isaret-etti",
@@ -68,26 +79,15 @@
       "image": "/wp-content/uploads/2026/07/samsung-galaxy-unpacked-july-2026.jpg"
     },
     {
-      "id": "github-copilot-uygulamasi-tum-kullanicilar-icin-acildi",
-      "title": "GitHub Copilot uygulaması tüm kullanıcılar için kullanıma açıldı",
-      "url": "/github-copilot-uygulamasi-tum-kullanicilar-icin-acildi/",
-      "category": "yapay-zeka",
-      "categoryLabel": "Yapay Zeka",
-      "date": "2026-07-12",
-      "iso": "2026-07-12T12:00:00+03:00",
-      "excerpt": "GitHub Copilot uygulaması tüm kullanıcılar için kullanıma açıldı: GitHub, Copilot uygulamasını tüm kullanıcılar için erişime açarak kodlama yardımını.",
-      "image": "/wp-content/uploads/2026/07/github-copilot-app-available-to-all.jpg"
-    },
-    {
-      "id": "netflix-haftalik-top-10-listesinde-enola-holmes-3-zirveye-cikti",
-      "title": "Netflix haftalık Top 10 listesinde Enola Holmes 3 zirveye çıktı",
-      "url": "/netflix-haftalik-top-10-listesinde-enola-holmes-3-zirveye-cikti/",
-      "category": "sinema-dizi",
-      "categoryLabel": "Sinema-Dizi",
+      "id": "android-bench-yapay-zeka-modellerini-android-gelistirme-gorevlerinde-olcuyor",
+      "title": "Android Bench, yapay zeka modellerini Android geliştirme görevlerinde ölçüyor",
+      "url": "/android-bench-yapay-zeka-modellerini-android-gelistirme-gorevlerinde-olcuyor/",
+      "category": "yazilim",
+      "categoryLabel": "Yazılım",
       "date": "2026-07-10",
       "iso": "2026-07-10T12:00:00+03:00",
-      "excerpt": "Netflix haftalık Top 10 listesinde Enola Holmes 3 zirveye çıktı: Netflix’in haftalık Top 10 paylaşımında Enola Holmes 3 film tarafında zirveye çıkarken.",
-      "image": "/wp-content/uploads/2026/06/netflix-haziran-2026-guvenli-kapak.jpg"
+      "excerpt": "Android Bench, yapay zeka modellerini Android geliştirme görevlerinde ölçüyor: Google, Android Bench ölçüm sisteminde Harbor framework dönemine geçerek...",
+      "image": "/wp-content/uploads/2026/06/android-developers.png"
     },
     {
       "id": "google-litert-js-ile-tarayicida-calisan-yapay-zekayi-hizlandiriyor",
@@ -101,15 +101,15 @@
       "image": "/wp-content/uploads/2026/07/google-litert-js-web-ai-inference.jpg"
     },
     {
-      "id": "android-bench-yapay-zeka-modellerini-android-gelistirme-gorevlerinde-olcuyor",
-      "title": "Android Bench, yapay zeka modellerini Android geliştirme görevlerinde ölçüyor",
-      "url": "/android-bench-yapay-zeka-modellerini-android-gelistirme-gorevlerinde-olcuyor/",
-      "category": "yapay-zeka",
-      "categoryLabel": "Yapay Zeka",
+      "id": "netflix-haftalik-top-10-listesinde-enola-holmes-3-zirveye-cikti",
+      "title": "Netflix haftalık Top 10 listesinde Enola Holmes 3 zirveye çıktı",
+      "url": "/netflix-haftalik-top-10-listesinde-enola-holmes-3-zirveye-cikti/",
+      "category": "sinema-dizi",
+      "categoryLabel": "Sinema-Dizi",
       "date": "2026-07-10",
       "iso": "2026-07-10T12:00:00+03:00",
-      "excerpt": "Android Bench, yapay zeka modellerini Android geliştirme görevlerinde ölçüyor: Google, Android Bench ölçüm sisteminde Harbor framework dönemine geçerek...",
-      "image": "/wp-content/uploads/2026/06/android-developers.png"
+      "excerpt": "Netflix haftalık Top 10 listesinde Enola Holmes 3 zirveye çıktı: Netflix’in haftalık Top 10 paylaşımında Enola Holmes 3 film tarafında zirveye çıkarken.",
+      "image": "/wp-content/uploads/2026/06/netflix-haziran-2026-guvenli-kapak.jpg"
     },
     {
       "id": "xbox-game-pass-temmuz-listesine-yeni-oyunlar-ekleniyor",
@@ -134,6 +134,17 @@
       "image": "/wp-content/uploads/2026/07/ab-yapay-zeka-siber-guvenlik-eylem-plani.png"
     },
     {
+      "id": "2026da-one-cikan-yapay-zeka-modelleri-hangisi-ne-ise-yariyor",
+      "title": "2026’da Öne Çıkan Yapay Zekâ Modelleri: Hangisi Ne İşe Yarıyor?",
+      "url": "/2026da-one-cikan-yapay-zeka-modelleri-hangisi-ne-ise-yariyor/",
+      "category": "yapay-zeka",
+      "categoryLabel": "Yapay Zeka",
+      "date": "2026-07-04",
+      "iso": "2026-07-04T12:00:00+03:00",
+      "excerpt": "2026’da Öne Çıkan Yapay Zekâ Modelleri: Hangisi Ne İşe Yarıyor?: 2026 yapay zekâ modelleri karşılaştırma rehberi: GPT, Claude, Gemini ve diğer AI...",
+      "image": "/wp-content/uploads/2026/07/yapay-zeka-modelleri-2026-karsilastirma.png"
+    },
+    {
       "id": "android-gelistirici-araclarinda-verimlilik-odakli-uc-yeni-guncelleme-duyuruldu",
       "title": "Android geliştirici araçlarında verimlilik odaklı üç yeni güncelleme duyuruldu",
       "url": "/android-gelistirici-araclarinda-verimlilik-odakli-uc-yeni-guncelleme-duyuruldu/",
@@ -148,8 +159,8 @@
       "id": "github-copilot-icin-tarayici-araclari-vs-codeda-genel-kullanima-acildi",
       "title": "GitHub Copilot için tarayıcı araçları VS Code’da genel kullanıma açıldı",
       "url": "/github-copilot-icin-tarayici-araclari-vs-codeda-genel-kullanima-acildi/",
-      "category": "yapay-zeka",
-      "categoryLabel": "Yapay Zeka",
+      "category": "yazilim",
+      "categoryLabel": "Yazılım",
       "date": "2026-07-04",
       "iso": "2026-07-04T12:00:00+03:00",
       "excerpt": "GitHub Copilot için tarayıcı araçları VS Code’da genel kullanıma açıldı: GitHub Changelog duyurusuna göre Copilot’un VS Code içindeki tarayıcı araçları...",
@@ -159,8 +170,8 @@
       "id": "google-gemini-cli-adini-antigravity-cli-olarak-degistirme-surecini-duyurdu",
       "title": "Google, Gemini CLI adını Antigravity CLI olarak değiştirme sürecini duyurdu",
       "url": "/google-gemini-cli-adini-antigravity-cli-olarak-degistirme-surecini-duyurdu/",
-      "category": "yapay-zeka",
-      "categoryLabel": "Yapay Zeka",
+      "category": "yazilim",
+      "categoryLabel": "Yazılım",
       "date": "2026-07-04",
       "iso": "2026-07-04T12:00:00+03:00",
       "excerpt": "Google, Gemini CLI adını Antigravity CLI olarak değiştirme sürecini duyurdu: Google Developers Blog üzerinde yayımlanan duyuru, Gemini CLI tarafındaki...",
@@ -170,23 +181,12 @@
       "id": "google-i-o-2026-gelistirici-oturumlarinda-yapay-zeka-araclari-one-cikti",
       "title": "Google I/O 2026 geliştirici oturumlarında yapay zekâ araçları öne çıktı",
       "url": "/google-i-o-2026-gelistirici-oturumlarinda-yapay-zeka-araclari-one-cikti/",
-      "category": "yapay-zeka",
-      "categoryLabel": "Yapay Zeka",
+      "category": "yazilim",
+      "categoryLabel": "Yazılım",
       "date": "2026-07-04",
       "iso": "2026-07-04T12:00:00+03:00",
       "excerpt": "Google I/O 2026 geliştirici oturumlarında yapay zekâ araçları öne çıktı: Google Developers Blog, I/O 2026 geliştirici ana oturumunda yapay zekâ.",
       "image": "/wp-content/uploads/2026/07/GoogleForDevelopers-ComboIO-Wagta.2e16d0ba.fill-1200x600_984jqJ0.png"
-    },
-    {
-      "id": "2026da-one-cikan-yapay-zeka-modelleri-hangisi-ne-ise-yariyor",
-      "title": "2026’da Öne Çıkan Yapay Zekâ Modelleri: Hangisi Ne İşe Yarıyor?",
-      "url": "/2026da-one-cikan-yapay-zeka-modelleri-hangisi-ne-ise-yariyor/",
-      "category": "yapay-zeka",
-      "categoryLabel": "Yapay Zeka",
-      "date": "2026-07-04",
-      "iso": "2026-07-04T12:00:00+03:00",
-      "excerpt": "2026’da Öne Çıkan Yapay Zekâ Modelleri: Hangisi Ne İşe Yarıyor?: 2026 yapay zekâ modelleri karşılaştırma rehberi: GPT, Claude, Gemini ve diğer AI...",
-      "image": "/wp-content/uploads/2026/07/yapay-zeka-modelleri-2026-karsilastirma.png"
     },
     {
       "id": "xbox-wire-temmuz-ayi-indie-selects-listesini-yayimladi",
@@ -200,26 +200,26 @@
       "image": "/wp-content/uploads/2026/07/IndieSelects_July2026_Laurel_Wire-95ba9d698f0d81336d6b.jpg"
     },
     {
-      "id": "yurt-disi-telefon-kayitlarinda-e-devlet-donemi-ve-2026-harci",
-      "title": "Yurt dışı telefon kayıtlarında e-Devlet dönemi ve 2026 harcı",
-      "url": "/yurt-disi-telefon-kayitlarinda-e-devlet-donemi-ve-2026-harci/",
-      "category": "mobil",
-      "categoryLabel": "Mobil",
+      "id": "cihaz-ici-yapay-zeka-ajanlari-telefon-ve-bilgisayarlarda-yeni-donemi-aciyor",
+      "title": "Cihaz içi yapay zekâ ajanları telefon ve bilgisayarlarda yeni dönemi açıyor",
+      "url": "/cihaz-ici-yapay-zeka-ajanlari-telefon-ve-bilgisayarlarda-yeni-donemi-aciyor/",
+      "category": "yapay-zeka",
+      "categoryLabel": "Yapay Zeka",
       "date": "2026-07-02",
       "iso": "2026-07-02T12:00:00+03:00",
-      "excerpt": "Yurt dışı telefon kayıtlarında e-Devlet dönemi ve 2026 harcı: Yurt dışından getirilen telefonlarda IMEI kaydı e-Devlet üzerinden yürütülüyor; 2026 harcı...",
-      "image": "/wp-content/uploads/2026/07/imei-edvlet-2026-cover-1.jpg"
+      "excerpt": "Cihaz içi yapay zekâ ajanları telefon ve bilgisayarlarda yeni dönemi açıyor: Qualcomm ve Hugging Face iş birliği, yapay zekâ ajanlarının cihaz ve bulut...",
+      "image": "/wp-content/uploads/2026/07/cihaz-ici-yapay-zeka-ajanlari-telefon-ve-bilgisayarlarda-yeni-donemi-aciyor.jpg"
     },
     {
-      "id": "yenilenmis-elektronik-cihazlarda-dijital-sicil-donemi-basliyor",
-      "title": "Yenilenmiş elektronik cihazlarda dijital sicil dönemi başlıyor",
-      "url": "/yenilenmis-elektronik-cihazlarda-dijital-sicil-donemi-basliyor/",
-      "category": "mobil",
-      "categoryLabel": "Mobil",
+      "id": "yapay-zeka-cihazlari-iddialari-hizlanirken-openai-donanim-ekibini-buyutuyor",
+      "title": "Yapay zekâ cihazları iddiaları hızlanırken OpenAI donanım ekibini büyütüyor",
+      "url": "/yapay-zeka-cihazlari-iddialari-hizlanirken-openai-donanim-ekibini-buyutuyor/",
+      "category": "yapay-zeka",
+      "categoryLabel": "Yapay Zeka",
       "date": "2026-07-02",
       "iso": "2026-07-02T12:00:00+03:00",
-      "excerpt": "Yenilenmiş elektronik cihazlarda dijital sicil dönemi başlıyor: Ticaret Bakanlığı’nın yeni düzenlemesiyle yenilenmiş cep telefonu, bilgisayar ve...",
-      "image": "/wp-content/uploads/2026/07/384px.png"
+      "excerpt": "Yapay zekâ cihazları iddiaları hızlanırken OpenAI donanım ekibini büyütüyor: OpenAI, Jony Ive’ın kurduğu io ekibinin şirkete katıldığını açıklarken.",
+      "image": "/wp-content/uploads/2026/07/openai-cihaz-iddialari-cover-1.jpg"
     }
   ]
 }

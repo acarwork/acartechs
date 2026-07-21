@@ -57,8 +57,9 @@ SKIP_DIRS = {
 
 CAT_RULES: list[tuple[re.Pattern[str], str, str]] = [
     (re.compile(r"xbox|playstation|game-pass|oyun|nintendo|steam|halo|espor|e-spor", re.I), "oyun", "Oyun"),
-    (re.compile(r"yapay-zeka|chatgpt|openai|gemini|copilot|claude|ai-|siri", re.I), "yapay-zeka", "Yapay Zeka"),
-    (re.compile(r"github|yazilim|kodlama|api-|vscode|developer|android-studio", re.I), "yazilim", "Yazılım"),
+    # GitHub / Copilot / IDE tools = Yazılım (before generic AI keywords)
+    (re.compile(r"github|copilot|vscode|visual-studio|yazilim|kodlama|api-|developer|android-studio", re.I), "yazilim", "Yazılım"),
+    (re.compile(r"yapay-zeka|chatgpt|openai|gemini|claude|siri|litert", re.I), "yapay-zeka", "Yapay Zeka"),
     (re.compile(r"samsung|android|iphone|ios|telefon|pixel|galaxy|mobil", re.I), "mobil", "Mobil"),
     (re.compile(r"laptop|bilgisayar|windows|ssd|mini-pc|dizustu", re.I), "bilgisayar", "Bilgisayar"),
     (re.compile(r"netflix|disney|dizi|film|sinema|fragman|prime-video", re.I), "sinema-dizi", "Sinema-Dizi"),

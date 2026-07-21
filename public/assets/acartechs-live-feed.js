@@ -47,25 +47,34 @@
 
   function ensureLiveStatus(liveStrip) {
     if (!liveStrip) return null;
-    // Remove old noisy label if present
-    liveStrip.querySelectorAll(".acartechs-live-updated").forEach(function (n) {
+    // Remove old noisy labels: "Güncellendi · 4 dk önce" etc.
+    liveStrip.querySelectorAll(".acartechs-live-updated, .acartechs-live-status").forEach(function (n) {
+      // rebuild clean status once
+      if (n.classList.contains("acartechs-live-status") && n.querySelector("[data-live-status-text]")) {
+        var t = n.querySelector("[data-live-status-text]");
+        if (t && t.textContent === "Canlı" && !/G.ncellendi|dk .nce|az .nce/i.test(n.textContent)) {
+          return; // keep clean chip
+        }
+      }
       n.parentNode && n.parentNode.removeChild(n);
     });
     var el = liveStrip.querySelector(".acartechs-live-status");
     if (el) return el;
     el = document.createElement("span");
     el.className = "acartechs-live-status";
-    el.setAttribute("aria-live", "polite");
+    el.setAttribute("title", "Canlı gündem");
     el.innerHTML =
       '<i class="acartechs-live-status-dot" aria-hidden="true"></i><em data-live-status-text>Canlı</em>';
-    var strong = liveStrip.querySelector(":scope > strong") || liveStrip.querySelector("strong");
+    var strong = liveStrip.querySelector("strong");
     if (strong && strong.parentNode === liveStrip) {
-      // Place right after the blue "Son Gelişmeler" pill
       if (strong.nextSibling) {
         liveStrip.insertBefore(el, strong.nextSibling);
       } else {
         liveStrip.appendChild(el);
       }
+    } else if (strong) {
+      // Don't inject inside the blue pill — place after it
+      strong.insertAdjacentElement("afterend", el);
     } else {
       liveStrip.insertBefore(el, liveStrip.firstChild);
     }
@@ -88,9 +97,9 @@
         return (
           '<a href="' +
           esc(it.url) +
-          '"><span>' +
+          '">\n<span>' +
           esc(it.categoryLabel || it.category || "Haber") +
-          "</span> " +
+          "</span>\n" +
           esc(it.title) +
           "</a>"
         );
@@ -186,37 +195,24 @@
     }
   }
 
-  function setLiveStatus(isFreshUpdate) {
+  function setLiveStatus() {
     var live = document.querySelector(".acartechs-live-strip");
     var el = ensureLiveStatus(live);
     if (!el) return;
     var text = el.querySelector("[data-live-status-text]");
-    if (!text) return;
-
-    if (isFreshUpdate) {
-      el.classList.add("is-updated");
-      text.textContent = "Güncellendi";
-      clearTimeout(el._acarStatusTimer);
-      el._acarStatusTimer = setTimeout(function () {
-        el.classList.remove("is-updated");
-        text.textContent = "Canlı";
-      }, 3500);
-    } else {
-      el.classList.remove("is-updated");
-      text.textContent = "Canlı";
-    }
+    if (text) text.textContent = "Canlı";
+    el.classList.remove("is-updated");
   }
 
   function applyPayload(data, isFirstPaint) {
     if (!data || !Array.isArray(data.items)) return;
     if (data.updatedAt && data.updatedAt === lastUpdatedAt && !isFirstPaint) return;
-    var changed = !isFirstPaint && !!lastUpdatedAt && data.updatedAt !== lastUpdatedAt;
     lastUpdatedAt = data.updatedAt || lastUpdatedAt;
 
     removeBreakingIfAny();
     renderMarquee(data.items);
     renderFeed(data.items, isFirstPaint);
-    setLiveStatus(changed);
+    setLiveStatus();
   }
 
   function fetchFeed(isFirstPaint) {
