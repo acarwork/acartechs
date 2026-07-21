@@ -2,6 +2,8 @@
   "name": "acartechs-git",
   "private": true,
   "scripts": {
+    "export:live-feed": "python scripts/export_live_feed.py",
+    "predeploy": "python scripts/export_live_feed.py",
     "deploy": "wrangler deploy",
     "deploy:dry": "wrangler deploy --dry-run"
   },

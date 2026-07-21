@@ -1,0 +1,41 @@
+name: Export live feed
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "public/**/index.html"
+      - "scripts/export_live_feed.py"
+      - ".github/workflows/export-live-feed.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate live-feed.json
+        run: python scripts/export_live_feed.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "acarwork"
+          git config user.email "acarwork.contact@gmail.com"
+          git add public/data/live-feed.json
+          if git diff --staged --quiet; then
+            echo "live-feed.json unchanged"
+            exit 0
+          fi
+          git commit -m "chore: refresh live-feed.json from published pages"
+          git push
