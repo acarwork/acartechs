@@ -47,37 +47,30 @@
 
   function ensureLiveStatus(liveStrip) {
     if (!liveStrip) return null;
-    // Remove old noisy labels: "Güncellendi · 4 dk önce" etc.
-    liveStrip.querySelectorAll(".acartechs-live-updated, .acartechs-live-status").forEach(function (n) {
-      // rebuild clean status once
-      if (n.classList.contains("acartechs-live-status") && n.querySelector("[data-live-status-text]")) {
-        var t = n.querySelector("[data-live-status-text]");
-        if (t && t.textContent === "Canlı" && !/G.ncellendi|dk .nce|az .nce/i.test(n.textContent)) {
-          return; // keep clean chip
-        }
-      }
+
+    // Remove any status chip that sits as a grid sibling (breaks auto|1fr layout)
+    Array.prototype.slice
+      .call(liveStrip.querySelectorAll(":scope > .acartechs-live-status, :scope > .acartechs-live-updated"))
+      .forEach(function (n) {
+        n.parentNode && n.parentNode.removeChild(n);
+      });
+    liveStrip.querySelectorAll(".acartechs-live-updated").forEach(function (n) {
       n.parentNode && n.parentNode.removeChild(n);
     });
-    var el = liveStrip.querySelector(".acartechs-live-status");
+
+    var strong = liveStrip.querySelector(":scope > strong") || liveStrip.querySelector("strong");
+    if (!strong) return null;
+
+    var el = strong.querySelector(".acartechs-live-status");
     if (el) return el;
+
     el = document.createElement("span");
     el.className = "acartechs-live-status";
     el.setAttribute("title", "Canlı gündem");
     el.innerHTML =
       '<i class="acartechs-live-status-dot" aria-hidden="true"></i><em data-live-status-text>Canlı</em>';
-    var strong = liveStrip.querySelector("strong");
-    if (strong && strong.parentNode === liveStrip) {
-      if (strong.nextSibling) {
-        liveStrip.insertBefore(el, strong.nextSibling);
-      } else {
-        liveStrip.appendChild(el);
-      }
-    } else if (strong) {
-      // Don't inject inside the blue pill — place after it
-      strong.insertAdjacentElement("afterend", el);
-    } else {
-      liveStrip.insertBefore(el, liveStrip.firstChild);
-    }
+    // Inside blue pill → grid stays 2 columns: [Son Gelişmeler+Canlı] | marquee
+    strong.appendChild(el);
     return el;
   }
 
