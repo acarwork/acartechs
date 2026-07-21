@@ -102,6 +102,7 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 .acartechs-login,.acartechs-login-modal{display:none!important}
 </style>
 <link rel="stylesheet" href="/assets/acartechs-live.=3" />
+<link rel="stylesheet" href="/assets/acartechs-live-feed.css" />
 </head>
 <body class="home wp-singular page-template-default page page-id-3306 wp-custom-logo wp-embed-responsive wp-theme-blocksy theme-blocksy stk--is-blocksy-theme stk-has-block-style-inheritance woocommerce-no-js">
 <a class="skip-link screen-reader-text" href="#main">Skip to content</a>
@@ -290,7 +291,7 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 			</div>
 		</aside>
 		
-			<section class="acartechs-live-strip" aria-label="Son gelişmeler">
+			<section class="acartechs-live-strip" data-live-feed="1" aria-label="Son gelişmeler">
 			<strong>Son Gelişmeler</strong>
 			<div class="acartechs-live-marquee" aria-hidden="false">
 				<div class="acartechs-live-track">
@@ -438,7 +439,7 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 	</section>
 
 	<section class="acartechs-news-layout" aria-label="Haberler">
-		<div class="acartechs-news-feed">
+		<div class="acartechs-news-feed" data-live-feed="1">
 			<div class="acartechs-section-title">
 				<h2>Haberler</h2>
 				<a href="/haberler/">Tüm Haberler</a>
@@ -845,5 +846,6 @@ var wc_order_attribution = {"params":{"lifetime":1.0e-5,"session":30,"base64":fa
 			})();
 		</script>
 		<script defer src="/assets/acartechs-live.=3"></script>
+<script defer src="/assets/acartechs-live-feed.js"></script>
 </body>
 </html>

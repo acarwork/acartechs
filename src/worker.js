@@ -304,6 +304,16 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    if (url.pathname === '/data/live-feed.json' || url.pathname === '/data/live-feed.json/') {
+      const asset = await env.ASSETS.fetch(request);
+      const headers = new Headers(asset.headers);
+      headers.set('cache-control', 'public, max-age=60, stale-while-revalidate=120');
+      headers.set('content-type', 'application/json; charset=utf-8');
+      headers.set('access-control-allow-origin', '*');
+      return new Response(asset.body, { status: asset.status, headers });
+    }
+
+
     if (url.protocol === 'http:' || url.hostname === 'www.acartechs.com') {
       url.protocol = 'https:';
       url.hostname = 'acartechs.com';
