@@ -291,7 +291,9 @@ function withDynamicPolish(html) {
     out = out.replace('</head>', `${DYNAMIC_HEAD}\n</head>`);
   }
   if (out.includes('</body>')) {
-    out = out.replace('</body>', `${DYNAMIC_BODY}\n</body>`);
+    const bodyClose = out.lastIndexOf('</body>');
+    out = out.slice(0, bodyClose) + `${DYNAMIC_BODY}
+` + out.slice(bodyClose);
   }
   // Soft human byline fallback in HTML source
   out = out.replace(/acaradmin/gi, 'Acartechs Editör');

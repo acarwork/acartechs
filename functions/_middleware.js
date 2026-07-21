@@ -87,9 +87,12 @@ function withAdReviewCleanup(html) {
 })();
 </script>`;
 
-  return html
-    .replace('</head>', `${style}\n</head>`)
-    .replace('</body>', `${script}\n</body>`);
+  const withHead = html.includes('</head>') ? html.replace('</head>', `${style}
+</head>`) : html;
+  const bodyClose = withHead.lastIndexOf('</body>');
+  if (bodyClose === -1) return withHead;
+  return withHead.slice(0, bodyClose) + `${script}
+` + withHead.slice(bodyClose);
 }
 
 export async function onRequest(context) {
