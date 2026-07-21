@@ -27,7 +27,7 @@
       btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});document.body.appendChild(btn);
       window.addEventListener('scroll',function(){btn.classList.toggle('is-on',window.scrollY>480)},{passive:true})
     }
-    function markEmptyAds(){document.querySelectorAll('.acartechs-adsense-shell').forEach(function(shell){var unit=shell.querySelector('.adsbygoogle');if(!unit)return;var status=unit.getAttribute('data-ad-status');var hasFrame=!!shell.querySelector('iframe');if(status==='filled'||hasFrame){shell.classList.remove('is-ad-empty');return}if(status==='unfilled'||unit.childElementCount===0)shell.classList.add('is-ad-empty')})}
+    function markEmptyAds(){document.querySelectorAll('.acartechs-adsense-shell').forEach(function(shell){var unit=shell.querySelector('.adsbygoogle');if(!unit)return;var status=unit.getAttribute('data-ad-status');var hasFrame=!!shell.querySelector('iframe');if(status==='filled'||hasFrame){shell.classList.remove('is-ad-empty','is-ad-checking');shell.classList.add('is-ad-filled');return}if(status==='unfilled'||unit.childElementCount===0){shell.classList.remove('is-ad-filled');shell.classList.add('is-ad-empty')}})}
     setTimeout(markEmptyAds,4000);setTimeout(markEmptyAds,9000);
   });
 })();

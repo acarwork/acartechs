@@ -73,8 +73,13 @@ const DYNAMIC_HEAD = `
 .acartechs-news-feed article a,.acartechs-trending-list a,.acartechs-feature-slide a{transition:transform .25s ease,box-shadow .25s ease}
 .acartechs-news-feed article:hover a,.acartechs-trending-list a:hover{transform:translateY(-2px)}
 .acartechs-fresh-pill{display:none!important}
-.acartechs-adsense-shell.is-ad-empty{display:none!important}
-.acartechs-adsense-shell.is-ad-checking{background:transparent!important;border:0!important;box-shadow:none!important;min-height:0!important;padding:0!important}
+.acartechs-adsense-shell.is-ad-empty,.acartechs-adsense-shell.is-ad-checking{display:block!important}
+.acartechs-adsense-shell.is-ad-empty .acartechs-adsense-unit,.acartechs-adsense-shell.is-ad-checking .acartechs-adsense-unit{background:linear-gradient(120deg,#061b31 0%,#0a477a 48%,#2188f6 78%,#26c9f4 100%)!important;border:1px dashed rgba(255,255,255,.44)!important;border-radius:8px!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);position:relative}
+.acartechs-adsense-shell.is-ad-empty .acartechs-adsense-unit:before,.acartechs-adsense-shell.is-ad-checking .acartechs-adsense-unit:before{background:repeating-linear-gradient(90deg,rgba(255,255,255,.18) 0 2px,transparent 2px 34px);content:"";inset:0;opacity:.38;position:absolute;z-index:0}
+.acartechs-adsense-shell.is-ad-empty .acartechs-adsense-unit:after,.acartechs-adsense-shell.is-ad-checking .acartechs-adsense-unit:after{align-items:center;color:#fff;content:"ACARTECHS REKLAM ALANI";display:flex;font-size:clamp(18px,2vw,28px);font-weight:900;inset:0;justify-content:center;letter-spacing:.02em;position:absolute;text-align:center;text-shadow:0 8px 22px rgba(2,6,23,.35);z-index:1}
+.acartechs-adsense-shell.placement-sidebar.is-ad-empty .acartechs-adsense-unit:after,.acartechs-adsense-shell.placement-sidebar.is-ad-checking .acartechs-adsense-unit:after{content:"ACARTECHS\\A REKLAM ALANI";font-size:24px;line-height:1.18;white-space:pre-line}
+.acartechs-adsense-shell.is-ad-filled .acartechs-adsense-unit:before,.acartechs-adsense-shell.is-ad-filled .acartechs-adsense-unit:after{display:none!important}
+.acartechs-adsense-shell .adsbygoogle{position:relative;z-index:2}
 body.acar-ready .acartechs-home{animation:acarFade .45s ease}
 @keyframes acarFade{from{opacity:.001;transform:translateY(4px)}to{opacity:1;transform:none}}
 .acartechs-back-top{position:fixed;right:18px;bottom:22px;z-index:9999;width:44px;height:44px;border:0;border-radius:999px;background:linear-gradient(135deg,#2188f6,#26c9f4);color:#fff;font-size:20px;cursor:pointer;box-shadow:0 10px 28px rgba(33,136,246,.35);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
@@ -191,9 +196,11 @@ const DYNAMIC_BODY = `
       var hasFrame = !!shell.querySelector('iframe');
       if (status === 'filled' || hasFrame) {
         shell.classList.remove('is-ad-empty', 'is-ad-checking');
+        shell.classList.add('is-ad-filled');
         return;
       }
       if (status === 'unfilled' || unit.childElementCount === 0) {
+        shell.classList.remove('is-ad-filled');
         shell.classList.add('is-ad-empty');
       }
     });

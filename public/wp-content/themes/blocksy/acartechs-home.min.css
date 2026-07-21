@@ -48,12 +48,21 @@ html,body{max-width:100%;overflow-x:hidden;}
 /* Acartechs quality hardening for AdSense review */
 .acartechs-single-top-ad .acartechs-adsense-shell{margin:24px 0 30px !important;min-height:118px !important;}
 .acartechs-single-top-ad .acartechs-adsense-shell .adsbygoogle{min-height:82px !important;}
-.acartechs-single-body>.acartechs-adsense-shell.placement-article{display:none !important;}
+.acartechs-single-body>.acartechs-adsense-shell.placement-article{display:block !important;}
 .acartechs-adsense-shell.placement-sidebar{min-height:320px !important;}
 .acartechs-adsense-shell.placement-sidebar .acartechs-adsense-unit,.acartechs-adsense-shell.placement-sidebar .adsbygoogle{min-height:280px !important;}
 .acartechs-category-mini-grid .acartechs-category-image,.acartechs-category-list img.acartechs-category-image,.acartechs-videos article span.has-image,.acartechs-trending-list span.has-image,.acartechs-editor-picks .acartechs-pick-image.has-image{background-size:cover !important;object-fit:cover !important;}
 .acartechs-editor-picks .acartechs-pick-image img{aspect-ratio:16/9 !important;height:100% !important;object-fit:cover !important;width:100% !important;}
 @media (max-width:900px){.acartechs-adsense-shell.placement-sidebar{min-height:220px !important;}.acartechs-adsense-shell.placement-sidebar .acartechs-adsense-unit,.acartechs-adsense-shell.placement-sidebar .adsbygoogle{min-height:190px !important;}.acartechs-feature-art.has-image{background-size:cover !important;}}
+
+/* Visible ad placeholders until AdSense fills the slot */
+.acartechs-adsense-shell{display:block !important;}
+.acartechs-adsense-shell:not(.is-ad-filled) .acartechs-adsense-unit{background:linear-gradient(120deg,#061b31 0%,#0a477a 48%,#2188f6 78%,#26c9f4 100%) !important;border:1px dashed rgba(255,255,255,.44) !important;border-radius:8px !important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);position:relative;}
+.acartechs-adsense-shell:not(.is-ad-filled) .acartechs-adsense-unit:before{background:repeating-linear-gradient(90deg,rgba(255,255,255,.18) 0 2px,transparent 2px 34px);content:"";inset:0;opacity:.38;position:absolute;z-index:0;}
+.acartechs-adsense-shell:not(.is-ad-filled) .acartechs-adsense-unit:after{align-items:center;color:#fff;content:"ACARTECHS REKLAM ALANI";display:flex;font-size:clamp(18px,2vw,28px);font-weight:900;inset:0;justify-content:center;letter-spacing:.02em;position:absolute;text-align:center;text-shadow:0 8px 22px rgba(2,6,23,.35);z-index:1;}
+.acartechs-adsense-shell.placement-sidebar:not(.is-ad-filled) .acartechs-adsense-unit:after{content:"ACARTECHS\A REKLAM ALANI";font-size:24px;line-height:1.18;white-space:pre-line;}
+.acartechs-adsense-shell.is-ad-filled .acartechs-adsense-unit:before,.acartechs-adsense-shell.is-ad-filled .acartechs-adsense-unit:after{display:none !important;}
+.acartechs-adsense-shell .adsbygoogle{position:relative;z-index:2;}
 
 /* Homepage trending: exactly four columns and two rows on desktop. */
 .acartechs-trending-list{grid-template-columns:repeat(4,minmax(0,1fr)) !important;}

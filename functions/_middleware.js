@@ -59,8 +59,13 @@ function withAdReviewCleanup(html) {
   }
 
   const style = `<style id="acartechs-ad-review-cleanup">
-.acartechs-adsense-shell.is-ad-empty{display:none!important}
-.acartechs-adsense-shell.is-ad-checking{background:transparent!important;border:0!important;box-shadow:none!important;min-height:0!important;padding:0!important}
+.acartechs-adsense-shell.is-ad-empty,.acartechs-adsense-shell.is-ad-checking{display:block!important}
+.acartechs-adsense-shell.is-ad-empty .acartechs-adsense-unit,.acartechs-adsense-shell.is-ad-checking .acartechs-adsense-unit{background:linear-gradient(120deg,#061b31 0%,#0a477a 48%,#2188f6 78%,#26c9f4 100%)!important;border:1px dashed rgba(255,255,255,.44)!important;border-radius:8px!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);position:relative}
+.acartechs-adsense-shell.is-ad-empty .acartechs-adsense-unit:before,.acartechs-adsense-shell.is-ad-checking .acartechs-adsense-unit:before{background:repeating-linear-gradient(90deg,rgba(255,255,255,.18) 0 2px,transparent 2px 34px);content:"";inset:0;opacity:.38;position:absolute;z-index:0}
+.acartechs-adsense-shell.is-ad-empty .acartechs-adsense-unit:after,.acartechs-adsense-shell.is-ad-checking .acartechs-adsense-unit:after{align-items:center;color:#fff;content:"ACARTECHS REKLAM ALANI";display:flex;font-size:clamp(18px,2vw,28px);font-weight:900;inset:0;justify-content:center;letter-spacing:.02em;position:absolute;text-align:center;text-shadow:0 8px 22px rgba(2,6,23,.35);z-index:1}
+.acartechs-adsense-shell.placement-sidebar.is-ad-empty .acartechs-adsense-unit:after,.acartechs-adsense-shell.placement-sidebar.is-ad-checking .acartechs-adsense-unit:after{content:"ACARTECHS\\A REKLAM ALANI";font-size:24px;line-height:1.18;white-space:pre-line}
+.acartechs-adsense-shell.is-ad-filled .acartechs-adsense-unit:before,.acartechs-adsense-shell.is-ad-filled .acartechs-adsense-unit:after{display:none!important}
+.acartechs-adsense-shell .adsbygoogle{position:relative;z-index:2}
 </style>`;
 
   const script = `<script id="acartechs-ad-review-cleanup-script">
@@ -71,8 +76,8 @@ function withAdReviewCleanup(html) {
       if(!unit){return;}
       var status=unit.getAttribute('data-ad-status');
       var hasFrame=!!shell.querySelector('iframe');
-      if(status==='filled'||hasFrame){shell.classList.remove('is-ad-empty','is-ad-checking');return;}
-      if(status==='unfilled'||unit.childElementCount===0){shell.classList.add('is-ad-empty');}
+      if(status==='filled'||hasFrame){shell.classList.remove('is-ad-empty','is-ad-checking');shell.classList.add('is-ad-filled');return;}
+      if(status==='unfilled'||unit.childElementCount===0){shell.classList.remove('is-ad-filled');shell.classList.add('is-ad-empty');}
     });
   }
   window.addEventListener('load',function(){
