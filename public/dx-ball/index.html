@@ -3,13 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Dx Ball – AcarTechs</title>
+	<title>Dx Ball – AcarTechs Arcade</title>
 <meta name='robots' content='max-image-preview:large' />
 <link rel="canonical" href="https://acartechs.com/dx-ball/">
-		<meta name="description" content="Dx Ball: Tarayicida oynanabilen klasik tugla kirma mini oyunu. Acartechs Oyun bolumu.">
+		<meta name="description" content="Dx Ball: AcarTechs Arcade mini oyunu. Tugla kir, seviye atla, en iyi skorunu kır.">
 		<meta property="og:site_name" content="Acartechs">
 		<meta property="og:title" content="Dx Ball – AcarTechs">
-		<meta property="og:description" content="Dx Ball: Tarayicida oynanabilen klasik tugla kirma mini oyunu. Acartechs Oyun bolumu.">
+		<meta property="og:description" content="Dx Ball: AcarTechs Arcade mini oyunu. Tugla kir, seviye atla, en iyi skorunu kır.">
 		<meta property="og:type" content="article">
 		<meta property="og:url" content="https://acartechs.com/dx-ball/">
 				<meta name="twitter:card" content="summary_large_image">
@@ -38,7 +38,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <link rel='stylesheet' id='ct-page-title-styles-css' href='/wp-content/themes/blocksy/static/bundle/page-title.min.css?ver=2.1.46' media='all' />
 <link rel='stylesheet' id='ct-stackable-styles-css' href='/wp-content/themes/blocksy/static/bundle/stackable.min.css?ver=2.1.46' media='all' />
 <link rel='stylesheet' id='ct-wpforms-styles-css' href='/wp-content/themes/blocksy/static/bundle/wpforms.min.css?ver=2.1.46' media='all' />
-<link rel='stylesheet' id='acartechs-home-css' href='/wp-content/themes/blocksy/acartechs-home.min.css?ver=1784748522' media='all' />
+<link rel='stylesheet' id='acartechs-home-css' href='/wp-content/themes/blocksy/acartechs-home.min.css?ver=1784748813' media='all' />
 <style id="generateblocks-inline-css">
 :root{--gb-container-width:1100px;}.gb-container .wp-block-image img{vertical-align:middle;}.gb-grid-wrapper .wp-block-image{margin-bottom:0;}.gb-highlight{background:none;}.gb-shape{line-height:0;}
 /*# sourceURL=generateblocks-inline-css */
@@ -258,61 +258,73 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 
 	
 	<section class="acartechs-category-page">
-				<section class="acartechs-tool-page">
-			<header class="acartechs-tools-hero is-tool">
-				<div>
-					<span>Oyun</span>
+				<section class="acartechs-tool-page acartechs-dxball-page">
+			<header class="acartechs-dxball-hero">
+				<div class="acartechs-dxball-hero-copy">
+					<span class="acartechs-dxball-kicker">AcarTechs Arcade</span>
 					<h1>Dx Ball</h1>
-					<p>Klasik tuğla kırma mini oyunu. Mouse veya dokunmatikle raketi kaydır, topu kaçırma.</p>
+					<p>Yüksek tempolu tuğla kırma mini oyunu. Hassas raket kontrolü, çok vuruşlu bloklar, seviye ilerlemesi ve tarayıcıda saklanan en iyi skor.</p>
+					<div class="acartechs-dxball-hero-meta">
+						<span>Klavye + Mouse + Touch</span>
+						<span>Yerel en iyi skor</span>
+						<span>Seviye sistemi</span>
+					</div>
 				</div>
-				<a href="/uygulamalar/">Tüm araçlar</a>
+				<a class="acartechs-dxball-back" href="/oyun/">Oyun haberlerine dön</a>
 			</header>
 
-					<section class="acartechs-tool-workspace acartechs-dxball-wrap" data-acartechs-tool="dx-ball">
-				<div class="acartechs-dxball-panel">
-					<div class="acartechs-dxball-hud">
-						<span data-dx-score>Skor: 0</span>
-						<span data-dx-lives>Can: 3</span>
-						<span data-dx-level>Seviye: 1</span>
+			<section class="acartechs-dxball-stage" data-acartechs-tool="dx-ball" aria-label="Dx Ball oyun alani">
+				<div class="acartechs-dxball-frame">
+					<div class="acartechs-dxball-frame-top">
+						<div class="acartechs-dxball-brand">
+							<strong>DX BALL</strong>
+							<small>Pro Session</small>
+						</div>
+						<div class="acartechs-dxball-stats" role="status">
+							<div><span>Skor</span><strong data-dx-score>0</strong></div>
+							<div><span>En iyi</span><strong data-dx-best>0</strong></div>
+							<div><span>Can</span><strong data-dx-lives>3</strong></div>
+							<div><span>Seviye</span><strong data-dx-level>1</strong></div>
+						</div>
 					</div>
-					<canvas id="acartechs-dxball" width="480" height="640" aria-label="Dx Ball oyun alani"></canvas>
-					<div class="acartechs-dxball-actions">
-						<button type="button" data-dx-start>Baslat / Devam</button>
-						<button type="button" data-dx-reset class="is-ghost">Sifirla</button>
+					<div class="acartechs-dxball-canvas-wrap">
+						<canvas id="acartechs-dxball" width="520" height="680" aria-label="Dx Ball"></canvas>
 					</div>
-					<p class="acartechs-dxball-help">Mouse veya parmakla raketi kaydir. Topu kacirma, tum tuglalari kir.</p>
+					<div class="acartechs-dxball-controls">
+						<p class="acartechs-dxball-status" data-dx-status>Hazır</p>
+						<div class="acartechs-dxball-buttons">
+							<button type="button" class="is-primary" data-dx-start>Başlat</button>
+							<button type="button" data-dx-pause>Duraklat</button>
+							<button type="button" data-dx-reset>Sıfırla</button>
+						</div>
+						<ul class="acartechs-dxball-keys">
+							<li><kbd>←</kbd><kbd>→</kbd> veya <kbd>A</kbd><kbd>D</kbd> raket</li>
+							<li><kbd>Space</kbd> fırlat / duraklat</li>
+							<li>Mouse / dokunmatik sürükle</li>
+						</ul>
+					</div>
 				</div>
-			</section>
 
-			<section class="acartechs-tool-info">
-				<article>
-					<h2>Nasil oynanir?</h2>
-					<ol>
-						<li>Baslat butonuna tikla.</li>
-						<li>Raketi mouse veya dokunmatikle saga-sola kaydir.</li>
-						<li>Topu raketle sektirip tum renkli tuglalari kir.</li>
-					</ol>
-				</article>
-				<article>
-					<h2>Dx Ball nedir?</h2>
-					<p>Dx Ball, klasik breakout / tugla kirma tarzinda hizli bir mini oyundur. Acartechs Oyun bolumunde kisa bir mola icin eklendi.</p>
-				</article>
-			</section>
-
-			<section class="acartechs-other-tools" aria-label="Diğer araçlar">
-				<h2>Diğer araçlar</h2>
-				<div>
-																	<a href="/pdf-birlestirici/">PDF Birleştirici</a>
-																	<a href="/pdf-word-excel-donusturucu/">PDF’den Word ve Excel’e Dönüştürücü</a>
-																	<a href="/gorselden-metne-ocr/">Görselden Metne OCR</a>
-																	<a href="/format-donusturucu/">Format Dönüştürücü</a>
-																	<a href="/gorsel-sikistirici/">Görsel Sıkıştırıcı</a>
-															</div>
+				<aside class="acartechs-dxball-side">
+					<article>
+						<h2>Nasıl oynanır</h2>
+						<ol>
+							<li>Başlat’a bas, topu Space veya tık ile fırlat.</li>
+							<li>Raketi kaydırarak topu sektir.</li>
+							<li>Çok vuruşlu blokları temizle, seviyeyi yükselt.</li>
+						</ol>
+					</article>
+					<article>
+						<h2>Oyun notları</h2>
+						<p>Dx Ball, AcarTechs Oyun bölümü için tasarlanmış hafif bir arcade deneyimidir. Skorun tarayıcında saklanır; sayfayı yenilesen en iyi skorun kalır.</p>
+					</article>
+					<a class="acartechs-dxball-side-link" href="/oyun/">← Oyun kategorisi</a>
+				</aside>
 			</section>
 		</section>
-			</section>
+		</section>
 
-	<script src="/assets/dx-ball.js?ver=1"></script>
+<script src="/assets/dx-ball.js?ver=2"></script>
 
 			<section class="acartechs-footer-panel">
 			<div class="acartechs-footer-brand">

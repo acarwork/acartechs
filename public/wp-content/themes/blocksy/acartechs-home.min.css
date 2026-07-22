@@ -588,84 +588,343 @@ img.acartechs-feed-image:after{
   }
 }
 
-/* Dx Ball mini game page + Oyun entry */
-.acartechs-dxball-entry{
-  display:flex !important;
-  justify-content:flex-end !important;
-  margin:0 auto 16px !important;
-  max-width:1360px !important;
-  width:100% !important;
-}
-.acartechs-dxball-entry a{
-  align-items:center !important;
-  background:linear-gradient(135deg,#061b31 0%,#0a3a6b 48%,#2188f6 100%) !important;
-  border:1px solid rgba(38,201,244,.35) !important;
-  border-radius:999px !important;
-  box-shadow:0 12px 28px rgba(33,136,246,.28) !important;
-  color:#fff !important;
-  display:inline-flex !important;
-  font-size:14px !important;
-  font-weight:800 !important;
-  gap:10px !important;
-  letter-spacing:.02em !important;
-  padding:11px 16px !important;
-  text-decoration:none !important;
-}
-.acartechs-dxball-entry a span{
-  align-items:center !important;
-  background:rgba(255,255,255,.14) !important;
-  border-radius:999px !important;
-  display:inline-flex !important;
-  font-size:12px !important;
-  height:28px !important;
-  justify-content:center !important;
-  width:28px !important;
-}
-.acartechs-dxball-entry a:hover{transform:translateY(-1px);filter:brightness(1.05)}
-.acartechs-dxball-wrap{display:flex;justify-content:center;padding:8px 0 20px}
-.acartechs-dxball-panel{
-  background:#fff;
-  border:1px solid #dbeafe;
-  border-radius:14px;
-  box-shadow:0 18px 42px rgba(15,23,42,.1);
-  max-width:520px;
-  padding:16px;
+/* ========== Dx Ball — professional arcade UI ========== */
+.acartechs-dxball-banner{
+  align-items:center;
+  background:
+    radial-gradient(circle at 92% 20%,rgba(38,201,244,.28),transparent 28%),
+    linear-gradient(120deg,#061b31 0%,#0a355f 52%,#1458a8 100%);
+  border:1px solid rgba(125,211,252,.28);
+  border-radius:16px;
+  box-shadow:0 18px 40px rgba(15,23,42,.16);
+  box-sizing:border-box;
+  display:flex;
+  gap:18px;
+  justify-content:space-between;
+  margin:0 auto 20px;
+  max-width:1360px;
+  overflow:hidden;
+  padding:18px 20px;
+  position:relative;
   width:100%;
 }
-.acartechs-dxball-hud{
-  color:#0f172a;
-  display:flex;
-  font-size:14px;
+.acartechs-dxball-banner:before{
+  background:linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(180deg,rgba(255,255,255,.06) 1px,transparent 1px);
+  background-size:28px 28px;
+  content:"";
+  inset:0;
+  opacity:.45;
+  pointer-events:none;
+  position:absolute;
+}
+.acartechs-dxball-banner-copy,
+.acartechs-dxball-banner-cta{position:relative;z-index:1}
+.acartechs-dxball-banner-copy span{
+  color:#7dd3fc;
+  display:block;
+  font-size:11px;
   font-weight:800;
-  gap:14px;
+  letter-spacing:.08em;
+  margin-bottom:4px;
+  text-transform:uppercase;
+}
+.acartechs-dxball-banner-copy strong{
+  color:#fff;
+  display:block;
+  font-size:clamp(22px,2.4vw,30px);
+  font-weight:900;
+  letter-spacing:-.02em;
+  line-height:1.1;
+}
+.acartechs-dxball-banner-copy p{
+  color:#cfe8ff;
+  font-size:14px;
+  line-height:1.45;
+  margin:6px 0 0;
+  max-width:42ch;
+}
+.acartechs-dxball-banner-cta{
+  align-items:center;
+  background:#fff;
+  border-radius:999px;
+  box-shadow:0 10px 24px rgba(2,8,23,.2);
+  color:#061b31;
+  display:inline-flex;
+  flex:0 0 auto;
+  font-size:14px;
+  font-weight:900;
+  gap:10px;
+  padding:12px 16px 12px 12px;
+  text-decoration:none;
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.acartechs-dxball-banner-cta:hover{
+  box-shadow:0 14px 30px rgba(2,8,23,.28);
+  transform:translateY(-2px);
+}
+.acartechs-dxball-banner-orb{
+  background:
+    radial-gradient(circle at 35% 30%,#fff 0 18%,transparent 19%),
+    radial-gradient(circle at 50% 50%,#7dd3fc 0%,#2188f6 55%,#0ea5e9 100%);
+  border-radius:50%;
+  box-shadow:0 0 0 3px rgba(255,255,255,.35),0 8px 18px rgba(14,165,233,.45);
+  display:inline-block;
+  height:28px;
+  width:28px;
+}
+
+.acartechs-dxball-page{max-width:1180px}
+.acartechs-dxball-hero{
+  align-items:end;
+  background:
+    radial-gradient(circle at 88% 18%,rgba(56,189,248,.42),transparent 26%),
+    radial-gradient(circle at 12% 80%,rgba(33,136,246,.25),transparent 30%),
+    linear-gradient(145deg,#04101f 0%,#072a4d 48%,#0b4f9c 100%);
+  border-radius:18px;
+  box-shadow:0 22px 48px rgba(15,23,42,.18);
+  display:flex;
+  gap:24px;
+  justify-content:space-between;
+  margin:0 0 22px;
+  overflow:hidden;
+  padding:34px 32px;
+  position:relative;
+}
+.acartechs-dxball-hero:after{
+  background:linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(180deg,rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:32px 32px;
+  content:"";
+  inset:0;
+  opacity:.5;
+  pointer-events:none;
+  position:absolute;
+}
+.acartechs-dxball-hero-copy,
+.acartechs-dxball-back{position:relative;z-index:1}
+.acartechs-dxball-kicker{
+  color:#7dd3fc;
+  display:block;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.1em;
+  margin-bottom:10px;
+  text-transform:uppercase;
+}
+.acartechs-dxball-hero h1{
+  color:#fff;
+  font-size:clamp(36px,5vw,58px);
+  font-weight:900;
+  letter-spacing:-.03em;
+  line-height:1.02;
+  margin:0;
+}
+.acartechs-dxball-hero p{
+  color:#dbeafe;
+  font-size:17px;
+  line-height:1.55;
+  margin:12px 0 0;
+  max-width:56ch;
+}
+.acartechs-dxball-hero-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:18px;
+}
+.acartechs-dxball-hero-meta span{
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:999px;
+  color:#e2e8f0;
+  font-size:12px;
+  font-weight:700;
+  padding:7px 11px;
+}
+.acartechs-dxball-back{
+  align-self:flex-start;
+  background:#fff;
+  border-radius:999px;
+  color:#061b31;
+  font-size:13px;
+  font-weight:800;
+  padding:12px 16px;
+  text-decoration:none;
+  white-space:nowrap;
+}
+
+.acartechs-dxball-stage{
+  align-items:start;
+  display:grid;
+  gap:20px;
+  grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);
+}
+.acartechs-dxball-frame{
+  background:linear-gradient(180deg,#0b1220,#111827);
+  border:1px solid rgba(125,211,252,.18);
+  border-radius:18px;
+  box-shadow:0 24px 50px rgba(2,8,23,.28);
+  overflow:hidden;
+  padding:14px;
+}
+.acartechs-dxball-frame-top{
+  align-items:center;
+  display:flex;
+  gap:16px;
   justify-content:space-between;
   margin-bottom:12px;
+  padding:4px 6px 10px;
 }
-.acartechs-dxball-panel canvas{
-  background:#061b31;
+.acartechs-dxball-brand strong{
+  color:#f8fafc;
+  display:block;
+  font-size:15px;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+.acartechs-dxball-brand small{
+  color:#7dd3fc;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+.acartechs-dxball-stats{
+  display:grid;
+  gap:8px;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
+.acartechs-dxball-stats div{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(148,163,184,.14);
   border-radius:12px;
+  min-width:0;
+  padding:8px 10px;
+  text-align:center;
+}
+.acartechs-dxball-stats span{
+  color:#94a3b8;
+  display:block;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.acartechs-dxball-stats strong{
+  color:#f8fafc;
+  display:block;
+  font-size:18px;
+  font-weight:900;
+  margin-top:2px;
+}
+.acartechs-dxball-canvas-wrap{
+  background:#020617;
+  border:1px solid rgba(56,189,248,.12);
+  border-radius:14px;
+  overflow:hidden;
+}
+.acartechs-dxball-canvas-wrap canvas{
   display:block;
   height:auto;
   max-width:100%;
   touch-action:none;
   width:100%;
 }
-.acartechs-dxball-actions{display:flex;gap:10px;margin-top:12px}
-.acartechs-dxball-actions button{
-  background:linear-gradient(135deg,#2188f6,#26c9f4);
-  border:0;
-  border-radius:10px;
-  color:#fff;
+.acartechs-dxball-controls{
+  display:grid;
+  gap:12px;
+  margin-top:12px;
+  padding:4px 2px 2px;
+}
+.acartechs-dxball-status{
+  color:#cbd5e1;
+  font-size:13px;
+  font-weight:600;
+  margin:0;
+}
+.acartechs-dxball-buttons{display:flex;flex-wrap:wrap;gap:8px}
+.acartechs-dxball-buttons button{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(148,163,184,.2);
+  border-radius:11px;
+  color:#e2e8f0;
   cursor:pointer;
+  font-size:13px;
   font-weight:800;
-  padding:11px 16px;
+  padding:11px 14px;
+  transition:background .15s ease,border-color .15s ease;
 }
-.acartechs-dxball-actions button.is-ghost{
-  background:#eef6ff;
+.acartechs-dxball-buttons button.is-primary{
+  background:linear-gradient(135deg,#2188f6,#26c9f4);
+  border-color:transparent;
+  color:#04101f;
+}
+.acartechs-dxball-buttons button:hover{border-color:rgba(125,211,252,.45)}
+.acartechs-dxball-keys{
+  color:#94a3b8;
+  display:grid;
+  font-size:12px;
+  gap:6px;
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+.acartechs-dxball-keys kbd{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(148,163,184,.22);
+  border-radius:6px;
+  color:#e2e8f0;
+  display:inline-block;
+  font-size:11px;
+  font-weight:700;
+  margin-right:3px;
+  min-width:1.4em;
+  padding:2px 6px;
+  text-align:center;
+}
+.acartechs-dxball-side{
+  display:grid;
+  gap:14px;
+}
+.acartechs-dxball-side article{
+  background:#fff;
+  border:1px solid #dbeafe;
+  border-radius:14px;
+  box-shadow:0 14px 34px rgba(15,23,42,.07);
+  padding:18px 18px 16px;
+}
+.acartechs-dxball-side h2{
+  color:#061b31;
+  font-size:16px;
+  font-weight:900;
+  margin:0 0 10px;
+}
+.acartechs-dxball-side ol{
+  color:#334155;
+  font-size:14px;
+  line-height:1.55;
+  margin:0;
+  padding-left:18px;
+}
+.acartechs-dxball-side p{
+  color:#475569;
+  font-size:14px;
+  line-height:1.6;
+  margin:0;
+}
+.acartechs-dxball-side-link{
   color:#0b4db8;
+  font-size:14px;
+  font-weight:800;
+  text-decoration:none;
 }
-.acartechs-dxball-help{color:#64748b;font-size:13px;margin:12px 0 0}
+.acartechs-dxball-side-link:hover{text-decoration:underline}
+@media (max-width:980px){
+  .acartechs-dxball-stage{grid-template-columns:1fr}
+  .acartechs-dxball-hero{flex-direction:column;align-items:flex-start;padding:26px 20px}
+  .acartechs-dxball-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 @media (max-width:760px){
-  .acartechs-dxball-entry{justify-content:stretch;padding:0 2px}
-  .acartechs-dxball-entry a{justify-content:center;width:100%}
+  .acartechs-dxball-banner{flex-direction:column;align-items:stretch;padding:16px}
+  .acartechs-dxball-banner-cta{justify-content:center}
+  .acartechs-dxball-frame-top{flex-direction:column;align-items:stretch}
 }
