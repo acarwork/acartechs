@@ -1490,7 +1490,7 @@ body.acartechs-game-body .acartechs-footer-panel{
   max-width:42ch !important;
 }
 
-/* thumbs row */
+/* thumbs row — real gameplay/concept thumbnails */
 .acartechs-arcade-banner-thumbs{
   display:flex !important;
   flex-wrap:wrap !important;
@@ -1518,20 +1518,45 @@ body.acartechs-game-body .acartechs-footer-panel{
 }
 .acartechs-arcade-thumb-art{
   aspect-ratio:1 !important;
+  background:#06101f !important;
   border-radius:10px !important;
   display:block !important;
   overflow:hidden !important;
   position:relative !important;
   width:100% !important;
 }
-.acartechs-arcade-thumb.is-dx .acartechs-arcade-thumb-art{
-  background:radial-gradient(circle at 50% 40%,rgba(125,211,252,.35),transparent 45%),linear-gradient(160deg,#04101f,#0b4f9c) !important;
+.acartechs-arcade-thumb-img{
+  display:block !important;
+  height:100% !important;
+  left:0 !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  position:absolute !important;
+  top:0 !important;
+  transition:transform .22s ease !important;
+  width:100% !important;
 }
-.acartechs-arcade-thumb.is-reflex .acartechs-arcade-thumb-art{
-  background:radial-gradient(circle at 50% 50%,rgba(52,211,153,.35),transparent 42%),linear-gradient(160deg,#052e1a,#0f766e) !important;
+.acartechs-arcade-thumb:hover .acartechs-arcade-thumb-img{
+  transform:scale(1.08) !important;
 }
-.acartechs-arcade-thumb.is-soon .acartechs-arcade-thumb-art{
-  background:linear-gradient(160deg,#1e1b4b,#4c1d95) !important;
+.acartechs-arcade-thumb.is-soon .acartechs-arcade-thumb-img{
+  filter:saturate(.65) brightness(.72) !important;
+}
+.acartechs-arcade-thumb-soon-badge{
+  align-items:center !important;
+  background:rgba(15,23,42,.55) !important;
+  border:1px solid rgba(255,255,255,.22) !important;
+  border-radius:50% !important;
+  color:#e2e8f0 !important;
+  display:flex !important;
+  height:34px !important;
+  justify-content:center !important;
+  left:50% !important;
+  position:absolute !important;
+  top:50% !important;
+  transform:translate(-50%,-50%) !important;
+  width:34px !important;
+  z-index:2 !important;
 }
 .acartechs-arcade-thumb em{
   color:#e2e8f0 !important;
@@ -1541,64 +1566,12 @@ body.acartechs-game-body .acartechs-footer-panel{
   letter-spacing:.02em !important;
   text-align:center !important;
 }
-.acartechs-arcade-thumb .t-orb{
-  background:radial-gradient(circle at 35% 30%,#fff 0 16%,transparent 17%),radial-gradient(circle at 50% 50%,#7dd3fc,#2188f6) !important;
-  border-radius:50% !important;
-  box-shadow:0 0 14px rgba(56,189,248,.55) !important;
-  height:18px !important;
-  left:50% !important;
-  position:absolute !important;
-  top:38% !important;
-  transform:translate(-50%,-50%) !important;
-  width:18px !important;
-}
-.acartechs-arcade-thumb .t-paddle{
-  background:linear-gradient(90deg,#67e8f9,#0284c7) !important;
-  border-radius:4px !important;
-  bottom:22% !important;
-  height:6px !important;
-  left:50% !important;
-  position:absolute !important;
-  transform:translateX(-50%) !important;
-  width:34px !important;
-}
-.acartechs-arcade-thumb .t-bricks{
-  display:flex !important;
-  gap:3px !important;
-  left:50% !important;
-  position:absolute !important;
-  top:14% !important;
-  transform:translateX(-50%) !important;
-}
-.acartechs-arcade-thumb .t-bricks i{
-  background:linear-gradient(180deg,#a78bfa,#7c3aed) !important;
-  border-radius:2px !important;
-  display:block !important;
-  height:7px !important;
-  width:12px !important;
-}
-.acartechs-arcade-thumb .t-pulse{
-  animation:acarArcadePulse 1.6s ease-in-out infinite !important;
-  background:radial-gradient(circle,#6ee7b7,#059669) !important;
-  border-radius:50% !important;
-  box-shadow:0 0 0 0 rgba(16,185,129,.45) !important;
-  height:26px !important;
-  left:50% !important;
-  position:absolute !important;
-  top:50% !important;
-  transform:translate(-50%,-50%) !important;
-  width:26px !important;
-}
-.acartechs-arcade-thumb .t-soon{
-  align-items:center !important;
-  color:rgba(255,255,255,.7) !important;
-  display:flex !important;
-  font-family:"Press Start 2P",monospace !important;
-  font-size:16px !important;
-  height:100% !important;
-  justify-content:center !important;
-  width:100% !important;
-}
+/* legacy CSS icon shapes no longer used in banner */
+.acartechs-arcade-thumb .t-orb,
+.acartechs-arcade-thumb .t-paddle,
+.acartechs-arcade-thumb .t-bricks,
+.acartechs-arcade-thumb .t-pulse,
+.acartechs-arcade-thumb .t-soon{display:none !important}
 
 /* CTA neon */
 .acartechs-arcade-banner-cta{
