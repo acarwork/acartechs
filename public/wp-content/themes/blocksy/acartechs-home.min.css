@@ -367,3 +367,16 @@ html,body{max-width:100%;overflow-x:hidden;}
     margin-bottom:28px !important;
   }
 }
+
+/* Category head fully removed — hide residual blocks */
+.acartechs-category-head,
+.acartechs-category-head p,
+.acartechs-category-seo-text{
+  display:none !important;
+  height:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+  overflow:hidden !important;
+  border:0 !important;
+  visibility:hidden !important;
+}
