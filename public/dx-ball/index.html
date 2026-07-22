@@ -1330,7 +1330,9 @@
   // ============ INPUT ============
   function canvasPos(clientX) {
     var rect = canvas.getBoundingClientRect();
-    return ((clientX - rect.left) / rect.width) * state.W;
+    var scale = Math.min(rect.width / state.W, rect.height / state.H);
+    var ox = rect.left + (rect.width - state.W * scale) / 2;
+    return (clientX - ox) / scale;
   }
 
   window.addEventListener("keydown", function (e) {
