@@ -69,3 +69,301 @@ html,body{max-width:100%;overflow-x:hidden;}
 .acartechs-trending-list>a:nth-child(n+9){display:none !important;}
 @media (max-width:1120px){.acartechs-trending-list{grid-template-columns:repeat(2,minmax(0,1fr)) !important;}}
 @media (max-width:680px){.acartechs-trending-list{grid-template-columns:1fr !important;}}
+
+/* ==========================================================================
+   Category pages: consistent cards, compact headers, readable labels
+   Applies to all .acartechs-category-page instances (Oyun, Teknoloji, ...)
+   Do not alter adsense / reklam styles here.
+   ========================================================================== */
+
+/* (5)(6) Page header: compact title↔description spacing + clearer type hierarchy */
+.acartechs-category-head{
+  margin-bottom:16px !important;
+  padding-top:10px !important;
+}
+.acartechs-category-head>div{
+  padding:16px 22px !important;
+}
+.acartechs-category-head>span,
+.acartechs-category-head span:not(.acartechs-category-seo-text){
+  color:#0b4db8 !important;
+  font-size:12px !important;
+  font-weight:800 !important;
+  letter-spacing:.06em !important;
+  margin-bottom:4px !important;
+  text-transform:uppercase !important;
+}
+.acartechs-category-head h1{
+  color:#041526 !important;
+  font-size:clamp(28px,3.2vw,38px) !important;
+  font-weight:900 !important;
+  letter-spacing:-0.02em !important;
+  line-height:1.08 !important;
+  margin:0 0 4px !important;
+}
+.acartechs-category-head>div>p:not(.acartechs-category-seo-text){
+  color:#475569 !important;
+  font-size:14.5px !important;
+  font-weight:400 !important;
+  line-height:1.5 !important;
+  margin:0 !important;
+  max-width:760px !important;
+}
+.acartechs-category-head .acartechs-category-seo-text{
+  border-top:1px solid #e2edf8 !important;
+  color:#64748b !important;
+  font-size:13.5px !important;
+  font-weight:400 !important;
+  line-height:1.55 !important;
+  margin-top:12px !important;
+  padding-top:12px !important;
+}
+
+/* (1) Spotlight grid: stable featured + mini ratio */
+.acartechs-category-page{
+  margin-bottom:40px !important;
+  overflow:visible !important;
+}
+.acartechs-category-spotlight{
+  align-items:stretch !important;
+  display:grid !important;
+  gap:16px !important;
+  grid-template-columns:minmax(0,1.35fr) minmax(0,0.85fr) !important;
+  margin-bottom:20px !important;
+  overflow:visible !important;
+}
+.acartechs-category-main-card{
+  display:flex !important;
+  flex-direction:column !important;
+  grid-template-rows:none !important;
+  height:100% !important;
+  min-height:0 !important;
+  min-width:0 !important;
+  overflow:hidden !important;
+}
+.acartechs-category-main-card .acartechs-category-image,
+.acartechs-category-main-card img.acartechs-category-image{
+  aspect-ratio:16 / 9 !important;
+  flex:0 0 auto !important;
+  height:auto !important;
+  max-height:none !important;
+  min-height:0 !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+  width:100% !important;
+}
+.acartechs-category-main-card>div{
+  display:flex !important;
+  flex:1 1 auto !important;
+  flex-direction:column !important;
+  gap:0 !important;
+  /* (2) equal image↔title spacing */
+  padding:16px 18px 18px !important;
+}
+.acartechs-category-mini-grid{
+  display:grid !important;
+  gap:14px !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  grid-template-rows:repeat(2,minmax(0,1fr)) !important;
+  height:100% !important;
+  min-height:0 !important;
+}
+.acartechs-category-mini-grid a{
+  display:flex !important;
+  flex-direction:column !important;
+  grid-template-rows:none !important;
+  height:100% !important;
+  min-height:0 !important;
+  min-width:0 !important;
+  overflow:hidden !important;
+}
+.acartechs-category-mini-grid .acartechs-category-image,
+.acartechs-category-mini-grid img.acartechs-category-image{
+  aspect-ratio:16 / 10 !important;
+  flex:0 0 auto !important;
+  height:auto !important;
+  max-height:none !important;
+  min-height:0 !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+  width:100% !important;
+}
+/* (2) equal image↔title spacing on mini cards */
+.acartechs-category-mini-grid strong{
+  display:-webkit-box !important;
+  flex:1 1 auto !important;
+  font-size:14px !important;
+  font-weight:800 !important;
+  line-height:1.3 !important;
+  margin:0 !important;
+  overflow:hidden !important;
+  padding:14px 14px 16px !important;
+  -webkit-box-orient:vertical !important;
+  -webkit-line-clamp:4 !important;
+}
+
+/* (1)(2)(4) List grid: consistent cards, no bottom clipping */
+.acartechs-category-list{
+  align-items:stretch !important;
+  display:grid !important;
+  gap:18px !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  overflow:visible !important;
+  padding-bottom:8px !important;
+}
+.acartechs-category-list article,
+.acartechs-category-list article>a{
+  display:flex !important;
+  flex-direction:column !important;
+  height:auto !important;
+  min-height:100% !important;
+  min-width:0 !important;
+  overflow:hidden !important;
+}
+.acartechs-category-list .acartechs-category-image,
+.acartechs-category-list img.acartechs-category-image,
+.acartechs-category-page img.acartechs-category-image{
+  aspect-ratio:16 / 9 !important;
+  flex:0 0 auto !important;
+  height:auto !important;
+  max-height:none !important;
+  min-height:0 !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+  width:100% !important;
+}
+/* (2) equal image↔content spacing on list cards */
+.acartechs-category-list div{
+  display:flex !important;
+  flex:1 1 auto !important;
+  flex-direction:column !important;
+  gap:0 !important;
+  padding:14px 14px 16px !important;
+}
+.acartechs-category-list h3{
+  font-size:16px !important;
+  font-weight:800 !important;
+  line-height:1.25 !important;
+  margin:0 0 8px !important;
+}
+.acartechs-category-list p{
+  margin:0 0 12px !important;
+}
+.acartechs-category-list small{
+  margin-top:auto !important;
+}
+
+/* (3) Category labels: high-contrast badges (readable on any surface) */
+.acartechs-category-main-card>div>span,
+.acartechs-category-list div>span,
+.acartechs-category-page .acartechs-category-main-card span,
+.acartechs-category-page .acartechs-category-list span{
+  align-self:flex-start !important;
+  background:rgba(2,8,20,0.88) !important;
+  border:1px solid rgba(255,255,255,0.18) !important;
+  border-radius:999px !important;
+  box-shadow:0 2px 8px rgba(0,0,0,0.28) !important;
+  color:#f8fafc !important;
+  display:inline-flex !important;
+  font-size:11px !important;
+  font-weight:800 !important;
+  letter-spacing:.05em !important;
+  line-height:1 !important;
+  margin:0 0 10px !important;
+  padding:6px 10px !important;
+  text-shadow:none !important;
+  text-transform:uppercase !important;
+  width:auto !important;
+}
+/* Main card sits on dark panel — keep badge slightly brighter */
+.acartechs-category-main-card>div>span{
+  background:rgba(0,0,0,0.45) !important;
+  border-color:rgba(255,255,255,0.28) !important;
+  color:#ffffff !important;
+}
+/* List cards sit on white — solid ink badge for max contrast */
+.acartechs-category-list div>span{
+  background:#0b1f36 !important;
+  border-color:transparent !important;
+  color:#ffffff !important;
+}
+/* Header eyebrow label (page title area) — solid, high contrast */
+.acartechs-category-head>div>span:first-child{
+  background:#0b4db8 !important;
+  border:0 !important;
+  border-radius:999px !important;
+  box-shadow:none !important;
+  color:#ffffff !important;
+  display:inline-flex !important;
+  font-size:11px !important;
+  font-weight:800 !important;
+  letter-spacing:.06em !important;
+  margin:0 0 8px !important;
+  padding:5px 10px !important;
+  width:auto !important;
+}
+
+/* Override earlier contain rules that break category card crops */
+.acartechs-category-page .acartechs-category-main-card img.acartechs-category-image,
+.acartechs-category-page .acartechs-category-mini-grid img.acartechs-category-image,
+.acartechs-category-page .acartechs-category-list img.acartechs-category-image{
+  background:#07162a !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+  padding:0 !important;
+}
+
+/* Responsive: prevent cut-off cards, keep full visibility */
+@media (max-width:1120px){
+  .acartechs-category-spotlight{
+    grid-template-columns:1fr !important;
+  }
+  .acartechs-category-mini-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    height:auto !important;
+  }
+  .acartechs-category-list{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+}
+@media (max-width:760px){
+  .acartechs-category-head>div{
+    padding:14px 16px !important;
+  }
+  .acartechs-category-head h1{
+    font-size:clamp(24px,7vw,30px) !important;
+    margin:0 0 3px !important;
+  }
+  .acartechs-category-spotlight,
+  .acartechs-category-mini-grid,
+  .acartechs-category-list{
+    gap:16px !important;
+    grid-template-columns:1fr !important;
+    width:100% !important;
+  }
+  .acartechs-category-main-card,
+  .acartechs-category-mini-grid a,
+  .acartechs-category-list article,
+  .acartechs-category-list article>a{
+    height:auto !important;
+    min-height:0 !important;
+  }
+  .acartechs-category-page .acartechs-category-main-card img.acartechs-category-image,
+  .acartechs-category-page .acartechs-category-mini-grid img.acartechs-category-image,
+  .acartechs-category-page .acartechs-category-list img.acartechs-category-image{
+    aspect-ratio:16 / 9 !important;
+    height:auto !important;
+    max-height:none !important;
+    min-height:0 !important;
+    object-fit:cover !important;
+    width:100% !important;
+  }
+  .acartechs-category-main-card>div,
+  .acartechs-category-mini-grid strong,
+  .acartechs-category-list div{
+    padding:14px !important;
+  }
+  .acartechs-category-page{
+    margin-bottom:28px !important;
+  }
+}
