@@ -587,3 +587,85 @@ img.acartechs-feed-image:after{
     font-size:7px !important;
   }
 }
+
+/* Dx Ball mini game page + Oyun entry */
+.acartechs-dxball-entry{
+  display:flex !important;
+  justify-content:flex-end !important;
+  margin:0 auto 16px !important;
+  max-width:1360px !important;
+  width:100% !important;
+}
+.acartechs-dxball-entry a{
+  align-items:center !important;
+  background:linear-gradient(135deg,#061b31 0%,#0a3a6b 48%,#2188f6 100%) !important;
+  border:1px solid rgba(38,201,244,.35) !important;
+  border-radius:999px !important;
+  box-shadow:0 12px 28px rgba(33,136,246,.28) !important;
+  color:#fff !important;
+  display:inline-flex !important;
+  font-size:14px !important;
+  font-weight:800 !important;
+  gap:10px !important;
+  letter-spacing:.02em !important;
+  padding:11px 16px !important;
+  text-decoration:none !important;
+}
+.acartechs-dxball-entry a span{
+  align-items:center !important;
+  background:rgba(255,255,255,.14) !important;
+  border-radius:999px !important;
+  display:inline-flex !important;
+  font-size:12px !important;
+  height:28px !important;
+  justify-content:center !important;
+  width:28px !important;
+}
+.acartechs-dxball-entry a:hover{transform:translateY(-1px);filter:brightness(1.05)}
+.acartechs-dxball-wrap{display:flex;justify-content:center;padding:8px 0 20px}
+.acartechs-dxball-panel{
+  background:#fff;
+  border:1px solid #dbeafe;
+  border-radius:14px;
+  box-shadow:0 18px 42px rgba(15,23,42,.1);
+  max-width:520px;
+  padding:16px;
+  width:100%;
+}
+.acartechs-dxball-hud{
+  color:#0f172a;
+  display:flex;
+  font-size:14px;
+  font-weight:800;
+  gap:14px;
+  justify-content:space-between;
+  margin-bottom:12px;
+}
+.acartechs-dxball-panel canvas{
+  background:#061b31;
+  border-radius:12px;
+  display:block;
+  height:auto;
+  max-width:100%;
+  touch-action:none;
+  width:100%;
+}
+.acartechs-dxball-actions{display:flex;gap:10px;margin-top:12px}
+.acartechs-dxball-actions button{
+  background:linear-gradient(135deg,#2188f6,#26c9f4);
+  border:0;
+  border-radius:10px;
+  color:#fff;
+  cursor:pointer;
+  font-weight:800;
+  padding:11px 16px;
+}
+.acartechs-dxball-actions button.is-ghost{
+  background:#eef6ff;
+  color:#0b4db8;
+}
+.acartechs-dxball-help{color:#64748b;font-size:13px;margin:12px 0 0}
+@media (max-width:760px){
+  .acartechs-dxball-entry{justify-content:stretch;padding:0 2px}
+  .acartechs-dxball-entry a{justify-content:center;width:100%}
+}
