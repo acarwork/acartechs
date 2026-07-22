@@ -417,3 +417,71 @@ html,body{max-width:100%;overflow-x:hidden;}
     max-width:100% !important;
   }
 }
+
+/* Single cover frames: photos fill cleanly; emblems/logos centered */
+/* Override earlier contain+dark-bg rule that letterboxed heroes badly */
+.acartechs-single-cover.has-image{
+  background:#0b1220 !important;
+  border-radius:12px !important;
+  overflow:hidden !important;
+  min-height:0 !important;
+}
+.acartechs-single-cover.has-image img{
+  aspect-ratio:16 / 9 !important;
+  background:transparent !important;
+  display:block !important;
+  height:auto !important;
+  max-height:min(520px,56vw) !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+  width:100% !important;
+}
+
+/* Square seals / logos (e.g. ministry crest) — no dark letterbox bars */
+.acartechs-single-cover.has-image.is-emblem{
+  align-items:center !important;
+  background:
+    radial-gradient(circle at 50% 42%,rgba(255,255,255,0.95) 0%,rgba(248,250,252,0.96) 48%,rgba(226,232,240,0.9) 100%),
+    linear-gradient(145deg,#f8fafc,#e2e8f0) !important;
+  border:1px solid #dbe3ee !important;
+  border-radius:14px !important;
+  box-shadow:0 14px 36px rgba(15,23,42,0.08) !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  min-height:0 !important;
+  padding:36px 28px 0 !important;
+}
+.acartechs-single-cover.has-image.is-emblem img{
+  aspect-ratio:1 / 1 !important;
+  background:transparent !important;
+  height:auto !important;
+  margin:0 auto !important;
+  max-height:min(300px,58vw) !important;
+  max-width:min(300px,70vw) !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  padding:8px !important;
+  width:min(300px,70vw) !important;
+}
+.acartechs-single-cover.has-image.is-emblem figcaption{
+  background:transparent !important;
+  border-top:1px solid #e2e8f0 !important;
+  color:#64748b !important;
+  margin-top:22px !important;
+  padding:12px 8px 16px !important;
+  text-align:center !important;
+  width:100% !important;
+}
+@media (max-width:760px){
+  .acartechs-single-cover.has-image.is-emblem{
+    margin-left:0 !important;
+    margin-right:0 !important;
+    padding:28px 18px 0 !important;
+  }
+  .acartechs-single-cover.has-image.is-emblem img{
+    max-height:min(240px,62vw) !important;
+    max-width:min(240px,72vw) !important;
+    width:min(240px,72vw) !important;
+  }
+}
