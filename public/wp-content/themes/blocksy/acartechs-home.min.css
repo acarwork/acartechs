@@ -1136,7 +1136,7 @@ a.acartechs-arcade-card.is-live:hover{
 .acartechs-arcade-note h2{color:#061b31;font-size:16px;font-weight:900;margin:0 0 8px}
 .acartechs-arcade-note p{color:#475569;font-size:14px;line-height:1.6;margin:0}
 
-/* Neon Reflex */
+/* (removed Neon Reflex) */
 .acartechs-reflex-stage{display:flex;justify-content:center}
 .acartechs-reflex-panel{
   background:#0b1220;border:1px solid rgba(125,211,252,.16);border-radius:18px;box-shadow:0 22px 48px rgba(2,8,23,.25);
