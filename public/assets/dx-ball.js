@@ -60,11 +60,14 @@
     ["#fbbf24", "#d97706"],
   ];
 
-  function resizeCanvas() {
+    function resizeCanvas() {
     var parent = canvas.parentElement;
     var maxW = parent ? parent.clientWidth : BASE_W;
-    var displayW = Math.min(BASE_W, Math.max(300, maxW));
-    var scale = displayW / BASE_W;
+    var maxH = parent ? parent.clientHeight : BASE_H;
+    if (!maxH || maxH < 200) maxH = Math.min(window.innerHeight * 0.72, BASE_H);
+    var scale = Math.min(maxW / BASE_W, maxH / BASE_H, 1.15);
+    scale = Math.max(0.55, scale);
+    var displayW = Math.round(BASE_W * scale);
     var displayH = Math.round(BASE_H * scale);
     canvas.style.width = displayW + "px";
     canvas.style.height = displayH + "px";

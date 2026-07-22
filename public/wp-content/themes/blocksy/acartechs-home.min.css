@@ -1172,3 +1172,218 @@ a.acartechs-arcade-card.is-live:hover{
   .acartechs-arcade-banner-cta{justify-content:center}
   .acartechs-reflex-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+
+/* ========== Full-page game shell ========== */
+html:has(body.acartechs-game-body),
+body.acartechs-game-body{
+  background:#050b14 !important;
+  height:100%;
+  margin:0 !important;
+  min-height:100%;
+  overflow-x:hidden;
+}
+body.acartechs-game-body{
+  min-height:100dvh;
+}
+.acartechs-game-shell{
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  margin:0 auto;
+  max-width:1200px;
+  min-height:100dvh;
+  padding:12px 14px 16px;
+  width:100%;
+}
+.acartechs-game-bar{
+  align-items:center;
+  background:rgba(8,15,28,.92);
+  border:1px solid rgba(125,211,252,.16);
+  border-radius:14px;
+  box-shadow:0 10px 28px rgba(0,0,0,.25);
+  display:flex;
+  gap:14px;
+  justify-content:space-between;
+  margin-bottom:12px;
+  padding:10px 14px;
+  position:sticky;
+  top:8px;
+  z-index:20;
+  backdrop-filter:blur(10px);
+}
+.acartechs-game-brand{
+  align-items:center;
+  color:#f8fafc;
+  display:inline-flex;
+  font-size:14px;
+  font-weight:900;
+  gap:8px;
+  letter-spacing:.01em;
+  text-decoration:none;
+}
+.acartechs-game-brand-mark{
+  align-items:center;
+  background:linear-gradient(135deg,#2188f6,#26c9f4);
+  border-radius:8px;
+  color:#04101f;
+  display:inline-flex;
+  font-size:13px;
+  font-weight:900;
+  height:28px;
+  justify-content:center;
+  width:28px;
+}
+.acartechs-game-bar-nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.acartechs-game-bar-nav a{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(148,163,184,.16);
+  border-radius:999px;
+  color:#cbd5e1;
+  font-size:12px;
+  font-weight:700;
+  padding:7px 11px;
+  text-decoration:none;
+}
+.acartechs-game-bar-nav a:hover{border-color:rgba(125,211,252,.4);color:#fff}
+
+.acartechs-game-fill{
+  background:linear-gradient(180deg,#0b1220 0%,#0a1628 100%);
+  border:1px solid rgba(125,211,252,.14);
+  border-radius:18px;
+  box-shadow:0 20px 48px rgba(0,0,0,.3);
+  display:flex;
+  flex:1 1 auto;
+  flex-direction:column;
+  gap:10px;
+  min-height:0;
+  padding:12px;
+}
+.acartechs-game-chrome{
+  align-items:center;
+  display:grid;
+  gap:10px;
+  grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr) auto;
+}
+.acartechs-game-title strong{
+  color:#f8fafc;
+  display:block;
+  font-size:16px;
+  font-weight:900;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+.acartechs-game-title span{
+  color:#94a3b8;
+  display:block;
+  font-size:12px;
+  font-weight:600;
+  margin-top:2px;
+}
+.acartechs-game-stats{
+  display:grid;
+  gap:6px;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
+.acartechs-game-stats div{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(148,163,184,.12);
+  border-radius:10px;
+  padding:7px 8px;
+  text-align:center;
+}
+.acartechs-game-stats span{
+  color:#94a3b8;
+  display:block;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.acartechs-game-stats strong{
+  color:#f8fafc;
+  display:block;
+  font-size:15px;
+  font-weight:900;
+  margin-top:1px;
+}
+.acartechs-game-actions{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
+.acartechs-game-actions button{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(148,163,184,.18);
+  border-radius:10px;
+  color:#e2e8f0;
+  cursor:pointer;
+  font-size:12px;
+  font-weight:800;
+  padding:9px 12px;
+}
+.acartechs-game-actions button.is-primary{
+  background:linear-gradient(135deg,#2188f6,#26c9f4);
+  border-color:transparent;
+  color:#04101f;
+}
+.acartechs-game-stage{
+  align-items:center;
+  background:#020617;
+  border:1px solid rgba(56,189,248,.1);
+  border-radius:14px;
+  display:flex;
+  flex:1 1 auto;
+  justify-content:center;
+  min-height:min(72dvh,720px);
+  overflow:hidden;
+  position:relative;
+}
+.acartechs-game-stage canvas{
+  display:block;
+  height:auto !important;
+  max-height:100%;
+  max-width:100%;
+  object-fit:contain;
+  touch-action:none;
+  width:auto !important;
+}
+.acartechs-game-stage.is-reflex{
+  padding:clamp(12px,3vw,28px);
+}
+.acartechs-game-stage .acartechs-reflex-pad{
+  height:min(56dvh,420px) !important;
+  max-width:640px;
+  width:100% !important;
+}
+.acartechs-game-hint{
+  color:#64748b;
+  font-size:12px;
+  margin:0;
+  text-align:center;
+}
+
+/* Hide old bulky hero/side chrome if residual markup remains */
+body.acartechs-game-body .acartechs-dxball-hero,
+body.acartechs-game-body .acartechs-dxball-side,
+body.acartechs-game-body .acartechs-arcade-hero,
+body.acartechs-game-body .acartechs-hot-tags,
+body.acartechs-game-body .acartechs-adsense-shell,
+body.acartechs-game-body .acartechs-footer-panel{
+  display:none !important;
+}
+
+@media (max-width:900px){
+  .acartechs-game-chrome{
+    grid-template-columns:1fr;
+  }
+  .acartechs-game-actions{justify-content:stretch}
+  .acartechs-game-actions button{flex:1 1 auto}
+  .acartechs-game-stage{min-height:min(62dvh,560px)}
+}
+@media (max-width:640px){
+  .acartechs-game-shell{padding:8px 8px 12px}
+  .acartechs-game-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .acartechs-game-bar{padding:8px 10px}
+  .acartechs-game-bar-nav a{font-size:11px;padding:6px 9px}
+}
