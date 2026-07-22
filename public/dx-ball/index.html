@@ -279,14 +279,14 @@
 
   <div class="hud" id="hud">
     <div class="hud-group">
-      <div class="chip">SKOR <b id="hudScore">0</b></div>
-      <div class="chip">CAN <b id="hudLives">3</b></div>
-      <div class="chip">LEVEL <b id="hudLevel">1</b></div>
+      <div class="chip"><span data-i18n="hudScore">SKOR</span> <b id="hudScore">0</b></div>
+      <div class="chip"><span data-i18n="hudLives">CAN</span> <b id="hudLives">3</b></div>
+      <div class="chip"><span data-i18n="hudLevel">LEVEL</span> <b id="hudLevel">1</b></div>
     </div>
     <div class="hud-actions">
-      <button class="icon-btn" id="btnPause" type="button" title="Duraklat (P)">II</button>
-      <button class="icon-btn" id="btnSoundHud" type="button" title="Ses">🔊</button>
-      <button class="icon-btn" id="btnExit" type="button" title="ESC / Çıkış">✕</button>
+      <button class="icon-btn" id="btnPause" type="button" data-i18n-title="titlePause" title="Duraklat (P)">II</button>
+      <button class="icon-btn" id="btnSoundHud" type="button" data-i18n-title="titleSound" title="Ses">🔊</button>
+      <button class="icon-btn" id="btnExit" type="button" data-i18n-title="titleExit" title="ESC / Çıkış">✕</button>
     </div>
   </div>
 
@@ -296,16 +296,20 @@
   <section class="screen is-on" id="screenMenu">
     <div class="panel">
       <div class="logo">DX-BALL<small>ACARTECHS ARCADE</small></div>
-      <p class="tagline">1996 ruhu · modern canvas · power-up’lı breakout</p>
+      <p class="tagline" data-i18n="tagline">1996 ruhu · modern canvas · power-up’lı breakout</p>
       <div class="btn-col">
-        <button class="btn primary" id="btnStart" type="button">BAŞLA</button>
-        <button class="btn" id="btnFullscreen" type="button">TAM EKRANDA OYNA</button>
-        <button class="btn" id="btnHow" type="button">NASIL OYNANIR</button>
-        <button class="btn ghost" id="btnExitMenu" type="button">ÇIKIŞ / ARCADE’E DÖN</button>
+        <button class="btn primary" id="btnStart" type="button" data-i18n="btnStart">BAŞLA</button>
+        <button class="btn" id="btnFullscreen" type="button" data-i18n="btnFullscreen">TAM EKRANDA OYNA</button>
+        <button class="btn" id="btnHow" type="button" data-i18n="btnHow">NASIL OYNANIR</button>
+        <button class="btn ghost" id="btnExitMenu" type="button" data-i18n="btnExitMenu">ÇIKIŞ / ARCADE’E DÖN</button>
       </div>
       <div class="menu-tools">
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" id="btnLangTr" class="is-on" data-lang="tr">TR</button>
+          <button type="button" id="btnLangEn" data-lang="en">EN</button>
+        </div>
         <button class="sound-toggle is-on" id="btnSoundMenu" type="button">🔊 Ses: Açık</button>
-        <span class="fs-note">ESC = menü · P = pause</span>
+        <span class="fs-note" data-i18n="fsNote">ESC = menü · P = pause</span>
       </div>
     </div>
   </section>
@@ -313,16 +317,10 @@
   <!-- HOW TO -->
   <section class="screen" id="screenHow">
     <div class="panel">
-      <div class="logo" style="font-size:34px">NASIL OYNANIR</div>
-      <ul class="howto">
-        <li><b>Paddle:</b> fare, dokunmatik veya ← → / A D</li>
-        <li><b>Top:</b> Space veya tık ile fırlat; çarpma noktası açıyı değiştirir</li>
-        <li><b>Tuğlalar:</b> normal · çok vuruşlu · kırılmaz · patlayıcı</li>
-        <li><b>Power-up:</b> multi-ball, laser, paddle+/−, sticky, can, hız</li>
-        <li><b>Hedef:</b> tüm kırılabilir tuğlaları temizle, 15 level</li>
-      </ul>
+      <div class="logo" style="font-size:34px" data-i18n="howTitle">NASIL OYNANIR</div>
+      <ul class="howto" id="howList"></ul>
       <div class="btn-col">
-        <button class="btn primary" id="btnHowBack" type="button">MENÜYE DÖN</button>
+        <button class="btn primary" id="btnHowBack" type="button" data-i18n="btnBackMenu">MENÜYE DÖN</button>
       </div>
     </div>
   </section>
@@ -330,13 +328,13 @@
   <!-- PAUSE -->
   <section class="screen" id="screenPause">
     <div class="panel">
-      <div class="logo" style="font-size:40px">PAUSE</div>
-      <p class="tagline">Oyun duraklatıldı</p>
+      <div class="logo" style="font-size:40px" data-i18n="pauseTitle">DURAKLATILDI</div>
+      <p class="tagline" data-i18n="pauseTag">Oyun duraklatıldı</p>
       <div class="btn-col">
-        <button class="btn primary" id="btnResume" type="button">DEVAM ET</button>
-        <button class="btn" id="btnRestart" type="button">YENİDEN BAŞLAT</button>
-        <button class="btn" id="btnPauseMenu" type="button">ANA MENÜYE DÖN</button>
-        <button class="btn danger" id="btnPauseExit" type="button">ÇIKIŞ</button>
+        <button class="btn primary" id="btnResume" type="button" data-i18n="btnResume">DEVAM ET</button>
+        <button class="btn" id="btnRestart" type="button" data-i18n="btnRestart">YENİDEN BAŞLAT</button>
+        <button class="btn" id="btnPauseMenu" type="button" data-i18n="btnMainMenu">ANA MENÜYE DÖN</button>
+        <button class="btn danger" id="btnPauseExit" type="button" data-i18n="btnExit">ÇIKIŞ</button>
       </div>
     </div>
   </section>
@@ -347,9 +345,9 @@
       <div class="logo" style="font-size:36px" id="overTitle">GAME OVER</div>
       <p class="tagline" id="overStats">Skor: 0 · Level: 1</p>
       <div class="btn-col">
-        <button class="btn primary" id="btnReplay" type="button">TEKRAR OYNA</button>
-        <button class="btn" id="btnOverMenu" type="button">ANA MENÜYE DÖN</button>
-        <button class="btn ghost" id="btnOverHome" type="button">ARCADE ANA SAYFA</button>
+        <button class="btn primary" id="btnReplay" type="button" data-i18n="btnReplay">TEKRAR OYNA</button>
+        <button class="btn" id="btnOverMenu" type="button" data-i18n="btnMainMenu">ANA MENÜYE DÖN</button>
+        <button class="btn ghost" id="btnOverHome" type="button" data-i18n="btnArcadeHome">ARCADE ANA SAYFA</button>
       </div>
     </div>
   </section>
@@ -358,6 +356,160 @@
 <script>
 (function () {
   "use strict";
+
+  // ============ I18N ============
+  var LANG = "tr";
+  var I18N = {
+    tr: {
+      tagline: "1996 ruhu · modern canvas · power-up’lı breakout",
+      btnStart: "BAŞLA",
+      btnFullscreen: "TAM EKRANDA OYNA",
+      btnHow: "NASIL OYNANIR",
+      btnExitMenu: "ÇIKIŞ / ARCADE’E DÖN",
+      soundOn: "🔊 Ses: Açık",
+      soundOff: "🔇 Ses: Kapalı",
+      fsNote: "ESC = menü · P = pause",
+      howTitle: "NASIL OYNANIR",
+      howItems: [
+        "<b>Raket:</b> fare, dokunmatik veya ← → / A D",
+        "<b>Top:</b> Space veya tık ile fırlat; çarpma noktası açıyı değiştirir",
+        "<b>Tuğlalar:</b> normal · çok vuruşlu · kırılmaz · patlayıcı",
+        "<b>Ekstralar:</b> multi-top, lazer, raket+/−, yapışkan, can, hız",
+        "<b>Hedef:</b> tüm kırılabilir tuğlaları temizle, 15 level"
+      ],
+      btnBackMenu: "MENÜYE DÖN",
+      pauseTitle: "DURAKLATILDI",
+      pauseTag: "Oyun duraklatıldı",
+      btnResume: "DEVAM ET",
+      btnRestart: "YENİDEN BAŞLAT",
+      btnMainMenu: "ANA MENÜYE DÖN",
+      btnExit: "ÇIKIŞ",
+      btnReplay: "TEKRAR OYNA",
+      btnArcadeHome: "ARCADE ANA SAYFA",
+      hudScore: "SKOR",
+      hudLives: "CAN",
+      hudLevel: "LEVEL",
+      titlePause: "Duraklat (P)",
+      titleSound: "Ses",
+      titleExit: "ESC / Çıkış",
+      gameOver: "OYUN BİTTİ",
+      congrats: "TEBRİKLER!",
+      stats: "Skor: {score}  ·  Level: {level}  ·  Oturum en iyi: {best}",
+      levelReady: "LEVEL {n}",
+      levelReadySub: "Hazır olduğunda topu fırlat",
+      lifeLost: "CAN -1",
+      livesLeft: "Kalan: {n}",
+      levelClear: "LEVEL TAMAM",
+      levelBonus: "+{n} bonus",
+      serveHint: "Space / tık ile fırlat",
+      power: {
+        multi: "ÇOKLU",
+        laser: "LAZER",
+        grow: "BÜYÜK",
+        shrink: "KÜÇÜK",
+        sticky: "YAPIŞ",
+        life: "CAN+",
+        slow: "YAVAŞ",
+        fast: "HIZLI"
+      }
+    },
+    en: {
+      tagline: "1996 spirit · modern canvas · power-up breakout",
+      btnStart: "START",
+      btnFullscreen: "PLAY FULLSCREEN",
+      btnHow: "HOW TO PLAY",
+      btnExitMenu: "EXIT / BACK TO ARCADE",
+      soundOn: "🔊 Sound: On",
+      soundOff: "🔇 Sound: Off",
+      fsNote: "ESC = menu · P = pause",
+      howTitle: "HOW TO PLAY",
+      howItems: [
+        "<b>Paddle:</b> mouse, touch or ← → / A D",
+        "<b>Ball:</b> launch with Space or click; hit angle depends on contact point",
+        "<b>Bricks:</b> normal · multi-hit · unbreakable · explosive",
+        "<b>Extras:</b> multi-ball, laser, paddle +/−, sticky, life, speed",
+        "<b>Goal:</b> clear all breakable bricks across 15 levels"
+      ],
+      btnBackMenu: "BACK TO MENU",
+      pauseTitle: "PAUSED",
+      pauseTag: "Game paused",
+      btnResume: "RESUME",
+      btnRestart: "RESTART",
+      btnMainMenu: "MAIN MENU",
+      btnExit: "EXIT",
+      btnReplay: "PLAY AGAIN",
+      btnArcadeHome: "ARCADE HOME",
+      hudScore: "SCORE",
+      hudLives: "LIVES",
+      hudLevel: "LEVEL",
+      titlePause: "Pause (P)",
+      titleSound: "Sound",
+      titleExit: "ESC / Exit",
+      gameOver: "GAME OVER",
+      congrats: "CONGRATS!",
+      stats: "Score: {score}  ·  Level: {level}  ·  Session best: {best}",
+      levelReady: "LEVEL {n}",
+      levelReadySub: "Launch the ball when ready",
+      lifeLost: "LIFE -1",
+      livesLeft: "Left: {n}",
+      levelClear: "LEVEL CLEAR",
+      levelBonus: "+{n} bonus",
+      serveHint: "Space / click to launch",
+      power: {
+        multi: "MULTI",
+        laser: "LASER",
+        grow: "GROW",
+        shrink: "SHRINK",
+        sticky: "STICKY",
+        life: "1UP",
+        slow: "SLOW",
+        fast: "FAST"
+      }
+    }
+  };
+
+  function t(key, vars) {
+    var pack = I18N[LANG] || I18N.tr;
+    var val = pack[key];
+    if (val == null) val = (I18N.tr[key] != null ? I18N.tr[key] : key);
+    if (typeof val === "string" && vars) {
+      Object.keys(vars).forEach(function (k) {
+        val = val.replace(new RegExp("\\{" + k + "\\}", "g"), String(vars[k]));
+      });
+    }
+    return val;
+  }
+
+  function applyLang(lang) {
+    LANG = lang === "en" ? "en" : "tr";
+    document.documentElement.lang = LANG;
+    var pack = I18N[LANG];
+    document.querySelectorAll("[data-i18n]").forEach(function (node) {
+      var key = node.getAttribute("data-i18n");
+      if (pack[key] != null && typeof pack[key] === "string") node.textContent = pack[key];
+    });
+    document.querySelectorAll("[data-i18n-title]").forEach(function (node) {
+      var key = node.getAttribute("data-i18n-title");
+      if (pack[key] != null) node.setAttribute("title", pack[key]);
+    });
+    var how = document.getElementById("howList");
+    if (how) {
+      how.innerHTML = "";
+      (pack.howItems || []).forEach(function (item) {
+        var li = document.createElement("li");
+        li.innerHTML = item;
+        how.appendChild(li);
+      });
+    }
+    var trBtn = document.getElementById("btnLangTr");
+    var enBtn = document.getElementById("btnLangEn");
+    if (trBtn && enBtn) {
+      trBtn.classList.toggle("is-on", LANG === "tr");
+      enBtn.classList.toggle("is-on", LANG === "en");
+    }
+    // refresh dynamic sound labels
+    if (typeof setSound === "function" && typeof state !== "undefined") setSound(state.soundOn, true);
+  }
 
   // ============ STATE (memory only) ============
   var state = {
@@ -505,9 +657,9 @@
     }
   }
 
-  function setSound(on) {
+  function setSound(on, silent) {
     state.soundOn = !!on;
-    el.soundMenu.textContent = state.soundOn ? "🔊 Ses: Açık" : "🔇 Ses: Kapalı";
+    el.soundMenu.textContent = state.soundOn ? t("soundOn") : t("soundOff");
     el.soundMenu.classList.toggle("is-on", state.soundOn);
     el.soundHud.textContent = state.soundOn ? "🔊" : "🔇";
     if (state.soundOn && (state.mode === "play" || state.mode === "pause")) startMusic();
@@ -691,7 +843,7 @@
     state.paddle = createPaddle();
     resetBallOnPaddle();
     updateHud();
-    showToast("LEVEL " + n, "Hazır olduğunda topu fırlat");
+    showToast(t("levelReady", { n: n }), t("levelReadySub"));
   }
 
   function startGame(fromLevel) {
@@ -779,11 +931,8 @@
     state.mode = won ? "win" : "over";
     state.running = false;
     if (state.score > state.bestSession) state.bestSession = state.score;
-    el.overTitle.textContent = won ? "TEBRİKLER!" : "GAME OVER";
-    el.overStats.textContent =
-      "Skor: " + state.score +
-      "  ·  Level: " + state.level +
-      "  ·  Oturum en iyi: " + state.bestSession;
+    el.overTitle.textContent = won ? t("congrats") : t("gameOver");
+    el.overStats.textContent = t("stats", { score: state.score, level: state.level, best: state.bestSession });
     showScreen("over");
     stopMusic();
     sfx(won ? "win" : "lose");
@@ -853,11 +1002,9 @@
     }
   }
 
-  function powerLabel(t) {
-    return ({
-      multi: "MULTI", laser: "LASER", grow: "GROW", shrink: "SHRINK",
-      sticky: "STICKY", life: "1UP", slow: "SLOW", fast: "FAST"
-    })[t] || t;
+  function powerLabel(kind) {
+    var pack = (I18N[LANG] && I18N[LANG].power) || I18N.tr.power;
+    return pack[kind] || kind;
   }
 
   function powerColor(t) {
@@ -1067,7 +1214,7 @@
       state.paddle = createPaddle();
       resetBallOnPaddle();
       sfx("lose");
-      showToast("CAN -1", "Kalan: " + state.lives);
+      showToast(t("lifeLost"), t("livesLeft", { n: state.lives }));
     }
 
     // powerups fall
@@ -1129,7 +1276,7 @@
         gameOver(true);
         return;
       }
-      showToast("LEVEL CLEAR", "+" + bonus + " bonus");
+      showToast(t("levelClear"), t("levelBonus", { n: bonus }));
       startLevel(state.level + 1);
     }
   }
@@ -1298,7 +1445,7 @@
       ctx.fillStyle = "rgba(226,232,240,0.8)";
       ctx.font = "700 14px Inter, sans-serif";
       ctx.textAlign = "center";
-      ctx.fillText("Space / tık ile fırlat", state.W / 2, state.H - 70);
+      ctx.fillText(t("serveHint"), state.W / 2, state.H - 70);
     }
 
     ctx.restore();
@@ -1478,8 +1625,15 @@
     window.location.href = "/mini-oyunlar/";
   };
 
+    // language
+  var btnLangTr = document.getElementById("btnLangTr");
+  var btnLangEn = document.getElementById("btnLangEn");
+  if (btnLangTr) btnLangTr.onclick = function () { applyLang("tr"); sfx("ui"); };
+  if (btnLangEn) btnLangEn.onclick = function () { applyLang("en"); sfx("ui"); };
+
   // boot
-  setSound(true);
+  applyLang("tr");
+  setSound(true, true);
   showScreen("menu");
   resize();
   requestAnimationFrame(loop);
