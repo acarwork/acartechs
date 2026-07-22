@@ -1836,3 +1836,67 @@ a.acartechs-arcade-card.is-live{
   .acartechs-arcade-video{display:none !important}
   .acartechs-arcade-poster{opacity:1 !important}
 }
+
+/* ========== Arcade media: image-only, zero text ========== */
+.acartechs-arcade-grid .acartechs-arcade-card-media,
+.acartechs-arcade-grid .acartechs-arcade-card-media *{
+  color:transparent !important;
+  font-size:0 !important;
+  line-height:0 !important;
+  text-indent:-9999px !important;
+}
+.acartechs-arcade-grid .acartechs-arcade-card-media::before,
+.acartechs-arcade-grid .acartechs-arcade-card-media::after,
+.acartechs-arcade-grid .acartechs-arcade-poster::before,
+.acartechs-arcade-grid .acartechs-arcade-poster::after,
+.acartechs-arcade-grid .acartechs-arcade-media-shade::before,
+.acartechs-arcade-grid .acartechs-arcade-media-shade::after{
+  content:none !important;
+  display:none !important;
+}
+/* restore media-shade as pure gradient visual only */
+.acartechs-arcade-grid .acartechs-arcade-media-shade{
+  color:transparent !important;
+  font-size:0 !important;
+  text-indent:0 !important;
+}
+.acartechs-arcade-grid .acartechs-arcade-card-body,
+.acartechs-arcade-grid .acartechs-arcade-card-body *{
+  text-indent:0 !important;
+}
+.acartechs-arcade-grid .acartechs-arcade-card-body{
+  color:inherit !important;
+  font-size:inherit !important;
+  line-height:inherit !important;
+}
+.acartechs-arcade-grid .acartechs-arcade-card-body strong{
+  color:#061b31 !important;
+  font-size:18px !important;
+  line-height:1.2 !important;
+  text-indent:0 !important;
+}
+.acartechs-arcade-grid .acartechs-arcade-card-body p{
+  color:#475569 !important;
+  font-size:13.5px !important;
+  line-height:1.45 !important;
+  text-indent:0 !important;
+}
+.acartechs-arcade-grid .acartechs-arcade-tag{
+  font-size:11px !important;
+  line-height:1.2 !important;
+  text-indent:0 !important;
+}
+.acartechs-arcade-grid .acartechs-arcade-go{
+  font-size:13px !important;
+  line-height:1.2 !important;
+  text-indent:0 !important;
+}
+/* banner thumbs also image-only */
+.acartechs-arcade-thumb-art{
+  overflow:hidden !important;
+  position:relative !important;
+}
+.acartechs-arcade-thumb-art::before,
+.acartechs-arcade-thumb-art::after{
+  content:none !important;
+}
