@@ -485,3 +485,56 @@ html,body{max-width:100%;overflow-x:hidden;}
     width:min(240px,72vw) !important;
   }
 }
+
+/* ACARTECHS image watermarks: smaller, tighter bottom-right */
+/* Do not touch ad placeholders (ACARTECHS REKLAM ALANI) */
+.acartechs-category-image:after,
+.acartechs-feed-image:after,
+.acartechs-videos article span::after,
+.acartechs-videos article span:after{
+  align-items:flex-end !important;
+  background:none !important;
+  bottom:6px !important;
+  color:rgba(255,255,255,0.88) !important;
+  content:"ACARTECHS" !important;
+  display:block !important;
+  font-size:9px !important;
+  font-style:normal !important;
+  font-weight:700 !important;
+  inset:auto !important;
+  justify-content:flex-end !important;
+  left:auto !important;
+  letter-spacing:0.04em !important;
+  line-height:1 !important;
+  padding:0 !important;
+  position:absolute !important;
+  right:7px !important;
+  text-align:right !important;
+  text-shadow:0 1px 3px rgba(0,0,0,0.55) !important;
+  top:auto !important;
+  z-index:2 !important;
+}
+/* Feed cards previously used full-overlay gradient + large centered label */
+.acartechs-feed-image{
+  position:relative !important;
+}
+.acartechs-feed-image:after{
+  font-size:9px !important;
+  bottom:6px !important;
+  right:7px !important;
+}
+/* Keep real <img> watermarks off (pseudo only works on non-img spans/divs) */
+img.acartechs-category-image:after,
+img.acartechs-feed-image:after{
+  display:none !important;
+}
+@media (max-width:760px){
+  .acartechs-category-image:after,
+  .acartechs-feed-image:after,
+  .acartechs-videos article span::after,
+  .acartechs-videos article span:after{
+    bottom:5px !important;
+    font-size:8px !important;
+    right:6px !important;
+  }
+}
