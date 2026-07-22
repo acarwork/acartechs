@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-22T23:27:19+03:00",
+  "updatedAt": "2026-07-22T23:43:34+03:00",
   "items": [
     {
       "id": "openai-chatgpt-agent-ile-gorevleri-tek-akista-topluyor",
@@ -90,17 +90,6 @@
       "image": "/wp-content/uploads/2026/06/netflix-haziran-2026-guvenli-kapak.jpg"
     },
     {
-      "id": "google-litert-js-ile-tarayicida-calisan-yapay-zekayi-hizlandiriyor",
-      "title": "Google, LiteRT.js ile tarayıcıda çalışan yapay zekayı hızlandırıyor",
-      "url": "/google-litert-js-ile-tarayicida-calisan-yapay-zekayi-hizlandiriyor/",
-      "category": "yapay-zeka",
-      "categoryLabel": "Yapay Zeka",
-      "date": "2026-07-10",
-      "iso": "2026-07-10T12:00:00+03:00",
-      "excerpt": "Google, LiteRT.js ile tarayıcıda çalışan yapay zekayı hızlandırıyor: LiteRT.js, yapay zeka modellerinin doğrudan web tarayıcısı içinde çalışmasını...",
-      "image": "/wp-content/uploads/2026/07/google-litert-js-web-ai-inference.jpg"
-    },
-    {
       "id": "android-bench-yapay-zeka-modellerini-android-gelistirme-gorevlerinde-olcuyor",
       "title": "Android Bench, yapay zeka modellerini Android geliştirme görevlerinde ölçüyor",
       "url": "/android-bench-yapay-zeka-modellerini-android-gelistirme-gorevlerinde-olcuyor/",
@@ -121,6 +110,17 @@
       "iso": "2026-07-10T12:00:00+03:00",
       "excerpt": "Xbox Game Pass temmuz listesine yeni oyunlar ekleniyor: Microsoft, Temmuz 2026 Game Pass listesinde Gears of War: Reloaded, The Planet Crafter, Tony...",
       "image": "/wp-content/uploads/2026/07/xbox-game-pass-temmuz-2026.jpg"
+    },
+    {
+      "id": "google-litert-js-ile-tarayicida-calisan-yapay-zekayi-hizlandiriyor",
+      "title": "Google, LiteRT.js ile tarayıcıda çalışan yapay zekayı hızlandırıyor",
+      "url": "/google-litert-js-ile-tarayicida-calisan-yapay-zekayi-hizlandiriyor/",
+      "category": "yapay-zeka",
+      "categoryLabel": "Yapay Zeka",
+      "date": "2026-07-10",
+      "iso": "2026-07-10T12:00:00+03:00",
+      "excerpt": "Google, LiteRT.js ile tarayıcıda çalışan yapay zekayı hızlandırıyor: LiteRT.js, yapay zeka modellerinin doğrudan web tarayıcısı içinde çalışmasını...",
+      "image": "/wp-content/uploads/2026/07/google-litert-js-web-ai-inference.jpg"
     },
     {
       "id": "abden-yapay-zeka-kaynakli-siber-tehditlere-karsi-yeni-adim-sirketleri-neler-bekliyor",
@@ -156,17 +156,6 @@
       "image": "/wp-content/uploads/2026/07/615374233-8278c369-2eec-4662-b5c0-88cc2d292341.jpg"
     },
     {
-      "id": "google-gemini-cli-adini-antigravity-cli-olarak-degistirme-surecini-duyurdu",
-      "title": "Google, Gemini CLI adını Antigravity CLI olarak değiştirme sürecini duyurdu",
-      "url": "/google-gemini-cli-adini-antigravity-cli-olarak-degistirme-surecini-duyurdu/",
-      "category": "yazilim",
-      "categoryLabel": "Yazılım",
-      "date": "2026-07-04",
-      "iso": "2026-07-04T12:00:00+03:00",
-      "excerpt": "Google, Gemini CLI adını Antigravity CLI olarak değiştirme sürecini duyurdu: Google Developers Blog üzerinde yayımlanan duyuru, Gemini CLI tarafındaki...",
-      "image": "/wp-content/uploads/2026/07/GeminiCLI-AntigravityCLI_1200x630.2e16d0ba.fill-1200x600-1.png"
-    },
-    {
       "id": "google-i-o-2026-gelistirici-oturumlarinda-yapay-zeka-araclari-one-cikti",
       "title": "Google I/O 2026 geliştirici oturumlarında yapay zekâ araçları öne çıktı",
       "url": "/google-i-o-2026-gelistirici-oturumlarinda-yapay-zeka-araclari-one-cikti/",
@@ -176,17 +165,6 @@
       "iso": "2026-07-04T12:00:00+03:00",
       "excerpt": "Google I/O 2026 geliştirici oturumlarında yapay zekâ araçları öne çıktı: Google Developers Blog, I/O 2026 geliştirici ana oturumunda yapay zekâ.",
       "image": "/wp-content/uploads/2026/07/GoogleForDevelopers-ComboIO-Wagta.2e16d0ba.fill-1200x600_984jqJ0.png"
-    },
-    {
-      "id": "2026da-one-cikan-yapay-zeka-modelleri-hangisi-ne-ise-yariyor",
-      "title": "2026’da Öne Çıkan Yapay Zekâ Modelleri: Hangisi Ne İşe Yarıyor?",
-      "url": "/2026da-one-cikan-yapay-zeka-modelleri-hangisi-ne-ise-yariyor/",
-      "category": "yapay-zeka",
-      "categoryLabel": "Yapay Zeka",
-      "date": "2026-07-04",
-      "iso": "2026-07-04T12:00:00+03:00",
-      "excerpt": "2026’da Öne Çıkan Yapay Zekâ Modelleri: Hangisi Ne İşe Yarıyor?: 2026 yapay zekâ modelleri karşılaştırma rehberi: GPT, Claude, Gemini ve diğer AI...",
-      "image": "/wp-content/uploads/2026/07/yapay-zeka-modelleri-2026-karsilastirma.png"
     },
     {
       "id": "xbox-wire-temmuz-ayi-indie-selects-listesini-yayimladi",
@@ -200,15 +178,26 @@
       "image": "/wp-content/uploads/2026/07/IndieSelects_July2026_Laurel_Wire-95ba9d698f0d81336d6b.jpg"
     },
     {
-      "id": "yurt-disi-telefon-kayitlarinda-e-devlet-donemi-ve-2026-harci",
-      "title": "Yurt dışı telefon kayıtlarında e-Devlet dönemi ve 2026 harcı",
-      "url": "/yurt-disi-telefon-kayitlarinda-e-devlet-donemi-ve-2026-harci/",
-      "category": "mobil",
-      "categoryLabel": "Mobil",
-      "date": "2026-07-02",
-      "iso": "2026-07-02T12:00:00+03:00",
-      "excerpt": "Yurt dışı telefon kayıtlarında e-Devlet dönemi ve 2026 harcı: Yurt dışından getirilen telefonlarda IMEI kaydı e-Devlet üzerinden yürütülüyor; 2026 harcı...",
-      "image": "/wp-content/uploads/2026/07/imei-edvlet-2026-cover-1.jpg"
+      "id": "google-gemini-cli-adini-antigravity-cli-olarak-degistirme-surecini-duyurdu",
+      "title": "Google, Gemini CLI adını Antigravity CLI olarak değiştirme sürecini duyurdu",
+      "url": "/google-gemini-cli-adini-antigravity-cli-olarak-degistirme-surecini-duyurdu/",
+      "category": "yazilim",
+      "categoryLabel": "Yazılım",
+      "date": "2026-07-04",
+      "iso": "2026-07-04T12:00:00+03:00",
+      "excerpt": "Google, Gemini CLI adını Antigravity CLI olarak değiştirme sürecini duyurdu: Google Developers Blog üzerinde yayımlanan duyuru, Gemini CLI tarafındaki...",
+      "image": "/wp-content/uploads/2026/07/GeminiCLI-AntigravityCLI_1200x630.2e16d0ba.fill-1200x600-1.png"
+    },
+    {
+      "id": "2026da-one-cikan-yapay-zeka-modelleri-hangisi-ne-ise-yariyor",
+      "title": "2026’da Öne Çıkan Yapay Zekâ Modelleri: Hangisi Ne İşe Yarıyor?",
+      "url": "/2026da-one-cikan-yapay-zeka-modelleri-hangisi-ne-ise-yariyor/",
+      "category": "yapay-zeka",
+      "categoryLabel": "Yapay Zeka",
+      "date": "2026-07-04",
+      "iso": "2026-07-04T12:00:00+03:00",
+      "excerpt": "2026’da Öne Çıkan Yapay Zekâ Modelleri: Hangisi Ne İşe Yarıyor?: 2026 yapay zekâ modelleri karşılaştırma rehberi: GPT, Claude, Gemini ve diğer AI...",
+      "image": "/wp-content/uploads/2026/07/yapay-zeka-modelleri-2026-karsilastirma.png"
     },
     {
       "id": "yenilenmis-elektronik-cihazlarda-dijital-sicil-donemi-basliyor",
@@ -220,6 +209,17 @@
       "iso": "2026-07-02T12:00:00+03:00",
       "excerpt": "Yenilenmiş elektronik cihazlarda dijital sicil dönemi başlıyor: Ticaret Bakanlığı’nın yeni düzenlemesiyle yenilenmiş cep telefonu, bilgisayar ve...",
       "image": "/wp-content/uploads/2026/07/384px.png"
+    },
+    {
+      "id": "yurt-disi-telefon-kayitlarinda-e-devlet-donemi-ve-2026-harci",
+      "title": "Yurt dışı telefon kayıtlarında e-Devlet dönemi ve 2026 harcı",
+      "url": "/yurt-disi-telefon-kayitlarinda-e-devlet-donemi-ve-2026-harci/",
+      "category": "mobil",
+      "categoryLabel": "Mobil",
+      "date": "2026-07-02",
+      "iso": "2026-07-02T12:00:00+03:00",
+      "excerpt": "Yurt dışı telefon kayıtlarında e-Devlet dönemi ve 2026 harcı: Yurt dışından getirilen telefonlarda IMEI kaydı e-Devlet üzerinden yürütülüyor; 2026 harcı...",
+      "image": "/wp-content/uploads/2026/07/imei-edvlet-2026-cover-1.jpg"
     }
   ]
 }
