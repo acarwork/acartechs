@@ -380,3 +380,40 @@ html,body{max-width:100%;overflow-x:hidden;}
   border:0 !important;
   visibility:hidden !important;
 }
+
+/* Match category/menu pages to homepage content width (1360) */
+/* Homepage sections use max-width:1360px; category pages were capped at 1120px
+   which left content inset under the wider topbar/footer. Align them. */
+.acartechs-page .acartechs-category-page,
+.acartechs-category-page{
+  box-sizing:border-box !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  max-width:1360px !important;
+  width:100% !important;
+}
+.acartechs-page .acartechs-hot-tags,.acartechs-page .acartechs-adsense-shell.placement-top,.acartechs-page .acartechs-adsense-unit.placement-top{
+  box-sizing:border-box !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  max-width:1360px !important;
+  width:100% !important;
+}
+/* Ensure category grids use full content width (no nested shrink) */
+.acartechs-category-spotlight,
+.acartechs-category-list,
+.acartechs-category-mini-grid{
+  box-sizing:border-box !important;
+  max-width:100% !important;
+  width:100% !important;
+}
+/* Keep topbar + main shell consistent on all non-home pages */
+.acartechs-page .acartechs-topbar{
+  max-width:min(1360px,100%) !important;
+  width:100% !important;
+}
+@media (max-width:760px){
+  .acartechs-page .acartechs-category-page,.acartechs-page .acartechs-hot-tags,.acartechs-page .acartechs-adsense-shell.placement-top{
+    max-width:100% !important;
+  }
+}
