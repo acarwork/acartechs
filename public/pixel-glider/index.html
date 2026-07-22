@@ -1,179 +1,108 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no"/>
 <title>Pixel Glider – AcarTechs Arcade</title>
-<meta name="description" content="Pixel Glider: tek tuşla yükselen drone ile engel tünellerini geç." />
-<link rel="canonical" href="https://acartechs.com/pixel-glider/" />
+<meta name="description" content="Tek tuş itki ile tünel engellerini geç."/>
+<link rel="canonical" href="https://acartechs.com/pixel-glider/"/>
 <style>
-  :root{--bg0:#04060f;--bg1:#0a1230;--neon:#22d3ee;--neon2:#a78bfa;--pink:#f472b6;--gold:#fbbf24;--lime:#4ade80;--text:#eef6ff;--muted:#94a3b8;--panel:rgba(6,12,28,.92);--line:rgba(125,211,252,.22)}
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{width:100%;height:100%;overflow:hidden;background:radial-gradient(1000px 600px at 15% 0%,#1e1b4b 0%,transparent 55%),radial-gradient(900px 500px at 90% 30%,#0e7490 0%,transparent 50%),linear-gradient(165deg,var(--bg0),var(--bg1) 55%,#050a16);color:var(--text);font-family:Inter,Segoe UI,system-ui,sans-serif;touch-action:none;user-select:none;-webkit-user-select:none}
-  #app{position:relative;width:100%;height:100%;min-height:100dvh}
-  canvas#game{display:block;width:100%;height:100%;cursor:default;object-fit:contain;background:#03060f}
-  .screen{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:16px;z-index:5;overflow:auto}
-  .screen.is-on{display:flex}
-  .panel{width:min(540px,100%);background:var(--panel);border:1px solid var(--line);border-radius:20px;box-shadow:0 0 0 1px rgba(255,255,255,.04),0 30px 80px rgba(0,0,0,.45),0 0 50px rgba(34,211,238,.08);padding:24px 20px 18px;backdrop-filter:blur(14px);text-align:center;position:relative}
-  .logo{font-size:clamp(28px,7vw,48px);font-weight:900;letter-spacing:.03em;line-height:1.05;background:linear-gradient(90deg,#67e8f9,#a78bfa 50%,#f472b6);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:6px}
-  .logo small{display:block;margin-top:8px;font-size:11px;letter-spacing:.26em;color:var(--neon);font-weight:800}
-  .genre{display:inline-block;margin:6px 0 8px;padding:4px 11px;border-radius:999px;border:1px solid rgba(34,211,238,.35);background:rgba(34,211,238,.1);color:var(--neon);font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
-  .tagline{color:var(--muted);font-size:13px;margin:8px 0 16px;line-height:1.45}
-  .btn-col{display:grid;gap:8px}
-  .btn{appearance:none;border:1px solid rgba(125,211,252,.28);background:linear-gradient(180deg,rgba(56,189,248,.16),rgba(15,23,42,.5));color:var(--text);font-weight:800;font-size:14px;letter-spacing:.03em;border-radius:12px;padding:12px 14px;cursor:pointer}
-  .btn:hover{border-color:rgba(34,211,238,.6);box-shadow:0 10px 24px rgba(34,211,238,.14)}
-  .btn.primary{background:linear-gradient(135deg,#22d3ee,#818cf8 55%,#c084fc);color:#06101f;border:none}
-  .btn.ghost{background:transparent}
-  .btn.danger{background:linear-gradient(135deg,#fb7185,#e11d48);border:none;color:#fff}
-  .lang-row{display:grid;gap:6px;justify-items:center;margin:0 0 12px}
-  .lang-label{color:var(--muted);font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
-  .lang-switch{display:inline-grid;grid-template-columns:1fr 1fr;gap:8px;min-width:120px}
-  .lang-switch button{appearance:none;border:1px solid rgba(125,211,252,.28);background:rgba(15,23,42,.55);color:var(--muted);font-size:12px;font-weight:900;border-radius:10px;padding:10px 12px;cursor:pointer}
-  .lang-switch button.is-on{background:linear-gradient(135deg,rgba(34,211,238,.32),rgba(129,140,248,.34));border-color:rgba(34,211,238,.7);color:#fff}
-  .menu-tools{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:8px;flex-wrap:wrap}
-  .sound-toggle{font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:999px;padding:7px 11px}
-  .sound-toggle.is-on{color:var(--neon);border-color:rgba(34,211,238,.45)}
-  .howto{text-align:left;color:#cbd5e1;font-size:13px;line-height:1.5;margin:8px 0 14px}
-  .howto li{margin:0 0 7px 16px}
-  .level-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:10px 0 14px}
-  .level-btn{appearance:none;border:1px solid rgba(125,211,252,.25);background:rgba(15,23,42,.55);color:#e2e8f0;border-radius:10px;padding:12px 4px;font-weight:800;font-size:13px;cursor:pointer}
-  .level-btn:hover{border-color:var(--neon)}
-  .level-btn.is-locked{opacity:.35;cursor:not-allowed}
-  .level-btn .stars{display:block;font-size:10px;color:var(--gold);margin-top:3px}
-  .hud{position:absolute;top:10px;left:10px;right:10px;z-index:6;display:none;pointer-events:none;gap:6px;justify-content:space-between;align-items:flex-start}
-  .hud.is-on{display:flex}
-  .hud-group{display:flex;flex-wrap:wrap;gap:5px}
-  .chip{background:rgba(2,8,20,.75);border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:11px;font-weight:800;backdrop-filter:blur(8px);color:#e2e8f0}
-  .chip b{color:var(--neon);margin-left:3px}
-  .hud-actions{display:flex;gap:5px;pointer-events:auto}
-  .icon-btn{width:36px;height:36px;border-radius:11px;border:1px solid var(--line);background:rgba(2,8,20,.8);color:#e2e8f0;font-size:13px;font-weight:900;cursor:pointer}
-  .overlay-msg{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);z-index:4;display:none;text-align:center;pointer-events:none;text-shadow:0 8px 30px rgba(0,0,0,.55)}
-  .overlay-msg.is-on{display:block}
-  .overlay-msg h2{font-size:clamp(24px,5vw,40px);font-weight:900;letter-spacing:.05em;margin-bottom:6px}
-  .overlay-msg p{color:var(--muted);font-weight:600}
-  .stars-big{font-size:28px;letter-spacing:4px;color:var(--gold);margin:6px 0 10px}
-  .fs-note{font-size:11px;color:var(--muted)}
-  @media (max-width:640px){.panel{padding:18px 14px 14px;border-radius:16px}.level-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+:root{--bg0:#04060f;--neon:#22d3ee;--neon2:#a78bfa;--pink:#f472b6;--gold:#fbbf24;--text:#eef6ff;--muted:#94a3b8;--panel:rgba(6,12,28,.94);--line:rgba(125,211,252,.25)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:radial-gradient(900px 500px at 20% 0%,#1e1b4b 0%,transparent 55%),linear-gradient(165deg,#04060f,#0a1230 55%,#050a16);color:var(--text);font-family:Inter,Segoe UI,system-ui,sans-serif;touch-action:none;user-select:none}
+#app{position:relative;width:100%;height:100%;min-height:100dvh}
+canvas#game{display:block;width:100%;height:100%;background:#03060f;object-fit:contain}
+.screen{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:16px;z-index:5;overflow:auto}
+.screen.is-on{display:flex}
+.panel{width:min(520px,100%);background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.45);padding:22px 18px 16px;text-align:center;backdrop-filter:blur(12px)}
+.logo{font-size:clamp(26px,6.5vw,44px);font-weight:900;letter-spacing:.03em;background:linear-gradient(90deg,#67e8f9,#a78bfa 50%,#f472b6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.logo small{display:block;margin-top:8px;font-size:11px;letter-spacing:.24em;color:var(--neon);font-weight:800}
+.genre{display:inline-block;margin:8px 0;padding:4px 10px;border-radius:999px;border:1px solid rgba(34,211,238,.35);background:rgba(34,211,238,.1);color:var(--neon);font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.tagline{color:var(--muted);font-size:13px;margin:8px 0 14px;line-height:1.45}
+.btn-col{display:grid;gap:8px}
+.btn{appearance:none;border:1px solid rgba(125,211,252,.28);background:linear-gradient(180deg,rgba(56,189,248,.16),rgba(15,23,42,.5));color:var(--text);font-weight:800;font-size:14px;border-radius:12px;padding:12px 14px;cursor:pointer}
+.btn:hover{border-color:rgba(34,211,238,.6)}
+.btn.primary{background:linear-gradient(135deg,#22d3ee,#818cf8 55%,#c084fc);color:#06101f;border:none}
+.btn.ghost{background:transparent}
+.btn.danger{background:linear-gradient(135deg,#fb7185,#e11d48);border:none;color:#fff}
+.lang-switch{display:inline-grid;grid-template-columns:1fr 1fr;gap:8px;min-width:120px;margin:0 0 12px}
+.lang-switch button{appearance:none;border:1px solid rgba(125,211,252,.28);background:rgba(15,23,42,.55);color:var(--muted);font-size:12px;font-weight:900;border-radius:10px;padding:10px;cursor:pointer}
+.lang-switch button.is-on{background:linear-gradient(135deg,rgba(34,211,238,.32),rgba(129,140,248,.34));border-color:rgba(34,211,238,.7);color:#fff}
+.menu-tools{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:8px;flex-wrap:wrap}
+.sound-toggle{font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:999px;padding:7px 11px}
+.sound-toggle.is-on{color:var(--neon)}
+.howto{text-align:left;color:#cbd5e1;font-size:13px;line-height:1.5;margin:8px 0 14px}
+.howto li{margin:0 0 7px 16px}
+.level-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0 14px}
+.level-btn{appearance:none;border:1px solid rgba(125,211,252,.25);background:rgba(15,23,42,.55);color:#e2e8f0;border-radius:10px;padding:12px 4px;font-weight:800;cursor:pointer}
+.level-btn.is-locked{opacity:.35;cursor:not-allowed}
+.level-btn .stars{display:block;font-size:10px;color:var(--gold);margin-top:3px}
+.hud{position:absolute;top:10px;left:10px;right:10px;z-index:6;display:none;pointer-events:none;gap:6px;justify-content:space-between;align-items:flex-start}
+.hud.is-on{display:flex}
+.hud-group{display:flex;flex-wrap:wrap;gap:5px}
+.chip{background:rgba(2,8,20,.78);border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:11px;font-weight:800;color:#e2e8f0}
+.chip b{color:var(--neon);margin-left:3px}
+.hud-actions{display:flex;gap:5px;pointer-events:auto}
+.icon-btn{width:36px;height:36px;border-radius:11px;border:1px solid var(--line);background:rgba(2,8,20,.85);color:#e2e8f0;font-weight:900;cursor:pointer}
+.toast{position:absolute;left:50%;top:38%;transform:translate(-50%,-50%);z-index:4;display:none;text-align:center;pointer-events:none;text-shadow:0 8px 24px #000}
+.toast.is-on{display:block}
+.toast h2{font-size:clamp(24px,5vw,40px);font-weight:900}
+.toast p{color:var(--muted);font-weight:600}
+.stars-big{font-size:28px;color:var(--gold);letter-spacing:4px;margin:6px 0}
+.fs-note{font-size:11px;color:var(--muted)}
 </style>
 </head>
 <body>
 <div id="app">
-  <canvas id="game" width="400" height="640" aria-label="Pixel Glider"></canvas>
-  <div class="hud" id="hud">
-    <div class="hud-group">
-      <div class="chip"><span data-i18n="hudScore">SKOR</span> <b id="hudScore">0</b></div>
-      <div class="chip"><span data-i18n="hudLevel">LEVEL</span> <b id="hudLevel">1</b></div>
-      <div class="chip"><span data-i18n="hudLives">CAN</span> <b id="hudLives">3</b></div>
-      <div class="chip" id="hudExtraChip"><span id="hudExtraLabel">—</span> <b id="hudExtra">0</b></div>
+<canvas id="game" width="400" height="640" aria-label="Pixel Glider"></canvas>
+<div class="hud" id="hud">
+  <div class="hud-group">
+    <div class="chip"><span data-i18n="hudScore">SKOR</span> <b id="hudScore">0</b></div>
+    <div class="chip"><span data-i18n="hudLevel">LEVEL</span> <b id="hudLevel">1</b></div>
+    <div class="chip"><span data-i18n="hudLives">CAN</span> <b id="hudLives">3</b></div>
+    <div class="chip"><span id="hudExtraLabel">—</span> <b id="hudExtra">0</b></div>
+  </div>
+  <div class="hud-actions">
+    <button class="icon-btn" id="btnPause" type="button">II</button>
+    <button class="icon-btn" id="btnSoundHud" type="button">🔊</button>
+    <button class="icon-btn" id="btnExit" type="button">✕</button>
+  </div>
+</div>
+<div class="toast" id="toast"><h2 id="toastTitle"></h2><p id="toastText"></p></div>
+
+<section class="screen is-on" id="screenMenu">
+  <div class="panel">
+    <div class="logo">Pixel Glider<small>ACARTECHS ARCADE</small></div>
+    <span class="genre" data-i18n="genre">Aksiyon · Uçuş</span>
+    <p class="tagline" data-i18n="tagline">Space/tık = itki · kapılardan geç</p>
+    <div class="lang-switch"><button type="button" id="btnLangTr" class="is-on">TR</button><button type="button" id="btnLangEn">EN</button></div>
+    <div class="btn-col">
+      <button class="btn primary" id="btnStart" type="button" data-i18n="btnStart">BAŞLA</button>
+      <button class="btn" id="btnLevels" type="button" data-i18n="btnLevels">LEVEL SEÇ</button>
+      <button class="btn" id="btnFullscreen" type="button" data-i18n="btnFullscreen">TAM EKRANDA OYNA</button>
+      <button class="btn" id="btnHow" type="button" data-i18n="btnHow">NASIL OYNANIR</button>
+      <button class="btn ghost" id="btnExitMenu" type="button" data-i18n="btnExitMenu">ÇIKIŞ / ARCADE</button>
     </div>
-    <div class="hud-actions">
-      <button class="icon-btn" id="btnPause" type="button" title="P">II</button>
-      <button class="icon-btn" id="btnSoundHud" type="button" title="Ses">🔊</button>
-      <button class="icon-btn" id="btnExit" type="button" title="ESC">✕</button>
+    <div class="menu-tools">
+      <button class="sound-toggle is-on" id="btnSoundMenu" type="button">🔊 Ses: Açık</button>
+      <span class="fs-note" data-i18n="fsNote">ESC menü · P pause</span>
     </div>
   </div>
-  <div class="overlay-msg" id="toast"><h2 id="toastTitle"></h2><p id="toastText"></p></div>
-
-  <section class="screen is-on" id="screenMenu">
-    <div class="panel">
-      <div class="logo">PIXEL GLIDER<small>ACARTECHS ARCADE</small></div>
-      <span class="genre" data-i18n="genre">Aksiyon · Uçuş</span>
-      <p class="tagline" data-i18n="tagline">Tek tuş itki · neon drone · tünel engelleri · 12 level</p>
-      <div class="lang-row">
-        <span class="lang-label" data-i18n="langLabel">Dil / Language</span>
-        <div class="lang-switch"><button type="button" id="btnLangTr" class="is-on">TR</button><button type="button" id="btnLangEn">EN</button></div>
-      </div>
-      <div class="btn-col">
-        <button class="btn primary" id="btnStart" type="button" data-i18n="btnStart">BAŞLA</button>
-        <button class="btn" id="btnLevels" type="button" data-i18n="btnLevels">LEVEL SEÇ</button>
-        <button class="btn" id="btnFullscreen" type="button" data-i18n="btnFullscreen">TAM EKRANDA OYNA</button>
-        <button class="btn" id="btnHow" type="button" data-i18n="btnHow">NASIL OYNANIR</button>
-        <button class="btn ghost" id="btnExitMenu" type="button" data-i18n="btnExitMenu">ÇIKIŞ / ARCADE</button>
-      </div>
-      <div class="menu-tools">
-        <button class="sound-toggle is-on" id="btnSoundMenu" type="button">🔊 Ses: Açık</button>
-        <span class="fs-note" data-i18n="fsNote">ESC menü · P pause</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="screen" id="screenLevels">
-    <div class="panel">
-      <div class="logo" style="font-size:28px" data-i18n="levelsTitle">LEVEL SEÇ</div>
-      <div class="level-grid" id="levelGrid"></div>
-      <div class="btn-col"><button class="btn primary" id="btnLevelsBack" type="button" data-i18n="btnBackMenu">MENÜYE DÖN</button></div>
-    </div>
-  </section>
-
-  <section class="screen" id="screenHow">
-    <div class="panel">
-      <div class="logo" style="font-size:28px" data-i18n="howTitle">NASIL OYNANIR</div>
-      <ul class="howto" id="howList"></ul>
-      <div class="btn-col"><button class="btn primary" id="btnHowBack" type="button" data-i18n="btnBackMenu">MENÜYE DÖN</button></div>
-    </div>
-  </section>
-
-  <section class="screen" id="screenPause">
-    <div class="panel">
-      <div class="logo" style="font-size:34px" data-i18n="pauseTitle">DURAKLATILDI</div>
-      <div class="btn-col">
-        <button class="btn primary" id="btnResume" type="button" data-i18n="btnResume">DEVAM ET</button>
-        <button class="btn" id="btnRestart" type="button" data-i18n="btnRestart">YENİDEN BAŞLAT</button>
-        <button class="btn" id="btnPauseMenu" type="button" data-i18n="btnMainMenu">ANA MENÜ</button>
-        <button class="btn danger" id="btnPauseExit" type="button" data-i18n="btnExit">ÇIKIŞ</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="screen" id="screenOver">
-    <div class="panel">
-      <div class="logo" style="font-size:30px" id="overTitle">GAME OVER</div>
-      <div class="stars-big" id="overStars"></div>
-      <p class="tagline" id="overStats"></p>
-      <div class="btn-col">
-        <button class="btn primary" id="btnNext" type="button" data-i18n="btnNext">SONRAKİ LEVEL</button>
-        <button class="btn" id="btnReplay" type="button" data-i18n="btnReplay">TEKRAR OYNA</button>
-        <button class="btn" id="btnOverMenu" type="button" data-i18n="btnMainMenu">ANA MENÜ</button>
-        <button class="btn ghost" id="btnOverHome" type="button" data-i18n="btnArcadeHome">ARCADE ANA SAYFA</button>
-      </div>
-    </div>
-  </section>
+</section>
+<section class="screen" id="screenLevels"><div class="panel"><div class="logo" style="font-size:28px" data-i18n="levelsTitle">LEVEL SEÇ</div><div class="level-grid" id="levelGrid"></div><div class="btn-col"><button class="btn primary" id="btnLevelsBack" type="button" data-i18n="btnBackMenu">MENÜYE DÖN</button></div></div></section>
+<section class="screen" id="screenHow"><div class="panel"><div class="logo" style="font-size:28px" data-i18n="howTitle">NASIL OYNANIR</div><ul class="howto" id="howList"></ul><div class="btn-col"><button class="btn primary" id="btnHowBack" type="button" data-i18n="btnBackMenu">MENÜYE DÖN</button></div></div></section>
+<section class="screen" id="screenPause"><div class="panel"><div class="logo" style="font-size:34px" data-i18n="pauseTitle">DURAKLATILDI</div><div class="btn-col"><button class="btn primary" id="btnResume" type="button" data-i18n="btnResume">DEVAM ET</button><button class="btn" id="btnRestart" type="button" data-i18n="btnRestart">YENİDEN BAŞLAT</button><button class="btn" id="btnPauseMenu" type="button" data-i18n="btnMainMenu">ANA MENÜ</button><button class="btn danger" id="btnPauseExit" type="button" data-i18n="btnExit">ÇIKIŞ</button></div></div></section>
+<section class="screen" id="screenOver"><div class="panel"><div class="logo" style="font-size:30px" id="overTitle">GAME OVER</div><div class="stars-big" id="overStars"></div><p class="tagline" id="overStats"></p><div class="btn-col"><button class="btn primary" id="btnNext" type="button" data-i18n="btnNext">SONRAKİ LEVEL</button><button class="btn" id="btnReplay" type="button" data-i18n="btnReplay">TEKRAR OYNA</button><button class="btn" id="btnOverMenu" type="button" data-i18n="btnMainMenu">ANA MENÜ</button><button class="btn ghost" id="btnOverHome" type="button" data-i18n="btnArcadeHome">ARCADE ANA SAYFA</button></div></div></section>
 </div>
 <script>
-
 (function(){
 "use strict";
-var LANG="tr";
-var MAX_LEVEL=12;
+var LANG="tr", MAX_LEVEL=12, CW=400, CH=640;
 var I18N={
- tr:{
-  genre:"Aksiyon · Uçuş", tagline:"Tek tuş itki · neon drone · tünel engelleri · 12 level", langLabel:"Dil / Language",
-  btnStart:"BAŞLA", btnLevels:"LEVEL SEÇ", btnFullscreen:"TAM EKRANDA OYNA", btnHow:"NASIL OYNANIR",
-  btnExitMenu:"ÇIKIŞ / ARCADE", soundOn:"🔊 Ses: Açık", soundOff:"🔇 Ses: Kapalı",
-  fsNote:"ESC menü · P pause", howTitle:"NASIL OYNANIR", howItems:["<b>Kontrol:</b> Space / tık / dokun = itki","<b>Hedef:</b> level mesafesini tamamla","<b>Engel:</b> üst-alt kapılara çarpma can düşürür","<b>Skor:</b> mesafe + geçilen kapılar","<b>12 level:</b> hız ve daralma artar"],
-  levelsTitle:"LEVEL SEÇ", btnBackMenu:"MENÜYE DÖN", pauseTitle:"DURAKLATILDI",
-  btnResume:"DEVAM ET", btnRestart:"YENİDEN BAŞLAT", btnMainMenu:"ANA MENÜ", btnExit:"ÇIKIŞ",
-  btnReplay:"TEKRAR OYNA", btnNext:"SONRAKİ LEVEL", btnArcadeHome:"ARCADE ANA SAYFA",
-  hudScore:"SKOR", hudLevel:"LEVEL", hudLives:"CAN",
-  gameOver:"OYUN BİTTİ", levelClear:"LEVEL TAMAM", congrats:"TEBRİKLER!",
-  stats:"Skor: {score} · Level: {level} · En iyi: {best}",
-  starsLabel:"Yıldız", locked:"Kilitli"
- },
- en:{
-  genre:"Action · Flyer", tagline:"One-tap thruster · neon drone · tunnel gates · 12 levels", langLabel:"Language / Dil",
-  btnStart:"START", btnLevels:"SELECT LEVEL", btnFullscreen:"PLAY FULLSCREEN", btnHow:"HOW TO PLAY",
-  btnExitMenu:"EXIT / ARCADE", soundOn:"🔊 Sound: On", soundOff:"🔇 Sound: Off",
-  fsNote:"ESC menu · P pause", howTitle:"HOW TO PLAY", howItems:["<b>Controls:</b> Space / click / tap = thrust","<b>Goal:</b> complete level distance","<b>Hazards:</b> hitting gates costs a life","<b>Score:</b> distance + gates cleared","<b>12 levels:</b> speed and gaps tighten"],
-  levelsTitle:"SELECT LEVEL", btnBackMenu:"BACK TO MENU", pauseTitle:"PAUSED",
-  btnResume:"RESUME", btnRestart:"RESTART", btnMainMenu:"MAIN MENU", btnExit:"EXIT",
-  btnReplay:"PLAY AGAIN", btnNext:"NEXT LEVEL", btnArcadeHome:"ARCADE HOME",
-  hudScore:"SCORE", hudLevel:"LEVEL", hudLives:"LIVES",
-  gameOver:"GAME OVER", levelClear:"LEVEL CLEAR", congrats:"CONGRATS!",
-  stats:"Score: {score} · Level: {level} · Best: {best}",
-  starsLabel:"Stars", locked:"Locked"
- }
+ tr:{genre:"Aksiyon · Uçuş",tagline:"Space/tık = itki · kapılardan geç",langLabel:"Dil",btnStart:"BAŞLA",btnLevels:"LEVEL SEÇ",btnFullscreen:"TAM EKRANDA OYNA",btnHow:"NASIL OYNANIR",btnExitMenu:"ÇIKIŞ / ARCADE",soundOn:"🔊 Ses: Açık",soundOff:"🔇 Ses: Kapalı",fsNote:"ESC menü · P pause",howTitle:"NASIL OYNANIR",howItems:["<b>Kontrol:</b> Space / tık / dokun = itki", "<b>Hedef:</b> Level mesafesini tamamla", "<b>Engel:</b> Kapılara çarpma can düşürür", "<b>Skor:</b> Mesafe + geçilen kapı", "<b>12 level:</b> Hız ve daralma artar"],levelsTitle:"LEVEL SEÇ",btnBackMenu:"MENÜYE DÖN",pauseTitle:"DURAKLATILDI",btnResume:"DEVAM ET",btnRestart:"YENİDEN BAŞLAT",btnMainMenu:"ANA MENÜ",btnExit:"ÇIKIŞ",btnReplay:"TEKRAR OYNA",btnNext:"SONRAKİ LEVEL",btnArcadeHome:"ARCADE ANA SAYFA",hudScore:"SKOR",hudLevel:"LEVEL",hudLives:"CAN",gameOver:"OYUN BİTTİ",levelClear:"LEVEL TAMAM",congrats:"TEBRİKLER!",stats:"Skor: {score} · Level: {level} · En iyi: {best}"},
+ en:{genre:"Action · Flyer",tagline:"Space/tap = thrust · clear gates",langLabel:"Language",btnStart:"START",btnLevels:"SELECT LEVEL",btnFullscreen:"PLAY FULLSCREEN",btnHow:"HOW TO PLAY",btnExitMenu:"EXIT / ARCADE",soundOn:"🔊 Sound: On",soundOff:"🔇 Sound: Off",fsNote:"ESC menu · P pause",howTitle:"HOW TO PLAY",howItems:["<b>Controls:</b> Space / tap = thrust", "<b>Goal:</b> Finish level distance", "<b>Hazards:</b> Hitting gates costs a life", "<b>Score:</b> Distance + gates", "<b>12 levels:</b> Faster, tighter gaps"],levelsTitle:"SELECT LEVEL",btnBackMenu:"BACK TO MENU",pauseTitle:"PAUSED",btnResume:"RESUME",btnRestart:"RESTART",btnMainMenu:"MAIN MENU",btnExit:"EXIT",btnReplay:"PLAY AGAIN",btnNext:"NEXT LEVEL",btnArcadeHome:"ARCADE HOME",hudScore:"SCORE",hudLevel:"LEVEL",hudLives:"LIVES",gameOver:"GAME OVER",levelClear:"LEVEL CLEAR",congrats:"CONGRATS!",stats:"Score: {score} · Level: {level} · Best: {best}"}
 };
-function t(k,vars){var p=I18N[LANG]||I18N.tr,v=p[k];if(v==null)v=I18N.tr[k]!=null?I18N.tr[k]:k;if(typeof v==="string"&&vars)Object.keys(vars).forEach(function(x){v=v.replace(new RegExp("\\{"+x+"\\}","g"),String(vars[x]));});return v;}
+function t(k,vars){var p=I18N[LANG]||I18N.tr,v=p[k]; if(v==null)v=I18N.tr[k]!=null?I18N.tr[k]:k; if(typeof v==="string"&&vars)Object.keys(vars).forEach(function(x){v=v.replace(new RegExp("\\{"+x+"\\}","g"),String(vars[x]));}); return v;}
 function applyLang(lang){
  LANG=lang==="en"?"en":"tr"; document.documentElement.lang=LANG; var pack=I18N[LANG];
  document.querySelectorAll("[data-i18n]").forEach(function(n){var k=n.getAttribute("data-i18n"); if(pack[k]!=null&&typeof pack[k]==="string")n.textContent=pack[k];});
@@ -182,44 +111,35 @@ function applyLang(lang){
  document.getElementById("btnLangEn").classList.toggle("is-on",LANG==="en");
  setSound(S.soundOn,true); buildLevelGrid();
 }
-var S={
- mode:"menu", soundOn:true, score:0, best:0, lives:3, level:1, maxUnlocked:1,
- running:false, stars:0, levelStars:{}, lastTs:0, dpr:1, W:400, H:640, shake:0, flash:0,
- particles:[], keys:{}, pointer:null, win:false
-};
+var S={mode:"menu",ready:false,soundOn:true,score:0,best:0,lives:3,level:1,maxUnlocked:1,running:false,stars:0,levelStars:{},lastTs:0,dpr:1,W:CW,H:CH,shake:0,flash:0,particles:[],keys:{},pointer:null,win:false};
 var canvas=document.getElementById("game"), ctx=canvas.getContext("2d");
 var screens={menu:document.getElementById("screenMenu"),levels:document.getElementById("screenLevels"),how:document.getElementById("screenHow"),pause:document.getElementById("screenPause"),over:document.getElementById("screenOver")};
 var audioCtx=null, musicTimer=null;
 function ensureAudio(){if(audioCtx)return; var AC=window.AudioContext||window.webkitAudioContext; if(AC)audioCtx=new AC();}
 function beep(f,d,type,g,slide){if(!S.soundOn||!audioCtx||!(f>0))return; var t0=audioCtx.currentTime,o=audioCtx.createOscillator(),gn=audioCtx.createGain(); o.type=type||"square"; o.frequency.setValueAtTime(f,t0); if(slide)o.frequency.exponentialRampToValueAtTime(Math.max(40,slide),t0+d); gn.gain.setValueAtTime(0.0001,t0); gn.gain.exponentialRampToValueAtTime(g||0.07,t0+0.01); gn.gain.exponentialRampToValueAtTime(0.0001,t0+d); o.connect(gn); gn.connect(audioCtx.destination); o.start(t0); o.stop(t0+d+0.02);}
-function sfx(n){if(!S.soundOn)return; ensureAudio(); if(!audioCtx)return; if(n==="ui")beep(520,0.05,"square",0.04); else if(n==="ok")beep(660,0.08,"triangle",0.05); else if(n==="bad")beep(140,0.2,"sawtooth",0.08,60); else if(n==="star")beep(880,0.1,"square",0.05); else if(n==="win"){beep(523,0.1,"square",0.06); setTimeout(function(){beep(659,0.12,"square",0.06);},90); setTimeout(function(){beep(784,0.16,"square",0.06);},180);} else if(n==="coin")beep(990,0.07,"square",0.045); else if(n==="shot")beep(320,0.05,"square",0.04,180); else if(n==="move")beep(240,0.04,"square",0.03);}
-function startMusic(){stopMusic(); if(!S.soundOn)return; ensureAudio(); if(!audioCtx)return; var notes=[392,349,330,294,330,349,392,440],i=0; function tick(){if(!S.soundOn||S.mode!=="play")return; beep(notes[i%notes.length],0.1,"triangle",0.015); i++; musicTimer=setTimeout(tick,240);} tick();}
+function sfx(n){if(!S.soundOn)return; ensureAudio(); if(!audioCtx)return; if(n==="ui")beep(520,0.05,"square",0.04); else if(n==="ok")beep(660,0.08,"triangle",0.05); else if(n==="bad")beep(140,0.2,"sawtooth",0.08,60); else if(n==="win"){beep(523,0.1,"square",0.06); setTimeout(function(){beep(659,0.12,"square",0.06);},90);} else if(n==="coin")beep(990,0.07,"square",0.045); else if(n==="shot")beep(320,0.05,"square",0.04,180); else if(n==="move")beep(240,0.04,"square",0.03); else if(n==="jump")beep(420,0.09,"triangle",0.06,680);}
+function startMusic(){stopMusic(); if(!S.soundOn)return; ensureAudio(); if(!audioCtx)return; var notes=[392,349,330,294,330,349,392,440],i=0; function tick(){if(!S.soundOn||S.mode!=="play")return; var f=notes[i%notes.length]; if(f>0)beep(f,0.1,"triangle",0.014); i++; musicTimer=setTimeout(tick,240);} tick();}
 function stopMusic(){if(musicTimer){clearTimeout(musicTimer); musicTimer=null;}}
 function setSound(on,silent){S.soundOn=!!on; var lab=S.soundOn?t("soundOn"):t("soundOff"); var mb=document.getElementById("btnSoundMenu"), hb=document.getElementById("btnSoundHud"); if(mb){mb.textContent=lab; mb.classList.toggle("is-on",S.soundOn);} if(hb)hb.textContent=S.soundOn?"🔊":"🔇"; if(!silent){if(S.soundOn&&S.mode==="play")startMusic(); else stopMusic();}}
 function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
 function rand(a,b){return a+Math.random()*(b-a);}
 function showScreen(name){Object.keys(screens).forEach(function(k){screens[k].classList.toggle("is-on",k===name);}); document.getElementById("hud").classList.toggle("is-on", name===null && S.mode==="play");}
-function updateHud(){document.getElementById("hudScore").textContent=String(S.score|0); document.getElementById("hudLevel").textContent=String(S.level); document.getElementById("hudLives").textContent=String(S.lives); if(typeof onHudExtra==="function")onHudExtra();}
+function updateHud(){document.getElementById("hudScore").textContent=String(S.score|0); document.getElementById("hudLevel").textContent=String(S.level); document.getElementById("hudLives").textContent=String(S.lives); if(S.ready&&typeof onHudExtra==="function")onHudExtra();}
 function showToast(title,text){var el=document.getElementById("toast"); document.getElementById("toastTitle").textContent=title; document.getElementById("toastText").textContent=text||""; el.classList.add("is-on"); clearTimeout(showToast._t); showToast._t=setTimeout(function(){el.classList.remove("is-on");},1100);}
-function burst(x,y,col,n,spd){for(var i=0;i<n;i++){var a=Math.random()*Math.PI*2,s=rand(spd*0.3,spd); S.particles.push({x:x,y:y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:rand(0.2,0.6),max:0.6,r:rand(1.2,3),color:col});}}
-function updateParticles(dt){for(var i=S.particles.length-1;i>=0;i--){var p=S.particles[i]; p.life-=dt; p.x+=p.vx*dt; p.y+=p.vy*dt; p.vy+=50*dt; if(p.life<=0)S.particles.splice(i,1);}}
+function burst(x,y,col,n,spd){for(var i=0;i<n;i++){var a=Math.random()*Math.PI*2,s=rand(spd*0.3,spd); S.particles.push({x:x,y:y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:rand(0.2,0.55),max:0.55,r:rand(1.2,3),color:col});}}
+function updateParticles(dt){for(var i=S.particles.length-1;i>=0;i--){var p=S.particles[i]; p.life-=dt; p.x+=p.vx*dt; p.y+=p.vy*dt; p.vy+=40*dt; if(p.life<=0)S.particles.splice(i,1);}}
 function drawParticles(){S.particles.forEach(function(p){ctx.globalAlpha=Math.max(0,p.life/(p.max||0.5)); ctx.fillStyle=p.color; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();}); ctx.globalAlpha=1;}
-function palette(level){var pal=[
- ["#0b1535","#22d3ee","#a78bfa"],["#1a0b2e","#f472b6","#c084fc"],["#052e1a","#4ade80","#2dd4bf"],
- ["#2a0a0a","#fb7185","#fbbf24"],["#0c1a2e","#38bdf8","#818cf8"],["#1e1b4b","#e879f9","#67e8f9"],
- ["#0f172a","#f59e0b","#ef4444"],["#042f2e","#2dd4bf","#a3e635"],["#1c1917","#f97316","#fde047"],
- ["#172554","#60a5fa","#c4b5fd"],["#3b0764","#d946ef","#22d3ee"],["#450a0a","#f43f5e","#fbbf24"]
-]; return pal[(level-1)%pal.length];}
+function palette(level){var pal=[["#0b1535","#22d3ee","#a78bfa"],["#1a0b2e","#f472b6","#c084fc"],["#052e1a","#4ade80","#2dd4bf"],["#2a0a0a","#fb7185","#fbbf24"],["#0c1a2e","#38bdf8","#818cf8"],["#1e1b4b","#e879f9","#67e8f9"],["#0f172a","#f59e0b","#ef4444"],["#042f2e","#2dd4bf","#a3e635"],["#1c1917","#f97316","#fde047"],["#172554","#60a5fa","#c4b5fd"],["#3b0764","#d946ef","#22d3ee"],["#450a0a","#f43f5e","#fbbf24"]]; return pal[(level-1)%pal.length];}
 function isFs(){return !!(document.fullscreenElement||document.webkitFullscreenElement);}
-function enterFs(){var el=document.documentElement,r=el.requestFullscreen||el.webkitRequestFullscreen; if(r)r.call(el);}
+function enterFs(){var el=document.documentElement,r=el.requestFullscreen||el.webkitRequestFullscreen; if(r)r.call(el).catch(function(){});}
 function exitFs(){var e=document.exitFullscreen||document.webkitExitFullscreen; if(e&&isFs())e.call(document);}
 function goMenu(){S.mode="menu"; S.running=false; stopMusic(); showScreen("menu");}
 function pauseGame(){if(S.mode!=="play")return; S.mode="pause"; S.running=false; stopMusic(); showScreen("pause");}
 function resumeGame(){if(S.mode!=="pause")return; S.mode="play"; S.running=true; showScreen(null); startMusic();}
-function calcStars(score, target){if(score>=target*1.4)return 3; if(score>=target)return 2; return 1;}
+function calcStars(score,target){if(score>=target*1.5)return 3; if(score>=target)return 2; return 1;}
 function levelComplete(bonus){
  S.running=false; S.win=true; S.mode="over"; stopMusic(); sfx("win");
- var target=LEVEL_TARGET(S.level); S.stars=calcStars(S.score+ (bonus||0), target);
+ var target=LEVEL_TARGET(S.level); S.stars=calcStars(S.score+(bonus||0), target);
  var prev=S.levelStars[S.level]|0; if(S.stars>prev)S.levelStars[S.level]=S.stars;
  if(S.level>=S.maxUnlocked && S.level<MAX_LEVEL)S.maxUnlocked=S.level+1;
  if(S.score>S.best)S.best=S.score;
@@ -248,47 +168,68 @@ function buildLevelGrid(){
  }
 }
 function startLevel(n){
- S.level=n; S.score=0; S.lives=3; S.win=false; S.particles=[]; S.shake=0; S.flash=0;
- if(typeof gameReset==="function")gameReset();
- S.mode="play"; S.running=true; showScreen(null); updateHud(); startMusic(); sfx("ok");
- showToast("LEVEL "+n,"");
+ try{
+  S.level=n|0; S.score=0; S.lives=3; S.win=false; S.particles=[]; S.shake=0; S.flash=0; S.keys={};
+  gameReset();
+  S.ready=true; S.mode="play"; S.running=true; showScreen(null); updateHud(); startMusic(); sfx("ok");
+  showToast("LEVEL "+n,"");
+ }catch(err){console.error(err); alert("Oyun yüklenemedi: "+err.message);}
 }
-function resize(){S.W=400; S.H=640; S.dpr=Math.min(window.devicePixelRatio||1,2); canvas.width=Math.round(S.W*S.dpr); canvas.height=Math.round(S.H*S.dpr);}
-function canvasPos(e){var rect=canvas.getBoundingClientRect(), scale=Math.min(rect.width/S.W,rect.height/S.H); var ox=rect.left+(rect.width-S.W*scale)/2, oy=rect.top+(rect.height-S.H*scale)/2; var cx=e.clientX!=null?e.clientX:(e.touches&&e.touches[0]?e.touches[0].clientX:0); var cy=e.clientY!=null?e.clientY:(e.touches&&e.touches[0]?e.touches[0].clientY:0); return {x:(cx-ox)/scale, y:(cy-oy)/scale};}
-function loop(ts){if(!S.lastTs)S.lastTs=ts; var dt=Math.min(0.033,(ts-S.lastTs)/1000); S.lastTs=ts; if(S.mode==="play"&&S.running){if(typeof gameUpdate==="function")gameUpdate(dt); updateParticles(dt); if(S.shake>0)S.shake=Math.max(0,S.shake-dt*8); if(S.flash>0)S.flash=Math.max(0,S.flash-dt*3);} drawFrame(); requestAnimationFrame(loop);}
+function resize(){S.W=CW; S.H=CH; S.dpr=Math.min(window.devicePixelRatio||1,2); canvas.width=Math.round(S.W*S.dpr); canvas.height=Math.round(S.H*S.dpr);}
+function canvasPos(e){
+  var rect=canvas.getBoundingClientRect(), scale=Math.min(rect.width/S.W,rect.height/S.H);
+  var ox=rect.left+(rect.width-S.W*scale)/2, oy=rect.top+(rect.height-S.H*scale)/2;
+  var cx=e.clientX!=null?e.clientX:(e.touches&&e.touches[0]?e.touches[0].clientX:0);
+  var cy=e.clientY!=null?e.clientY:(e.touches&&e.touches[0]?e.touches[0].clientY:0);
+  return {x:(cx-ox)/scale, y:(cy-oy)/scale};
+}
+function loop(ts){
+  if(!S.lastTs)S.lastTs=ts; var dt=Math.min(0.033,(ts-S.lastTs)/1000); S.lastTs=ts;
+  if(S.mode==="play"&&S.running&&S.ready){
+    try{gameUpdate(dt);}catch(e){console.error(e); S.running=false;}
+    updateParticles(dt);
+    if(S.shake>0)S.shake=Math.max(0,S.shake-dt*8);
+    if(S.flash>0)S.flash=Math.max(0,S.flash-dt*3);
+  }
+  drawFrame();
+  requestAnimationFrame(loop);
+}
 function drawFrame(){
- var dpr=S.dpr; ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,S.W,S.H);
- var sx=0,sy=0; if(S.shake>0){sx=(Math.random()-0.5)*S.shake*12; sy=(Math.random()-0.5)*S.shake*12;}
- ctx.save(); ctx.translate(sx,sy);
- var pal=palette(S.level);
- var g=ctx.createLinearGradient(0,0,0,S.H); g.addColorStop(0,pal[0]); g.addColorStop(1,"#03060f"); ctx.fillStyle=g; ctx.fillRect(-10,-10,S.W+20,S.H+20);
- if(typeof gameDraw==="function")gameDraw(ctx,pal);
- drawParticles();
- // scanlines
- ctx.fillStyle="rgba(0,0,0,0.07)"; for(var y=0;y<S.H;y+=3)ctx.fillRect(0,y,S.W,1);
- if(S.flash>0){ctx.fillStyle="rgba(248,113,113,"+(S.flash*0.3)+")"; ctx.fillRect(0,0,S.W,S.H);}
- ctx.restore();
+  var dpr=S.dpr; ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,S.W,S.H);
+  var sx=0,sy=0; if(S.shake>0){sx=(Math.random()-0.5)*S.shake*12; sy=(Math.random()-0.5)*S.shake*12;}
+  ctx.save(); ctx.translate(sx,sy);
+  var pal=palette(S.level);
+  var g=ctx.createLinearGradient(0,0,0,S.H); g.addColorStop(0,pal[0]); g.addColorStop(1,"#03060f");
+  ctx.fillStyle=g; ctx.fillRect(-10,-10,S.W+20,S.H+20);
+  // ambient stars
+  ctx.fillStyle="rgba(180,200,255,0.15)";
+  for(var i=0;i<40;i++){ctx.fillRect((i*97+S.level*13)%S.W,(i*53)%S.H,2,2);}
+  if(S.ready){try{gameDraw(ctx,pal);}catch(e){}}
+  drawParticles();
+  ctx.fillStyle="rgba(0,0,0,0.06)"; for(var y=0;y<S.H;y+=3)ctx.fillRect(0,y,S.W,1);
+  if(S.flash>0){ctx.fillStyle="rgba(248,113,113,"+(S.flash*0.3)+")"; ctx.fillRect(0,0,S.W,S.H);}
+  ctx.restore();
 }
 function leaveArcade(){stopMusic(); if(isFs())exitFs(); location.href="/mini-oyunlar/";}
 function handleExit(){if(S.mode==="play"){S.mode="pause"; S.running=false; stopMusic();} if(isFs())exitFs(); goMenu();}
 window.addEventListener("keydown",function(e){
- if(e.code==="Escape"){e.preventDefault(); handleExit(); return;}
- if(e.code==="KeyP"){e.preventDefault(); if(S.mode==="play")pauseGame(); else if(S.mode==="pause")resumeGame();}
- if(typeof onKeyDown==="function")onKeyDown(e);
+  if(e.code==="Escape"){e.preventDefault(); handleExit(); return;}
+  if(e.code==="KeyP"){e.preventDefault(); if(S.mode==="play")pauseGame(); else if(S.mode==="pause")resumeGame();}
+  if(S.mode==="play"&&typeof onKeyDown==="function")onKeyDown(e);
 });
 window.addEventListener("keyup",function(e){if(typeof onKeyUp==="function")onKeyUp(e);});
-canvas.addEventListener("mousedown",function(e){S.pointer=canvasPos(e); if(typeof onPointer==="function")onPointer(S.pointer,"down");});
-canvas.addEventListener("mousemove",function(e){S.pointer=canvasPos(e); if(typeof onPointer==="function")onPointer(S.pointer,"move");});
-canvas.addEventListener("mouseup",function(e){S.pointer=canvasPos(e); if(typeof onPointer==="function")onPointer(S.pointer,"up");});
-canvas.addEventListener("touchstart",function(e){if(!e.touches[0])return; S.pointer=canvasPos(e.touches[0]); if(typeof onPointer==="function")onPointer(S.pointer,"down");},{passive:true});
-canvas.addEventListener("touchmove",function(e){if(!e.touches[0])return; S.pointer=canvasPos(e.touches[0]); if(typeof onPointer==="function")onPointer(S.pointer,"move");},{passive:true});
-canvas.addEventListener("touchend",function(e){var t=e.changedTouches&&e.changedTouches[0]; if(t)S.pointer=canvasPos(t); if(typeof onPointer==="function")onPointer(S.pointer||{x:0,y:0},"up");},{passive:true});
-document.getElementById("btnStart").onclick=function(){ensureAudio(); startLevel(1);};
+canvas.addEventListener("mousedown",function(e){S.pointer=canvasPos(e); if(S.mode==="play"&&typeof onPointer==="function")onPointer(S.pointer,"down");});
+canvas.addEventListener("mousemove",function(e){S.pointer=canvasPos(e); if(S.mode==="play"&&typeof onPointer==="function")onPointer(S.pointer,"move");});
+canvas.addEventListener("mouseup",function(e){S.pointer=canvasPos(e); if(S.mode==="play"&&typeof onPointer==="function")onPointer(S.pointer,"up");});
+canvas.addEventListener("touchstart",function(e){if(!e.touches[0])return; S.pointer=canvasPos(e.touches[0]); if(S.mode==="play"&&typeof onPointer==="function")onPointer(S.pointer,"down");},{passive:true});
+canvas.addEventListener("touchmove",function(e){if(!e.touches[0])return; S.pointer=canvasPos(e.touches[0]); if(S.mode==="play"&&typeof onPointer==="function")onPointer(S.pointer,"move");},{passive:true});
+canvas.addEventListener("touchend",function(e){var tch=e.changedTouches&&e.changedTouches[0]; if(tch)S.pointer=canvasPos(tch); if(S.mode==="play"&&typeof onPointer==="function")onPointer(S.pointer||{x:0,y:0},"up");},{passive:true});
+document.getElementById("btnStart").onclick=function(){ensureAudio(); if(audioCtx&&audioCtx.state==="suspended")audioCtx.resume(); startLevel(1);};
 document.getElementById("btnFullscreen").onclick=function(){ensureAudio(); enterFs(); startLevel(1);};
 document.getElementById("btnLevels").onclick=function(){S.mode="levels"; buildLevelGrid(); showScreen("levels"); sfx("ui");};
-document.getElementById("btnLevelsBack").onclick=function(){goMenu();};
+document.getElementById("btnLevelsBack").onclick=goMenu;
 document.getElementById("btnHow").onclick=function(){S.mode="how"; showScreen("how"); sfx("ui");};
-document.getElementById("btnHowBack").onclick=function(){goMenu();};
+document.getElementById("btnHowBack").onclick=goMenu;
 document.getElementById("btnExitMenu").onclick=leaveArcade;
 document.getElementById("btnResume").onclick=resumeGame;
 document.getElementById("btnRestart").onclick=function(){startLevel(S.level);};
@@ -306,58 +247,65 @@ document.getElementById("btnLangTr").onclick=function(){applyLang("tr");};
 document.getElementById("btnLangEn").onclick=function(){applyLang("en");};
 document.addEventListener("fullscreenchange",function(){if(!isFs()&&S.mode==="play")pauseGame();});
 resize(); window.addEventListener("resize",resize); applyLang("tr"); showScreen("menu"); requestAnimationFrame(loop);
-// ---- GAME LOGIC BELOW ----
 
+/* ===== GAME ===== */
 
-var drone, vy, gates, dist, goalDist, speed, gap, spawnX, aliveTimer;
-function LEVEL_TARGET(lv){return 300+lv*80;}
+var drone,vy,gates,dist,goal,speed,gap,inv;
+function LEVEL_TARGET(lv){return 250+lv*70;}
 function gameReset(){
- drone={x:S.W*0.28,y:S.H*0.5,r:12}; vy=0; gates=[]; dist=0;
- goalDist=900+S.level*220; speed=160+S.level*14; gap=Math.max(100,180-S.level*5);
- spawnX=S.W+40; aliveTimer=0; for(var i=0;i<3;i++)addGate(S.W+120+i*220); onHudExtra();
+  drone={x:S.W*0.28,y:S.H*0.5,r:13}; vy=0; gates=[]; dist=0;
+  goal=800+S.level*200; speed=150+S.level*16; gap=Math.max(96,175-S.level*6); inv=0;
+  for(var i=0;i<4;i++) addGate(S.W+80+i*230); onHudExtra();
 }
-function addGate(x){var mid=rand(gap*0.6,S.H-gap*0.6); gates.push({x:x,mid:mid,w:52,passed:false});}
-function onHudExtra(){document.getElementById("hudExtraLabel").textContent="MESAFE"; document.getElementById("hudExtra").textContent=(dist|0)+"/"+(goalDist|0);}
-function thrust(){if(S.mode!=="play")return; vy=-260; sfx("move");}
+function addGate(x){gates.push({x:x,mid:rand(gap*0.7,S.H-gap*0.7),w:50,passed:false});}
+function onHudExtra(){
+  document.getElementById("hudExtraLabel").textContent=LANG==="en"?"DIST":"MESAFE";
+  document.getElementById("hudExtra").textContent=(dist|0)+"/"+(goal|0);
+}
+function thrust(){if(S.mode!=="play"||!S.running)return; vy=-280; sfx("jump");}
+function hit(){
+  if(inv>0) return;
+  S.lives--; inv=1.1; S.shake=0.55; S.flash=0.4; sfx("bad");
+  burst(drone.x,drone.y,"#fb7185",16,220); updateHud();
+  if(S.lives<=0) gameOver();
+  else {drone.y=S.H*0.5; vy=0;}
+}
 function gameUpdate(dt){
- vy+=780*dt; drone.y+=vy*dt;
- if(drone.y<drone.r||drone.y>S.H-drone.r){hit(); return;}
- dist+=speed*dt*0.35; S.score+=speed*dt*0.08; spawnX-=speed*dt;
- gates.forEach(function(g){g.x-=speed*dt;});
- if(gates.length&&gates[gates.length-1].x<S.W-200)addGate(gates[gates.length-1].x+220+S.level*2);
- gates=gates.filter(function(g){return g.x>-80;});
- for(var i=0;i<gates.length;i++){
-  var g=gates[i], topH=g.mid-gap/2, botY=g.mid+gap/2;
-  if(drone.x+drone.r>g.x && drone.x-drone.r<g.x+g.w){
-   if(drone.y-drone.r<topH || drone.y+drone.r>botY){hit(); return;}
+  if(inv>0) inv-=dt;
+  vy+=820*dt; drone.y+=vy*dt;
+  if(drone.y<drone.r||drone.y>S.H-drone.r){hit(); return;}
+  dist+=speed*dt*0.32; S.score+=speed*dt*0.07;
+  gates.forEach(function(g){g.x-=speed*dt;});
+  if(gates.length && gates[gates.length-1].x < S.W-210) addGate(gates[gates.length-1].x+220);
+  gates=gates.filter(function(g){return g.x>-90;});
+  for(var i=0;i<gates.length;i++){
+    var g=gates[i], topH=g.mid-gap/2, botY=g.mid+gap/2;
+    if(drone.x+drone.r>g.x && drone.x-drone.r<g.x+g.w){
+      if(drone.y-drone.r<topH || drone.y+drone.r>botY){hit(); return;}
+    }
+    if(!g.passed && g.x+g.w<drone.x){g.passed=true; S.score+=30; sfx("coin"); burst(drone.x,drone.y,"#67e8f9",8,140);}
   }
-  if(!g.passed && g.x+g.w<drone.x){g.passed=true; S.score+=25; sfx("coin"); burst(drone.x,drone.y,"#67e8f9",8,140);}
- }
- updateHud(); onHudExtra();
- if(dist>=goalDist)levelComplete(150);
-}
-function hit(){S.lives--; S.shake=0.55; S.flash=0.4; sfx("bad"); burst(drone.x,drone.y,"#fb7185",16,200); updateHud();
- if(S.lives<=0)gameOver(); else {drone.y=S.H*0.5; vy=0; gates.forEach(function(g){if(g.x<drone.x+80)g.x+=200;});}
+  updateHud(); onHudExtra();
+  if(dist>=goal) levelComplete(160);
 }
 function gameDraw(ctx,pal){
- // parallax stars
- for(var i=0;i<30;i++){ctx.fillStyle="rgba(255,255,255,0.15)"; ctx.fillRect((i*47+dist*0.2)%S.W, (i*89)%S.H, 2,2);}
- gates.forEach(function(g){
-  var topH=g.mid-gap/2, botY=g.mid+gap/2;
-  ctx.fillStyle=pal[2]; ctx.shadowColor=pal[1]; ctx.shadowBlur=12;
-  ctx.fillRect(g.x,0,g.w,topH); ctx.fillRect(g.x,botY,g.w,S.H-botY);
-  ctx.shadowBlur=0; ctx.fillStyle=pal[1]; ctx.fillRect(g.x,topH-6,g.w,6); ctx.fillRect(g.x,botY,g.w,6);
- });
- // drone (not a bird)
- ctx.save(); ctx.translate(drone.x,drone.y); ctx.rotate(Math.atan2(vy,220)*0.5);
- ctx.fillStyle=pal[1]; ctx.shadowColor=pal[1]; ctx.shadowBlur=14;
- ctx.beginPath(); ctx.moveTo(14,0); ctx.lineTo(-10,-9); ctx.lineTo(-6,0); ctx.lineTo(-10,9); ctx.closePath(); ctx.fill();
- ctx.fillStyle="#f472b6"; ctx.fillRect(-14,-2,6,4); // thruster
- ctx.restore(); ctx.shadowBlur=0;
+  for(var i=0;i<35;i++){ctx.fillStyle="rgba(255,255,255,0.12)"; ctx.fillRect((i*47+dist*0.25)%S.W,(i*89)%S.H,2,2);}
+  gates.forEach(function(g){
+    var topH=g.mid-gap/2, botY=g.mid+gap/2;
+    ctx.fillStyle=pal[2]; ctx.shadowColor=pal[1]; ctx.shadowBlur=10;
+    ctx.fillRect(g.x,0,g.w,topH); ctx.fillRect(g.x,botY,g.w,S.H-botY);
+    ctx.shadowBlur=0; ctx.fillStyle=pal[1]; ctx.fillRect(g.x,topH-6,g.w,6); ctx.fillRect(g.x,botY,g.w,6);
+  });
+  if(inv>0 && Math.floor(inv*12)%2===0) return;
+  ctx.save(); ctx.translate(drone.x,drone.y); ctx.rotate(Math.atan2(vy,240)*0.45);
+  ctx.fillStyle=pal[1]; ctx.shadowColor=pal[1]; ctx.shadowBlur=14;
+  ctx.beginPath(); ctx.moveTo(16,0); ctx.lineTo(-12,-10); ctx.lineTo(-7,0); ctx.lineTo(-12,10); ctx.closePath(); ctx.fill();
+  ctx.fillStyle="#f472b6"; ctx.fillRect(-16,-3,7,6);
+  ctx.restore(); ctx.shadowBlur=0;
 }
 function onKeyDown(e){if(e.code==="Space"||e.code==="ArrowUp"||e.code==="KeyW"){e.preventDefault(); thrust();}}
 function onKeyUp(e){}
-function onPointer(p,type){if(type==="down")thrust();}
+function onPointer(p,type){if(type==="down") thrust();}
 
 })();
 </script>
