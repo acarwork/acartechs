@@ -1642,3 +1642,74 @@ body.acartechs-game-body .acartechs-footer-panel{
   .acartechs-arcade-banner-title,
   .acartechs-arcade-banner-copy strong{font-size:13px !important}
 }
+
+/* ========== Arcade card media (poster + hover video) ========== */
+.acartechs-arcade-card{
+  grid-template-columns:minmax(180px,42%) minmax(0,1fr) !important;
+}
+.acartechs-arcade-card-media{
+  aspect-ratio:16/9 !important;
+  background:#06101f !important;
+  min-height:100% !important;
+  overflow:hidden !important;
+  position:relative !important;
+}
+.acartechs-arcade-poster,
+.acartechs-arcade-video{
+  display:block !important;
+  height:100% !important;
+  left:0 !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  position:absolute !important;
+  top:0 !important;
+  width:100% !important;
+}
+.acartechs-arcade-poster{
+  opacity:1 !important;
+  transition:opacity .28s ease !important;
+  z-index:1 !important;
+}
+.acartechs-arcade-video{
+  opacity:0 !important;
+  pointer-events:none !important;
+  transition:opacity .28s ease !important;
+  z-index:2 !important;
+}
+.acartechs-arcade-card.is-hover-video .acartechs-arcade-video{
+  opacity:1 !important;
+}
+.acartechs-arcade-card.is-hover-video .acartechs-arcade-poster{
+  opacity:0 !important;
+}
+.acartechs-arcade-media-shade{
+  background:linear-gradient(180deg,rgba(2,8,20,.55) 0%,rgba(2,8,20,.08) 42%,rgba(2,8,20,.35) 100%) !important;
+  content:"" !important;
+  inset:0 !important;
+  pointer-events:none !important;
+  position:absolute !important;
+  z-index:3 !important;
+}
+.acartechs-arcade-card-body{
+  position:relative !important;
+  z-index:1 !important;
+}
+/* keep tag readable over media edge on narrow layouts */
+.acartechs-arcade-tag{
+  box-shadow:0 6px 16px rgba(2,8,23,.12) !important;
+}
+@media (max-width:900px){
+  .acartechs-arcade-card{
+    grid-template-columns:1fr !important;
+  }
+  .acartechs-arcade-card-media{
+    aspect-ratio:16/9 !important;
+    min-height:0 !important;
+    width:100% !important;
+  }
+}
+/* never autoplay video on touch-only devices via CSS safety */
+@media (hover:none){
+  .acartechs-arcade-video{display:none !important}
+  .acartechs-arcade-poster{opacity:1 !important}
+}

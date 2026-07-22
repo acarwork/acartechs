@@ -38,7 +38,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <link rel='stylesheet' id='ct-page-title-styles-css' href='/wp-content/themes/blocksy/static/bundle/page-title.min.css?ver=2.1.46' media='all' />
 <link rel='stylesheet' id='ct-stackable-styles-css' href='/wp-content/themes/blocksy/static/bundle/stackable.min.css?ver=2.1.46' media='all' />
 <link rel='stylesheet' id='ct-wpforms-styles-css' href='/wp-content/themes/blocksy/static/bundle/wpforms.min.css?ver=2.1.46' media='all' />
-<link rel='stylesheet' id='acartechs-home-css' href='/wp-content/themes/blocksy/acartechs-home.min.css?ver=1784750995' media='all' />
+<link rel='stylesheet' id='acartechs-home-css' href='/wp-content/themes/blocksy/acartechs-home.min.css?ver=1784751955' media='all' />
 <style id="generateblocks-inline-css">
 :root{--gb-container-width:1100px;}.gb-container .wp-block-image img{vertical-align:middle;}.gb-grid-wrapper .wp-block-image{margin-bottom:0;}.gb-highlight{background:none;}.gb-shape{line-height:0;}
 /*# sourceURL=generateblocks-inline-css */
@@ -275,9 +275,10 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 
 			<section class="acartechs-arcade-grid" aria-label="Mini oyun listesi">
 				<a class="acartechs-arcade-card is-live" href="/dx-ball/">
-					<div class="acartechs-arcade-card-media is-dxball" aria-hidden="true">
-						<span class="acartechs-arcade-orb"></span>
-						<span class="acartechs-arcade-paddle"></span>
+					<div class="acartechs-arcade-card-media">
+						<img class="acartechs-arcade-poster" src="/assets/arcade/dx-ball-poster.webp" alt="Dx Ball ekran goruntusu" width="1280" height="720" loading="lazy" decoding="async">
+						<video class="acartechs-arcade-video" muted loop playsinline preload="none" poster="/assets/arcade/dx-ball-poster.webp" data-src-webm="/assets/arcade/dx-ball-preview.webm" data-src-mp4="/assets/arcade/dx-ball-preview.mp4" aria-hidden="true"></video>
+						<span class="acartechs-arcade-media-shade" aria-hidden="true"></span>
 					</div>
 					<div class="acartechs-arcade-card-body">
 						<span class="acartechs-arcade-tag is-on">Oynanabilir</span>
@@ -288,8 +289,10 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 				</a>
 
 				<a class="acartechs-arcade-card is-live" href="/neon-reflex/">
-					<div class="acartechs-arcade-card-media is-reflex" aria-hidden="true">
-						<span class="acartechs-arcade-pulse"></span>
+					<div class="acartechs-arcade-card-media">
+						<img class="acartechs-arcade-poster" src="/assets/arcade/neon-reflex-poster.webp" alt="Neon Reflex ekran goruntusu" width="1280" height="720" loading="lazy" decoding="async">
+						<video class="acartechs-arcade-video" muted loop playsinline preload="none" poster="/assets/arcade/neon-reflex-poster.webp" data-src-webm="/assets/arcade/neon-reflex-preview.webm" data-src-mp4="/assets/arcade/neon-reflex-preview.mp4" aria-hidden="true"></video>
+						<span class="acartechs-arcade-media-shade" aria-hidden="true"></span>
 					</div>
 					<div class="acartechs-arcade-card-body">
 						<span class="acartechs-arcade-tag is-on">Oynanabilir</span>
@@ -300,7 +303,10 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 				</a>
 
 				<article class="acartechs-arcade-card is-soon" aria-label="Yakinda">
-					<div class="acartechs-arcade-card-media is-soon-a" aria-hidden="true"></div>
+					<div class="acartechs-arcade-card-media">
+						<img class="acartechs-arcade-poster" src="/assets/arcade/grid-runner-poster.webp" alt="Grid Runner konsept gorseli" width="1280" height="720" loading="lazy" decoding="async">
+						<span class="acartechs-arcade-media-shade" aria-hidden="true"></span>
+					</div>
 					<div class="acartechs-arcade-card-body">
 						<span class="acartechs-arcade-tag">Yakında</span>
 						<strong>Grid Runner</strong>
@@ -310,7 +316,10 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 				</article>
 
 				<article class="acartechs-arcade-card is-soon" aria-label="Yakinda">
-					<div class="acartechs-arcade-card-media is-soon-b" aria-hidden="true"></div>
+					<div class="acartechs-arcade-card-media">
+						<img class="acartechs-arcade-poster" src="/assets/arcade/stack-shift-poster.webp" alt="Stack Shift konsept gorseli" width="1280" height="720" loading="lazy" decoding="async">
+						<span class="acartechs-arcade-media-shade" aria-hidden="true"></span>
+					</div>
 					<div class="acartechs-arcade-card-body">
 						<span class="acartechs-arcade-tag">Yakında</span>
 						<strong>Stack Shift</strong>
@@ -329,6 +338,53 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 		</section>
 		</section>
 
+		
+<script>
+(function () {
+  var canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (!canHover) return;
+
+  function ensureSources(video) {
+    if (video.dataset.ready === "1") return;
+    var webm = video.getAttribute("data-src-webm");
+    var mp4 = video.getAttribute("data-src-mp4");
+    if (webm) {
+      var s1 = document.createElement("source");
+      s1.src = webm;
+      s1.type = "video/webm";
+      video.appendChild(s1);
+    }
+    if (mp4) {
+      var s2 = document.createElement("source");
+      s2.src = mp4;
+      s2.type = "video/mp4";
+      video.appendChild(s2);
+    }
+    video.dataset.ready = "1";
+    video.load();
+  }
+
+  document.querySelectorAll(".acartechs-arcade-card.is-live").forEach(function (card) {
+    var video = card.querySelector(".acartechs-arcade-video");
+    var poster = card.querySelector(".acartechs-arcade-poster");
+    if (!video) return;
+
+    card.addEventListener("mouseenter", function () {
+      ensureSources(video);
+      video.currentTime = 0;
+      var playPromise = video.play();
+      if (playPromise && playPromise.catch) playPromise.catch(function () {});
+      card.classList.add("is-hover-video");
+    });
+
+    card.addEventListener("mouseleave", function () {
+      video.pause();
+      try { video.currentTime = 0; } catch (e) {}
+      card.classList.remove("is-hover-video");
+    });
+  });
+})();
+</script>
 		<section class="acartechs-footer-panel">
 			<div class="acartechs-footer-brand">
 				<h2>acartechs<span>.</span></h2>
