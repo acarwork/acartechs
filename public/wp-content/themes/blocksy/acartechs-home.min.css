@@ -538,3 +538,52 @@ img.acartechs-feed-image:after{
     right:6px !important;
   }
 }
+
+/* Category media watermark on real <img> cards (Oyun etc.) */
+.acartechs-category-media{
+  display:block !important;
+  position:relative !important;
+  width:100% !important;
+  overflow:hidden !important;
+  line-height:0 !important;
+}
+.acartechs-category-media > img.acartechs-category-image{
+  display:block !important;
+  width:100% !important;
+}
+.acartechs-category-media:after{
+  content:"ACARTECHS" !important;
+  position:absolute !important;
+  right:6px !important;
+  bottom:5px !important;
+  left:auto !important;
+  top:auto !important;
+  z-index:3 !important;
+  display:block !important;
+  margin:0 !important;
+  padding:0 !important;
+  background:none !important;
+  color:rgba(255,255,255,0.9) !important;
+  font-size:8px !important;
+  font-weight:700 !important;
+  font-style:normal !important;
+  letter-spacing:0.05em !important;
+  line-height:1 !important;
+  text-align:right !important;
+  text-shadow:0 1px 3px rgba(0,0,0,0.65) !important;
+  pointer-events:none !important;
+}
+/* Ensure parent cards don't clip the corner badge awkwardly */
+.acartechs-category-main-card,
+.acartechs-category-mini-grid a,
+.acartechs-category-list article,
+.acartechs-category-list article > a{
+  position:relative !important;
+}
+@media (max-width:760px){
+  .acartechs-category-media:after{
+    right:5px !important;
+    bottom:4px !important;
+    font-size:7px !important;
+  }
+}
