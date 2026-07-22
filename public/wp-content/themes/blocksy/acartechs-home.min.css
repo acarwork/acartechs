@@ -1616,131 +1616,108 @@ body.acartechs-game-body .acartechs-footer-panel{
   .acartechs-arcade-banner-copy strong{font-size:13px !important}
 }
 
-/* ========== Arcade card media (poster + hover video) ========== */
-.acartechs-arcade-card{
-  grid-template-columns:minmax(180px,42%) minmax(0,1fr) !important;
+/* ========== Arcade cards: strict 2-col no-overlap ========== */
+.acartechs-arcade-grid{
+  display:grid !important;
+  gap:16px !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
 }
-.acartechs-arcade-card-media{
-  aspect-ratio:16/9 !important;
-  background:#06101f !important;
-  min-height:100% !important;
-  overflow:hidden !important;
-  position:relative !important;
-}
-.acartechs-arcade-poster,
-.acartechs-arcade-video{
-  display:block !important;
-  height:100% !important;
-  left:0 !important;
-  object-fit:cover !important;
-  object-position:center !important;
-  position:absolute !important;
-  top:0 !important;
-  width:100% !important;
-}
-.acartechs-arcade-poster{
-  opacity:1 !important;
-  transition:opacity .28s ease !important;
-  z-index:1 !important;
-}
-.acartechs-arcade-video{
-  opacity:0 !important;
-  pointer-events:none !important;
-  transition:opacity .28s ease !important;
-  z-index:2 !important;
-}
-.acartechs-arcade-card.is-hover-video .acartechs-arcade-video{
-  opacity:1 !important;
-}
-.acartechs-arcade-card.is-hover-video .acartechs-arcade-poster{
-  opacity:0 !important;
-}
-.acartechs-arcade-media-shade{
-  background:linear-gradient(180deg,rgba(2,8,20,.55) 0%,rgba(2,8,20,.08) 42%,rgba(2,8,20,.35) 100%) !important;
-  content:"" !important;
-  inset:0 !important;
-  pointer-events:none !important;
-  position:absolute !important;
-  z-index:3 !important;
-}
-.acartechs-arcade-card-body{
-  position:relative !important;
-  z-index:1 !important;
-}
-/* keep tag readable over media edge on narrow layouts */
-.acartechs-arcade-tag{
-  box-shadow:0 6px 16px rgba(2,8,23,.12) !important;
-}
-@media (max-width:900px){
-  .acartechs-arcade-card{
-    grid-template-columns:1fr !important;
-  }
-  .acartechs-arcade-card-media{
-    aspect-ratio:16/9 !important;
-    min-height:0 !important;
-    width:100% !important;
-  }
-}
-/* never autoplay video on touch-only devices via CSS safety */
-@media (hover:none){
-  .acartechs-arcade-video{display:none !important}
-  .acartechs-arcade-poster{opacity:1 !important}
-}
-
-/* ========== Arcade card layout fix (no text/media overlap) ========== */
-.acartechs-arcade-grid .acartechs-arcade-card{
+.acartechs-arcade-grid .acartechs-arcade-card,
+a.acartechs-arcade-card.is-live{
   align-items:stretch !important;
   display:grid !important;
   gap:0 !important;
-  grid-template-columns:minmax(0,0.42fr) minmax(0,0.58fr) !important;
+  grid-template-columns:minmax(0,38%) minmax(0,62%) !important;
+  min-height:168px !important;
   min-width:0 !important;
   overflow:hidden !important;
+  position:relative !important;
 }
+/* MEDIA COLUMN — image only, clipped */
 .acartechs-arcade-grid .acartechs-arcade-card-media{
   align-self:stretch !important;
   aspect-ratio:auto !important;
+  background:#06101f !important;
   border-radius:0 !important;
+  display:block !important;
   flex:none !important;
-  grid-column:1 !important;
+  grid-column:1 / 2 !important;
+  grid-row:1 !important;
   height:100% !important;
-  min-height:160px !important;
+  isolation:isolate !important;
+  min-height:168px !important;
   min-width:0 !important;
   overflow:hidden !important;
   position:relative !important;
   width:100% !important;
   z-index:0 !important;
 }
+/* Image as normal flow cover — no absolute for static poster */
+.acartechs-arcade-grid .acartechs-arcade-poster{
+  display:block !important;
+  height:100% !important;
+  left:auto !important;
+  max-width:100% !important;
+  min-height:168px !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  opacity:1 !important;
+  position:static !important;
+  top:auto !important;
+  transition:opacity .28s ease !important;
+  width:100% !important;
+  z-index:1 !important;
+}
+/* Video only overlays inside media (hover) */
+.acartechs-arcade-grid .acartechs-arcade-video{
+  display:block !important;
+  height:100% !important;
+  left:0 !important;
+  max-width:100% !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+  position:absolute !important;
+  top:0 !important;
+  transition:opacity .28s ease !important;
+  width:100% !important;
+  z-index:2 !important;
+}
+.acartechs-arcade-grid .acartechs-arcade-card.is-hover-video .acartechs-arcade-video{opacity:1 !important}
+.acartechs-arcade-grid .acartechs-arcade-card.is-hover-video .acartechs-arcade-poster{opacity:0 !important}
+/* Shade only inside media column */
+.acartechs-arcade-grid .acartechs-arcade-media-shade{
+  background:linear-gradient(180deg,rgba(2,8,20,.25) 0%,rgba(2,8,20,.05) 50%,rgba(2,8,20,.35) 100%) !important;
+  bottom:0 !important;
+  height:100% !important;
+  left:0 !important;
+  max-width:100% !important;
+  pointer-events:none !important;
+  position:absolute !important;
+  right:0 !important;
+  top:0 !important;
+  width:100% !important;
+  z-index:3 !important;
+}
+/* TEXT COLUMN — never under media */
 .acartechs-arcade-grid .acartechs-arcade-card-body{
+  background:#fff !important;
   display:flex !important;
   flex-direction:column !important;
   gap:8px !important;
-  grid-column:2 !important;
+  grid-column:2 / 3 !important;
+  grid-row:1 !important;
+  isolation:isolate !important;
   min-width:0 !important;
   overflow:hidden !important;
   padding:16px 16px 14px !important;
   position:relative !important;
-  z-index:1 !important;
-}
-.acartechs-arcade-grid .acartechs-arcade-poster,
-.acartechs-arcade-grid .acartechs-arcade-video,
-.acartechs-arcade-grid .acartechs-arcade-media-shade{
-  inset:0 !important;
-  max-width:100% !important;
-  position:absolute !important;
-}
-.acartechs-arcade-grid .acartechs-arcade-poster,
-.acartechs-arcade-grid .acartechs-arcade-video{
-  height:100% !important;
-  object-fit:cover !important;
-  width:100% !important;
-}
-/* rounded media only on left edge of card (card already rounded; clip via overflow hidden) */
-.acartechs-arcade-grid .acartechs-arcade-card > .acartechs-arcade-card-media{
-  border-bottom-left-radius:inherit !important;
-  border-top-left-radius:inherit !important;
+  z-index:2 !important;
 }
 .acartechs-arcade-grid .acartechs-arcade-tag{
   align-self:flex-start !important;
+  flex:0 0 auto !important;
   font-size:11px !important;
   font-weight:800 !important;
   letter-spacing:.05em !important;
@@ -1751,61 +1728,71 @@ body.acartechs-game-body .acartechs-footer-panel{
   color:#166534 !important;
 }
 .acartechs-arcade-grid .acartechs-arcade-card-body strong{
+  color:#061b31 !important;
   display:block !important;
+  font-size:18px !important;
+  font-weight:900 !important;
+  line-height:1.2 !important;
+  max-width:100% !important;
+  overflow:hidden !important;
   overflow-wrap:anywhere !important;
-  word-break:break-word !important;
+  text-overflow:ellipsis !important;
+  white-space:nowrap !important;
 }
 .acartechs-arcade-grid .acartechs-arcade-card-body p{
+  color:#475569 !important;
   display:-webkit-box !important;
-  margin:0 !important;
-  min-width:0 !important;
-  overflow:hidden !important;
   -webkit-box-orient:vertical !important;
   -webkit-line-clamp:3 !important;
+  line-height:1.45 !important;
+  margin:0 !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  overflow:hidden !important;
 }
 .acartechs-arcade-grid .acartechs-arcade-go{
+  color:#0b4db8 !important;
+  flex:0 0 auto !important;
+  font-weight:800 !important;
   margin-top:auto !important;
   padding-top:6px !important;
 }
+/* rounded media left corners */
+.acartechs-arcade-grid .acartechs-arcade-card > .acartechs-arcade-card-media{
+  border-bottom-left-radius:16px !important;
+  border-top-left-radius:16px !important;
+}
 @media (max-width:900px){
-  .acartechs-arcade-grid .acartechs-arcade-card{
+  .acartechs-arcade-grid{grid-template-columns:1fr !important}
+  .acartechs-arcade-grid .acartechs-arcade-card,
+  a.acartechs-arcade-card.is-live{
     grid-template-columns:1fr !important;
+    min-height:0 !important;
   }
   .acartechs-arcade-grid .acartechs-arcade-card-media{
     aspect-ratio:16/9 !important;
-    border-radius:0 !important;
     grid-column:1 !important;
+    grid-row:1 !important;
+    height:auto !important;
+    min-height:0 !important;
+  }
+  .acartechs-arcade-grid .acartechs-arcade-poster{
+    aspect-ratio:16/9 !important;
     height:auto !important;
     min-height:0 !important;
   }
   .acartechs-arcade-grid .acartechs-arcade-card-body{
     grid-column:1 !important;
+    grid-row:2 !important;
   }
   .acartechs-arcade-grid .acartechs-arcade-card > .acartechs-arcade-card-media{
     border-bottom-left-radius:0 !important;
-    border-top-left-radius:inherit !important;
-    border-top-right-radius:inherit !important;
+    border-top-left-radius:16px !important;
+    border-top-right-radius:16px !important;
   }
 }
 
-/* ========== Arcade 10-game hub + scroll thumbs ========== */
-.acartechs-arcade-grid{
-  display:grid !important;
-  gap:16px !important;
-  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
-}
-@media (min-width:1100px){
-  .acartechs-arcade-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
-  }
-}
-@media (max-width:900px){
-  .acartechs-arcade-grid{grid-template-columns:1fr !important}
-}
-.acartechs-arcade-banner{
-  grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr) auto !important;
-  align-items:center !important;
-}
+/* Banner thumbs strip (keep scrollable) */
 .acartechs-arcade-banner-thumbs{
   display:flex !important;
   flex-wrap:nowrap !important;
@@ -1817,11 +1804,7 @@ body.acartechs-game-body .acartechs-footer-panel{
   padding:6px 4px 10px !important;
   scroll-snap-type:x mandatory !important;
   -webkit-overflow-scrolling:touch !important;
-  scrollbar-width:thin !important;
-  scrollbar-color:rgba(34,211,238,.45) transparent !important;
 }
-.acartechs-arcade-banner-thumbs::-webkit-scrollbar{height:6px}
-.acartechs-arcade-banner-thumbs::-webkit-scrollbar-thumb{background:rgba(34,211,238,.4);border-radius:999px}
 .acartechs-arcade-banner-thumbs .acartechs-arcade-thumb{
   flex:0 0 auto !important;
   scroll-snap-align:start !important;
@@ -1829,15 +1812,27 @@ body.acartechs-game-body .acartechs-footer-panel{
 }
 .acartechs-arcade-banner-thumbs .acartechs-arcade-thumb em{
   display:block !important;
+  font-size:9px !important;
   max-width:100% !important;
   overflow:hidden !important;
   text-overflow:ellipsis !important;
   white-space:nowrap !important;
-  font-size:9px !important;
 }
-@media (max-width:980px){
-  .acartechs-arcade-banner{
-    grid-template-columns:1fr !important;
-  }
-  .acartechs-arcade-banner-thumbs{justify-content:flex-start !important}
+.acartechs-arcade-thumb-img{
+  display:block !important;
+  height:100% !important;
+  object-fit:cover !important;
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+}
+.acartechs-arcade-thumb-art{
+  aspect-ratio:1 !important;
+  overflow:hidden !important;
+  position:relative !important;
+  width:100% !important;
+}
+@media (hover:none){
+  .acartechs-arcade-video{display:none !important}
+  .acartechs-arcade-poster{opacity:1 !important}
 }
