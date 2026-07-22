@@ -1,0 +1,17 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;padding:0;background:#000;overflow:hidden}canvas{display:block;width:1280px;height:720px}</style>
+</head><body><canvas id="c" width="1280" height="720"></canvas>
+<script>
+const c=document.getElementById('c'),x=c.getContext('2d');
+const W=1280,H=720; c.width=W;c.height=H;
+const bg=x.createLinearGradient(0,0,0,H); bg.addColorStop(0,'#101848'); bg.addColorStop(1,'#060a20'); x.fillStyle=bg; x.fillRect(0,0,W,H);
+const tiers=[['#67e8f9','#22d3ee','#818cf8','#a78bfa'],['#22d3ee','#c084fc','#818cf8','#67e8f9'],['#a78bfa','#818cf8','#f472b6','#22d3ee'],['#67e8f9','#fb7185','#a78bfa','#818cf8']];
+const size=560,n=4,cell=size/n,ox=(W-size)/2,oy=(H-size)/2;
+x.fillStyle='rgba(8,12,28,0.9)'; rrect(x,ox-18,oy-18,size+36,size+36,18); x.fill();
+for(let y=0;y<n;y++)for(let xx=0;xx<n;xx++){
+  const col=tiers[y][xx]; x.fillStyle=col; x.shadowColor=col; x.shadowBlur=14;
+  rrect(x,ox+xx*cell+12,oy+y*cell+12,cell-24,cell-24,14); x.fill();
+  x.shadowBlur=0; x.fillStyle='rgba(255,255,255,0.35)'; x.beginPath(); x.ellipse(ox+xx*cell+40,oy+y*cell+36,16,10,0,0,7); x.fill();
+}
+function rrect(ctx,x0,y0,w,h,r){ctx.beginPath();ctx.moveTo(x0+r,y0);ctx.arcTo(x0+w,y0,x0+w,y0+h,r);ctx.arcTo(x0+w,y0+h,x0,y0+h,r);ctx.arcTo(x0,y0+h,x0,y0,r);ctx.arcTo(x0,y0,x0+w,y0,r);ctx.closePath();}
+</script></body></html>

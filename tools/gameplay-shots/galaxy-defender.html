@@ -1,0 +1,23 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;padding:0;background:#000;overflow:hidden}canvas{display:block;width:1280px;height:720px}</style>
+</head><body><canvas id="c" width="1280" height="720"></canvas>
+<script>
+const c=document.getElementById('c'),x=c.getContext('2d');
+const W=1280,H=720; c.width=W;c.height=H;
+const bg=x.createLinearGradient(0,0,0,H); bg.addColorStop(0,'#040818'); bg.addColorStop(1,'#02040c'); x.fillStyle=bg; x.fillRect(0,0,W,H);
+for(let i=0;i<120;i++){x.fillStyle='rgba(180,200,255,0.4)'; x.fillRect((i*73)%W,(i*91)%H,1+(i%3),1+(i%2));}
+const cols=['#f472b6','#a78bfa','#4ade80'];
+for(let r=0;r<3;r++)for(let c0=0;c0<9;c0++){
+  const ex=100+c0*130, ey=80+r*78, col=cols[r];
+  x.fillStyle=col; x.shadowColor=col; x.shadowBlur=12;
+  x.beginPath(); x.moveTo(ex,ey-20); x.lineTo(ex+22,ey+16); x.lineTo(ex,ey+8); x.lineTo(ex-22,ey+16); x.closePath(); x.fill();
+}
+x.shadowBlur=0;
+for(let bx=140;bx<1140;bx+=70){ if((bx/70|0)%2){ x.fillStyle='#67e8f9'; x.fillRect(bx-2,300,4,40);} }
+// ship
+const sx=W/2,sy=H-100; x.fillStyle='#22d3ee'; x.shadowColor='#22d3ee'; x.shadowBlur=20;
+x.beginPath(); x.moveTo(sx,sy-30); x.lineTo(sx+28,sy+22); x.lineTo(sx,sy+12); x.lineTo(sx-28,sy+22); x.closePath(); x.fill();
+x.fillStyle='#f0abfc'; x.fillRect(sx-6,sy+12,12,16);
+// enemy bullet
+x.fillStyle='#fb7185'; x.beginPath(); x.arc(sx-80,sy-120,4,0,7); x.fill();
+</script></body></html>

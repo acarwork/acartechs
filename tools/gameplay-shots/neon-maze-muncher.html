@@ -1,0 +1,31 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;padding:0;background:#000;overflow:hidden}canvas{display:block;width:1280px;height:720px}</style>
+</head><body><canvas id="c" width="1280" height="720"></canvas>
+<script>
+const c=document.getElementById('c'),x=c.getContext('2d');
+const W=1280,H=720,CELL=40; c.width=W;c.height=H;
+x.fillStyle='#120628'; x.fillRect(0,0,W,H);
+const cols=(W/CELL)|0, rows=(H/CELL)|0;
+const maze=[];
+for(let y=0;y<rows;y++){maze[y]=[]; for(let xx=0;xx<cols;xx++){
+  maze[y][xx]=(xx===0||y===0||xx===cols-1||y===rows-1||(xx%2===0&&y%2===0))?1:0;
+}}
+for(let i=0;i<100;i++){const xx=1+((Math.random()*(cols-2))|0),yy=1+((Math.random()*(rows-2))|0); if(!(xx<=2&&yy<=2)) maze[yy][xx]=1;}
+maze[1][1]=maze[1][2]=maze[2][1]=0;
+for(let y=0;y<rows;y++)for(let xx=0;xx<cols;xx++){
+  const x0=xx*CELL,y0=y*CELL;
+  if(maze[y][xx]){x.fillStyle='#1c1238'; x.strokeStyle='#22d3ee'; x.lineWidth=1.5; x.fillRect(x0+1,y0+1,CELL-2,CELL-2); x.strokeRect(x0+2,y0+2,CELL-4,CELL-4);}
+  else if(!(xx===1&&y===1) && Math.random()<0.48){
+    const cx=x0+CELL/2,cy=y0+CELL/2; x.fillStyle=Math.random()<0.12?'#67e8f9':'#fbbf24';
+    x.beginPath(); x.arc(cx,cy,4.5,0,7); x.fill();
+  }
+}
+// player
+x.fillStyle='#22d3ee'; x.shadowColor='#22d3ee'; x.shadowBlur=14; rrect(x,CELL+8,CELL+8,CELL-16,CELL-16,6); x.fill();
+// drones
+[[14,8],[22,12],[28,5]].forEach(([hx,hy])=>{
+  const cx=hx*CELL+CELL/2, cy=hy*CELL+CELL/2; x.fillStyle='#c084fc'; x.shadowColor='#c084fc'; x.shadowBlur=12;
+  x.beginPath(); for(let i=0;i<6;i++){const a=i/6*Math.PI*2; const px=cx+Math.cos(a)*16,py=cy+Math.sin(a)*16; i?x.lineTo(px,py):x.moveTo(px,py);} x.closePath(); x.fill();
+});
+function rrect(ctx,x0,y0,w,h,r){ctx.beginPath();ctx.moveTo(x0+r,y0);ctx.arcTo(x0+w,y0,x0+w,y0+h,r);ctx.arcTo(x0+w,y0+h,x0,y0+h,r);ctx.arcTo(x0,y0+h,x0,y0,r);ctx.arcTo(x0,y0,x0+w,y0,r);ctx.closePath();}
+</script></body></html>

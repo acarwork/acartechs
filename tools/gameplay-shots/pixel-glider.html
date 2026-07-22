@@ -1,0 +1,20 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;padding:0;background:#000;overflow:hidden}canvas{display:block;width:1280px;height:720px}</style>
+</head><body><canvas id="c" width="1280" height="720"></canvas>
+<script>
+const c=document.getElementById('c'),x=c.getContext('2d');
+const W=1280,H=720; c.width=W;c.height=H;
+const bg=x.createLinearGradient(0,0,0,H); bg.addColorStop(0,'#0a1035'); bg.addColorStop(1,'#040812'); x.fillStyle=bg; x.fillRect(0,0,W,H);
+for(let i=0;i<90;i++){x.fillStyle='rgba(200,220,255,0.35)'; x.fillRect((i*97)%W,(i*53)%H,2,2);}
+const gap=150;
+[[280,220,'#a78bfa'],[540,320,'#f472b6'],[800,200,'#a78bfa'],[1060,360,'#f472b6']].forEach(([gx,mid,col])=>{
+  x.fillStyle=col; x.shadowColor=col; x.shadowBlur=12;
+  x.fillRect(gx,0,58,mid-gap/2); x.fillRect(gx,mid+gap/2,58,H-(mid+gap/2));
+  x.shadowBlur=0; x.fillStyle='#22d3ee'; x.fillRect(gx,mid-gap/2-8,58,8); x.fillRect(gx,mid+gap/2,58,8);
+});
+// drone
+const dx=360,dy=340; x.fillStyle='#22d3ee'; x.shadowColor='#22d3ee'; x.shadowBlur=18;
+x.beginPath(); x.moveTo(dx+34,dy); x.lineTo(dx-22,dy-20); x.lineTo(dx-12,dy); x.lineTo(dx-22,dy+20); x.closePath(); x.fill();
+x.shadowBlur=0; x.fillStyle='#f472b6'; x.fillRect(dx-38,dy-6,16,12);
+for(let i=0;i<5;i++){x.fillStyle=`rgba(251,191,36,${1-i/5})`; x.fillRect(dx-50-i*12,dy-3,10,6);}
+</script></body></html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;padding:0;background:#000;overflow:hidden}canvas{display:block;width:1280px;height:720px}</style>
+</head><body><canvas id="c" width="1280" height="720"></canvas>
+<script>
+const c=document.getElementById('c'),x=c.getContext('2d');
+const W=1280,H=720; c.width=W;c.height=H;
+const bg=x.createLinearGradient(0,0,0,H); bg.addColorStop(0,'#1a0840'); bg.addColorStop(1,'#0a0418'); x.fillStyle=bg; x.fillRect(0,0,W,H);
+const pal=['#22d3ee','#a78bfa','#f472b6','#fbbf24','#4ade80','#fb7185'];
+const cols=9,rows=11,bw=92,bh=52,ox=(W-cols*bw)/2,oy=50;
+for(let y=0;y<rows;y++)for(let xx=0;xx<cols;xx++){
+  if(xx>=3&&xx<=5&&y>=4&&y<=6) continue;
+  const col=pal[(xx*3+y*2)%pal.length];
+  x.fillStyle=col; x.shadowColor=col; x.shadowBlur=10;
+  rrect(x,ox+xx*bw+4,oy+y*bh+4,bw-8,bh-8,10); x.fill();
+  x.shadowBlur=0; x.fillStyle='rgba(255,255,255,0.2)'; x.fillRect(ox+xx*bw+12,oy+y*bh+10,bw-24,6);
+}
+// explosion burst
+for(let i=0;i<50;i++){const a=Math.random()*6.28,d=20+Math.random()*80; x.fillStyle=pal[i%pal.length]; x.beginPath(); x.arc(ox+4.5*bw+Math.cos(a)*d, oy+5*bh+Math.sin(a)*d, 2+Math.random()*5,0,7); x.fill();}
+function rrect(ctx,x0,y0,w,h,r){ctx.beginPath();ctx.moveTo(x0+r,y0);ctx.arcTo(x0+w,y0,x0+w,y0+h,r);ctx.arcTo(x0+w,y0+h,x0,y0+h,r);ctx.arcTo(x0,y0+h,x0,y0,r);ctx.arcTo(x0,y0,x0+w,y0,r);ctx.closePath();}
+</script></body></html>

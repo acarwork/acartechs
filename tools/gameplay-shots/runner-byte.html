@@ -1,0 +1,19 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;padding:0;background:#000;overflow:hidden}canvas{display:block;width:1280px;height:720px}</style>
+</head><body><canvas id="c" width="1280" height="720"></canvas>
+<script>
+const c=document.getElementById('c'),x=c.getContext('2d');
+const W=1280,H=720; c.width=W;c.height=H;
+const bg=x.createLinearGradient(0,0,0,H); bg.addColorStop(0,'#042830'); bg.addColorStop(1,'#021018'); x.fillStyle=bg; x.fillRect(0,0,W,H);
+const lanes=[W*0.25,W*0.5,W*0.75];
+lanes.forEach(lx=>{x.strokeStyle='rgba(34,211,238,0.45)'; x.lineWidth=3; x.beginPath(); x.moveTo(lx,H*0.15); x.lineTo(lx,H); x.stroke();});
+for(let i=0;i<16;i++){const yy=90+i*42; x.strokeStyle='rgba(45,80,110,0.5)'; x.beginPath(); x.moveTo(50,yy); x.lineTo(W-50,yy); x.stroke();}
+// obstacles
+[[0,160],[1,300],[2,240],[0,420],[1,500],[2,380]].forEach(([l,y])=>{const lx=lanes[l]; x.fillStyle='#fb7185'; x.shadowColor='#fb7185'; x.shadowBlur=12; rrect(x,lx-42,y,84,50,8); x.fill();});
+// packs
+[[1,180],[2,360],[0,300],[1,420]].forEach(([l,y])=>{const lx=lanes[l]; x.fillStyle='#fbbf24'; x.shadowColor='#fbbf24'; x.shadowBlur=10; x.beginPath(); x.arc(lx,y,14,0,7); x.fill();});
+// player
+const px=lanes[1],py=H*0.74; x.shadowBlur=14; x.fillStyle='#2dd4bf'; x.shadowColor='#2dd4bf';
+rrect(x,px-22,py-30,44,48,6); x.fill(); x.fillStyle='#f472b6'; x.beginPath(); x.arc(px,py-40,8,0,7); x.fill();
+function rrect(ctx,x0,y0,w,h,r){ctx.beginPath();ctx.moveTo(x0+r,y0);ctx.arcTo(x0+w,y0,x0+w,y0+h,r);ctx.arcTo(x0+w,y0+h,x0,y0+h,r);ctx.arcTo(x0,y0+h,x0,y0,r);ctx.arcTo(x0,y0,x0+w,y0,r);ctx.closePath();}
+</script></body></html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;padding:0;background:#000;overflow:hidden}canvas{display:block;width:1280px;height:720px}</style>
+</head><body><canvas id="c" width="1280" height="720"></canvas>
+<script>
+const c=document.getElementById('c'),x=c.getContext('2d');
+const W=1280,H=720; c.width=W;c.height=H;
+const g=x.createLinearGradient(0,0,0,H); g.addColorStop(0,'#050a1c'); g.addColorStop(1,'#0a1840');
+x.fillStyle=g; x.fillRect(0,0,W,H);
+// scanlines
+for(let y=0;y<H;y+=3){x.fillStyle='rgba(0,0,0,0.08)';x.fillRect(0,y,W,1);}
+const cols=['#22d3ee','#a78bfa','#f472b6','#fbbf24','#4ade80','#38bdf8','#c084fc'];
+for(let r=0;r<8;r++)for(let c0=0;c0<16;c0++){
+  if(r===5&&c0>10) continue; // broken gap
+  if(r===6&&c0>8&&c0<12) continue;
+  const px=40+c0*76, py=48+r*34;
+  const col=cols[(r+c0)%cols.length];
+  x.fillStyle=col; x.shadowColor=col; x.shadowBlur=8;
+  roundRect(x,px,py,70,26,5); x.fill();
+  x.shadowBlur=0; x.fillStyle='rgba(255,255,255,0.25)'; x.fillRect(px+4,py+3,62,4);
+}
+// particles from hit
+for(let i=0;i<24;i++){const a=i/24*Math.PI*2; x.fillStyle='#fbbf24'; x.beginPath(); x.arc(900+Math.cos(a)*40, 260+Math.sin(a)*30, 3+i%3,0,7); x.fill();}
+// paddle
+x.fillStyle='#67e8f9'; x.shadowColor='#67e8f9'; x.shadowBlur=16;
+roundRect(x,W/2-90,H-88,180,16,8); x.fill();
+// ball
+x.shadowBlur=12; x.fillStyle='#fff'; x.beginPath(); x.arc(W/2+60,H-180,11,0,7); x.fill();
+// trail
+x.shadowBlur=0; for(let i=1;i<=7;i++){x.globalAlpha=1-i/8; x.beginPath(); x.arc(W/2+60-i*14,H-180+i*18,8-i*0.6,0,7); x.fillStyle='#22d3ee'; x.fill();}
+x.globalAlpha=1;
+// subtle HUD bars as shapes only (no text)
+x.fillStyle='rgba(2,8,20,0.7)'; roundRect(x,16,12,90,28,14); x.fill();
+roundRect(x,116,12,70,28,14); x.fill();
+x.fillStyle='#22d3ee'; x.fillRect(28,22,50,8); x.fillRect(128,22,36,8);
+function roundRect(ctx,x0,y0,w,h,r){ctx.beginPath();ctx.moveTo(x0+r,y0);ctx.arcTo(x0+w,y0,x0+w,y0+h,r);ctx.arcTo(x0+w,y0+h,x0,y0+h,r);ctx.arcTo(x0,y0+h,x0,y0,r);ctx.arcTo(x0,y0,x0+w,y0,r);ctx.closePath();}
+</script></body></html>
