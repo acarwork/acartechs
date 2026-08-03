@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-03T16:15:19+03:00",
+  "updatedAt": "2026-08-03T20:09:49+03:00",
   "items": [
     {
       "id": "github-copilot-vs-code-temmuz-2026-guncellemelerini-yayimladi",
@@ -11,6 +11,17 @@
       "iso": "2026-08-03T12:00:00+03:00",
       "excerpt": "GitHub, VS Code içinde Copilot deneyimini ajan penceresi, çoklu sohbet, tarayıcı araçları ve erişilebilirlik yenilikleriyle güncelledi.",
       "image": "/wp-content/uploads/2026/08/github-copilot-vscode-temmuz-2026.jpeg"
+    },
+    {
+      "id": "openai-bilim-icin-yapay-zeka-hamlesini-buyuttu-2-bin-arastirmaciya-codex-destegi",
+      "title": "OpenAI bilim için yapay zekâ hamlesini büyüttü: 2 bin araştırmacıya Codex desteği",
+      "url": "/openai-bilim-icin-yapay-zeka-hamlesini-buyuttu-2-bin-arastirmaciya-codex-destegi/",
+      "category": "yapay-zeka",
+      "categoryLabel": "Yapay Zeka",
+      "date": "2026-08-03",
+      "iso": "2026-08-03T12:00:00+03:00",
+      "excerpt": "OpenAI, ABD Enerji Bakanlığının Genesis Mission programı kapsamında araştırmacılara Codex erişimi ve API desteği sağlayacağını açıkladı.",
+      "image": "/wp-content/uploads/2026/08/genesis-mission-openai-codex-science.png"
     },
     {
       "id": "abden-yapay-zeka-kaynakli-siber-tehditlere-karsi-yeni-adim-sirketleri-neler-bekliyor",
@@ -209,17 +220,6 @@
       "iso": "2026-07-04T12:00:00+03:00",
       "excerpt": "2026’da Öne Çıkan Yapay Zekâ Modelleri: Hangisi Ne İşe Yarıyor?: 2026 yapay zekâ modelleri karşılaştırma rehberi: GPT, Claude, Gemini ve diğer AI...",
       "image": "/wp-content/uploads/2026/07/yapay-zeka-modelleri-2026-karsilastirma.png"
-    },
-    {
-      "id": "yenilenmis-elektronik-cihazlarda-dijital-sicil-donemi-basliyor",
-      "title": "Yenilenmiş elektronik cihazlarda dijital sicil dönemi başlıyor",
-      "url": "/yenilenmis-elektronik-cihazlarda-dijital-sicil-donemi-basliyor/",
-      "category": "mobil",
-      "categoryLabel": "Mobil",
-      "date": "2026-07-02",
-      "iso": "2026-07-02T12:00:00+03:00",
-      "excerpt": "Yenilenmiş elektronik cihazlarda dijital sicil dönemi başlıyor: Ticaret Bakanlığı’nın yeni düzenlemesiyle yenilenmiş cep telefonu, bilgisayar ve...",
-      "image": "/wp-content/uploads/2026/07/384px.png"
     }
   ]
 }
