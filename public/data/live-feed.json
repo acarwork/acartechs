@@ -1,6 +1,17 @@
 {
-  "updatedAt": "2026-07-29T22:12:38+03:00",
+  "updatedAt": "2026-08-03T16:15:19+03:00",
   "items": [
+    {
+      "id": "github-copilot-vs-code-temmuz-2026-guncellemelerini-yayimladi",
+      "title": "GitHub Copilot, VS Code için Temmuz 2026 güncellemelerini yayımladı",
+      "url": "/github-copilot-vs-code-temmuz-2026-guncellemelerini-yayimladi/",
+      "category": "yazilim",
+      "categoryLabel": "Yazılım",
+      "date": "2026-08-03",
+      "iso": "2026-08-03T12:00:00+03:00",
+      "excerpt": "GitHub, VS Code içinde Copilot deneyimini ajan penceresi, çoklu sohbet, tarayıcı araçları ve erişilebilirlik yenilikleriyle güncelledi.",
+      "image": "/wp-content/uploads/2026/08/github-copilot-vscode-temmuz-2026.jpeg"
+    },
     {
       "id": "abden-yapay-zeka-kaynakli-siber-tehditlere-karsi-yeni-adim-sirketleri-neler-bekliyor",
       "title": "AB’den Yapay Zekâ Kaynaklı Siber Tehditlere Karşı Dev Hamle: Şirketler Yeni Güvenlik Dönemine Hazırlanıyor",
@@ -209,17 +220,6 @@
       "iso": "2026-07-02T12:00:00+03:00",
       "excerpt": "Yenilenmiş elektronik cihazlarda dijital sicil dönemi başlıyor: Ticaret Bakanlığı’nın yeni düzenlemesiyle yenilenmiş cep telefonu, bilgisayar ve...",
       "image": "/wp-content/uploads/2026/07/384px.png"
-    },
-    {
-      "id": "yurt-disi-telefon-kayitlarinda-e-devlet-donemi-ve-2026-harci",
-      "title": "Yurt dışı telefon kayıtlarında e-Devlet dönemi ve 2026 harcı",
-      "url": "/yurt-disi-telefon-kayitlarinda-e-devlet-donemi-ve-2026-harci/",
-      "category": "mobil",
-      "categoryLabel": "Mobil",
-      "date": "2026-07-02",
-      "iso": "2026-07-02T12:00:00+03:00",
-      "excerpt": "Yurt dışı telefon kayıtlarında e-Devlet dönemi ve 2026 harcı: Yurt dışından getirilen telefonlarda IMEI kaydı e-Devlet üzerinden yürütülüyor; 2026 harcı...",
-      "image": "/wp-content/uploads/2026/07/imei-edvlet-2026-cover-1.jpg"
     }
   ]
 }
