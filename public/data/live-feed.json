@@ -1,17 +1,6 @@
 {
-  "updatedAt": "2026-09-20T15:13:15+03:00",
+  "updatedAt": "2026-09-20T15:13:30+03:00",
   "items": [
-    {
-      "id": "github-copilot-vs-code-temmuz-2026-guncellemelerini-yayimladi",
-      "title": "GitHub Copilot, VS Code için Temmuz 2026 güncellemelerini yayımladı",
-      "url": "/github-copilot-vs-code-temmuz-2026-guncellemelerini-yayimladi/",
-      "category": "yazilim",
-      "categoryLabel": "Yazılım",
-      "date": "2026-08-03",
-      "iso": "2026-08-03T12:00:00+03:00",
-      "excerpt": "GitHub, VS Code içinde Copilot deneyimini ajan penceresi, çoklu sohbet, tarayıcı araçları ve erişilebilirlik yenilikleriyle güncelledi.",
-      "image": "/wp-content/uploads/2026/08/github-copilot-vscode-temmuz-2026.jpeg"
-    },
     {
       "id": "openai-bilim-icin-yapay-zeka-hamlesini-buyuttu-2-bin-arastirmaciya-codex-destegi",
       "title": "OpenAI bilim için yapay zekâ hamlesini büyüttü: 2 bin araştırmacıya Codex desteği",
@@ -22,6 +11,17 @@
       "iso": "2026-08-03T12:00:00+03:00",
       "excerpt": "OpenAI, ABD Enerji Bakanlığının Genesis Mission programı kapsamında araştırmacılara Codex erişimi ve API desteği sağlayacağını açıkladı.",
       "image": "/wp-content/uploads/2026/08/genesis-mission-openai-codex-science.png"
+    },
+    {
+      "id": "github-copilot-vs-code-temmuz-2026-guncellemelerini-yayimladi",
+      "title": "GitHub Copilot, VS Code için Temmuz 2026 güncellemelerini yayımladı",
+      "url": "/github-copilot-vs-code-temmuz-2026-guncellemelerini-yayimladi/",
+      "category": "yazilim",
+      "categoryLabel": "Yazılım",
+      "date": "2026-08-03",
+      "iso": "2026-08-03T12:00:00+03:00",
+      "excerpt": "GitHub, VS Code içinde Copilot deneyimini ajan penceresi, çoklu sohbet, tarayıcı araçları ve erişilebilirlik yenilikleriyle güncelledi.",
+      "image": "/wp-content/uploads/2026/08/github-copilot-vscode-temmuz-2026.jpeg"
     },
     {
       "id": "abden-yapay-zeka-kaynakli-siber-tehditlere-karsi-yeni-adim-sirketleri-neler-bekliyor",
@@ -35,17 +35,6 @@
       "image": "/wp-content/uploads/2026/07/ab-ai-siber-guvenlik-eylem-plani.png"
     },
     {
-      "id": "openai-chatgpt-agent-ile-gorevleri-tek-akista-topluyor",
-      "title": "OpenAI, ChatGPT agent ile görevleri tek akışta topluyor",
-      "url": "/openai-chatgpt-agent-ile-gorevleri-tek-akista-topluyor/",
-      "category": "yapay-zeka",
-      "categoryLabel": "Yapay Zeka",
-      "date": "2026-07-21",
-      "iso": "2026-07-21T12:00:00+03:00",
-      "excerpt": "OpenAI, ChatGPT agent ile araştırma, web üzerinde işlem yapma ve çok adımlı görev yürütme özelliklerini aynı akışta birleştiriyor.",
-      "image": "/wp-content/uploads/2026/06/chatgpt-openai-yapay-zeka-asistani.png"
-    },
-    {
       "id": "xbox-wire-20-24-temmuz-haftasinin-yeni-oyunlarini-duyurdu",
       "title": "Haftalık Xbox çıkış listesi nasıl kullanılır?",
       "url": "/xbox-wire-20-24-temmuz-haftasinin-yeni-oyunlarini-duyurdu/",
@@ -55,6 +44,17 @@
       "iso": "2026-07-21T12:00:00+03:00",
       "excerpt": "Xbox Wire’ın 20-24 Temmuz haftalık listesini AcarTechs, ham duyuru yerine platform ve öncelik rehberi olarak okuyor.",
       "image": "/wp-content/uploads/2026/07/xbox-next-week-july-20-24-2026.jpg"
+    },
+    {
+      "id": "openai-chatgpt-agent-ile-gorevleri-tek-akista-topluyor",
+      "title": "OpenAI, ChatGPT agent ile görevleri tek akışta topluyor",
+      "url": "/openai-chatgpt-agent-ile-gorevleri-tek-akista-topluyor/",
+      "category": "yapay-zeka",
+      "categoryLabel": "Yapay Zeka",
+      "date": "2026-07-21",
+      "iso": "2026-07-21T12:00:00+03:00",
+      "excerpt": "OpenAI, ChatGPT agent ile araştırma, web üzerinde işlem yapma ve çok adımlı görev yürütme özelliklerini aynı akışta birleştiriyor.",
+      "image": "/wp-content/uploads/2026/06/chatgpt-openai-yapay-zeka-asistani.png"
     },
     {
       "id": "github-copilot-uygulamasina-guvenlik-incelemesi-ozelligi-geldi",
@@ -90,17 +90,6 @@
       "image": "/wp-content/uploads/2026/07/microsoft-copilot-cowork-genel-kullanim.webp"
     },
     {
-      "id": "github-copilot-uygulamasi-tum-kullanicilar-icin-acildi",
-      "title": "GitHub Copilot uygulaması tüm kullanıcılar için kullanıma açıldı",
-      "url": "/github-copilot-uygulamasi-tum-kullanicilar-icin-acildi/",
-      "category": "yazilim",
-      "categoryLabel": "Yazılım",
-      "date": "2026-07-12",
-      "iso": "2026-07-12T12:00:00+03:00",
-      "excerpt": "GitHub Copilot uygulaması tüm kullanıcılar için kullanıma açıldı: GitHub, Copilot uygulamasını tüm kullanıcılar için erişime açarak kodlama yardımını.",
-      "image": "/wp-content/uploads/2026/07/github-copilot-app-available-to-all.jpg"
-    },
-    {
       "id": "samsung-temmuz-2026-galaxy-unpacked-icin-yeni-katlanabilir-donemini-isaret-etti",
       "title": "Samsung, Temmuz 2026 Galaxy Unpacked için yeni katlanabilir dönemini işaret etti",
       "url": "/samsung-temmuz-2026-galaxy-unpacked-icin-yeni-katlanabilir-donemini-isaret-etti/",
@@ -112,6 +101,17 @@
       "image": "/wp-content/uploads/2026/07/samsung-galaxy-unpacked-july-2026.jpg"
     },
     {
+      "id": "github-copilot-uygulamasi-tum-kullanicilar-icin-acildi",
+      "title": "GitHub Copilot uygulaması tüm kullanıcılar için kullanıma açıldı",
+      "url": "/github-copilot-uygulamasi-tum-kullanicilar-icin-acildi/",
+      "category": "yazilim",
+      "categoryLabel": "Yazılım",
+      "date": "2026-07-12",
+      "iso": "2026-07-12T12:00:00+03:00",
+      "excerpt": "GitHub Copilot uygulaması tüm kullanıcılar için kullanıma açıldı: GitHub, Copilot uygulamasını tüm kullanıcılar için erişime açarak kodlama yardımını.",
+      "image": "/wp-content/uploads/2026/07/github-copilot-app-available-to-all.jpg"
+    },
+    {
       "id": "android-bench-yapay-zeka-modellerini-android-gelistirme-gorevlerinde-olcuyor",
       "title": "Android Bench, yapay zeka modellerini Android geliştirme görevlerinde ölçüyor",
       "url": "/android-bench-yapay-zeka-modellerini-android-gelistirme-gorevlerinde-olcuyor/",
@@ -121,6 +121,17 @@
       "iso": "2026-07-10T12:00:00+03:00",
       "excerpt": "Android Bench, yapay zeka modellerini Android geliştirme görevlerinde ölçüyor: Google, Android Bench ölçüm sisteminde Harbor framework dönemine geçerek...",
       "image": "/wp-content/uploads/2026/06/android-developers.png"
+    },
+    {
+      "id": "xbox-game-pass-temmuz-listesine-yeni-oyunlar-ekleniyor",
+      "title": "Game Pass temmuz listesi: katalogdan nasıl seçilir?",
+      "url": "/xbox-game-pass-temmuz-listesine-yeni-oyunlar-ekleniyor/",
+      "category": "oyun",
+      "categoryLabel": "Oyun",
+      "date": "2026-07-10",
+      "iso": "2026-07-10T12:00:00+03:00",
+      "excerpt": "Xbox Game Pass temmuz 2026 dalgasını AcarTechs, kopya liste yerine oyun süresi, tür ve abonelik katmanı üzerinden okuyor.",
+      "image": "/wp-content/uploads/2026/07/xbox-game-pass-temmuz-2026.jpg"
     },
     {
       "id": "google-litert-js-ile-tarayicida-calisan-yapay-zekayi-hizlandiriyor",
@@ -145,15 +156,15 @@
       "image": "/wp-content/uploads/2026/06/netflix-haziran-2026-guvenli-kapak.jpg"
     },
     {
-      "id": "xbox-game-pass-temmuz-listesine-yeni-oyunlar-ekleniyor",
-      "title": "Game Pass temmuz listesi: katalogdan nasıl seçilir?",
-      "url": "/xbox-game-pass-temmuz-listesine-yeni-oyunlar-ekleniyor/",
-      "category": "oyun",
-      "categoryLabel": "Oyun",
-      "date": "2026-07-10",
-      "iso": "2026-07-10T12:00:00+03:00",
-      "excerpt": "Xbox Game Pass temmuz 2026 dalgasını AcarTechs, kopya liste yerine oyun süresi, tür ve abonelik katmanı üzerinden okuyor.",
-      "image": "/wp-content/uploads/2026/07/xbox-game-pass-temmuz-2026.jpg"
+      "id": "google-i-o-2026-gelistirici-oturumlarinda-yapay-zeka-araclari-one-cikti",
+      "title": "Google I/O 2026 geliştirici oturumlarında yapay zekâ araçları öne çıktı",
+      "url": "/google-i-o-2026-gelistirici-oturumlarinda-yapay-zeka-araclari-one-cikti/",
+      "category": "yazilim",
+      "categoryLabel": "Yazılım",
+      "date": "2026-07-04",
+      "iso": "2026-07-04T12:00:00+03:00",
+      "excerpt": "Google I/O 2026 geliştirici oturumlarında yapay zekâ araçları öne çıktı: Google Developers Blog, I/O 2026 geliştirici ana oturumunda yapay zekâ.",
+      "image": "/wp-content/uploads/2026/07/GoogleForDevelopers-ComboIO-Wagta.2e16d0ba.fill-1200x600_984jqJ0.png"
     },
     {
       "id": "2026da-one-cikan-yapay-zeka-modelleri-hangisi-ne-ise-yariyor",
@@ -178,6 +189,17 @@
       "image": "/wp-content/uploads/2026/07/MM_Dev20Productivity_Meta.png"
     },
     {
+      "id": "xbox-wire-temmuz-ayi-indie-selects-listesini-yayimladi",
+      "title": "Xbox Indie Selects temmuz seçkisi: bağımsız oyunu nasıl okumalı?",
+      "url": "/xbox-wire-temmuz-ayi-indie-selects-listesini-yayimladi/",
+      "category": "oyun",
+      "categoryLabel": "Oyun",
+      "date": "2026-07-04",
+      "iso": "2026-07-04T12:00:00+03:00",
+      "excerpt": "Xbox Wire temmuz Indie Selects listesini duyurdu. AcarTechs, seçkiyi kopyalamak yerine oyuncunun neye bakması gerektiğini anlatıyor.",
+      "image": "/wp-content/uploads/2026/07/IndieSelects_July2026_Laurel_Wire-95ba9d698f0d81336d6b.jpg"
+    },
+    {
       "id": "github-copilot-icin-tarayici-araclari-vs-codeda-genel-kullanima-acildi",
       "title": "GitHub Copilot için tarayıcı araçları VS Code’da genel kullanıma açıldı",
       "url": "/github-copilot-icin-tarayici-araclari-vs-codeda-genel-kullanima-acildi/",
@@ -198,28 +220,6 @@
       "iso": "2026-07-04T12:00:00+03:00",
       "excerpt": "Google, Gemini CLI adını Antigravity CLI olarak değiştirme sürecini duyurdu: Google Developers Blog üzerinde yayımlanan duyuru, Gemini CLI tarafındaki...",
       "image": "/wp-content/uploads/2026/07/GeminiCLI-AntigravityCLI_1200x630.2e16d0ba.fill-1200x600-1.png"
-    },
-    {
-      "id": "google-i-o-2026-gelistirici-oturumlarinda-yapay-zeka-araclari-one-cikti",
-      "title": "Google I/O 2026 geliştirici oturumlarında yapay zekâ araçları öne çıktı",
-      "url": "/google-i-o-2026-gelistirici-oturumlarinda-yapay-zeka-araclari-one-cikti/",
-      "category": "yazilim",
-      "categoryLabel": "Yazılım",
-      "date": "2026-07-04",
-      "iso": "2026-07-04T12:00:00+03:00",
-      "excerpt": "Google I/O 2026 geliştirici oturumlarında yapay zekâ araçları öne çıktı: Google Developers Blog, I/O 2026 geliştirici ana oturumunda yapay zekâ.",
-      "image": "/wp-content/uploads/2026/07/GoogleForDevelopers-ComboIO-Wagta.2e16d0ba.fill-1200x600_984jqJ0.png"
-    },
-    {
-      "id": "xbox-wire-temmuz-ayi-indie-selects-listesini-yayimladi",
-      "title": "Xbox Indie Selects temmuz seçkisi: bağımsız oyunu nasıl okumalı?",
-      "url": "/xbox-wire-temmuz-ayi-indie-selects-listesini-yayimladi/",
-      "category": "oyun",
-      "categoryLabel": "Oyun",
-      "date": "2026-07-04",
-      "iso": "2026-07-04T12:00:00+03:00",
-      "excerpt": "Xbox Wire temmuz Indie Selects listesini duyurdu. AcarTechs, seçkiyi kopyalamak yerine oyuncunun neye bakması gerektiğini anlatıyor.",
-      "image": "/wp-content/uploads/2026/07/IndieSelects_July2026_Laurel_Wire-95ba9d698f0d81336d6b.jpg"
     }
   ]
 }
