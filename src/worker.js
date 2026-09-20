@@ -32,7 +32,7 @@ Iletisim: acarr.ffatih@gmail.com
 
 ## Kullanim notu
 
-Icerikler kullanicilara teknoloji haberlerini ve resmi duyurulari ozetlemek icin hazirlanir. Kaynak gostererek kisa alinti ve baglamsal ozetleme yapilabilir.
+Icerikler resmi kaynaklara dayanan, editoryal yorum ve pratik rehber eklenmis ozgun Turkce yazilardir. Kisa duyuru metinleri oldugu gibi kopyalanmaz.
 `;
 
 const REDIRECTS = new Map([
@@ -54,6 +54,11 @@ const REDIRECTS = new Map([
   ['/oyun-abonelik-servislerine-yeni-yapimlar-eklendi-2/', '/oyun-abonelik-servislerine-yeni-yapimlar-eklendi/'],
   ['/oyuncu-ekipmanlarinda-fiyat-performans-secimleri-2/', '/oyuncu-ekipmanlarinda-fiyat-performans-secimleri/'],
   ['/playstation-plus-haziran-katalogunda-final-fantasy-xvi-one-cikti-2/', '/playstation-plus-haziran-katalogunda-final-fantasy-xvi-one-cikti/'],
+  ['/playstation-plus-haziran-kataloguna-final-fantasy-xvi-ve-sonic-x-shadow-generations-eklendi/', '/playstation-plus-haziran-katalogunda-final-fantasy-xvi-one-cikti/'],
+  ['/bagimsiz-oyunlardan-haftanin-dikkat-cekenleri/', '/bagimsiz-oyunlar-yaratici-fikirleriyle-one-cikiyor/'],
+  ['/haftanin-oyun-indirimleri-oyuncularin-ilgisini-cekiyor/', '/haftanin-oyun-firsatlari-ve-ucretsiz-yapimlari-aciklandi/'],
+  ['/oyuncu-ekipmanlarinda-fiyat-performans-secenekleri-araniyor/', '/oyuncu-ekipmanlarinda-fiyat-performans-secimleri/'],
+  ['/konsol-guncellemeleri-sosyal-ozellikleri-gelistiriyor/', '/konsol-oyunculari-icin-sistem-guncellemesi-yayinlandi/'],
   ['/populer-dizinin-yeni-sezon-tarihi-aciklandi-2/', '/populer-dizinin-yeni-sezon-tarihi-aciklandi/'],
   ['/teknoloji-dunyasinda-bugun-one-cikan-her-seyi-anlattik-2/', '/teknoloji-dunyasinda-bugun-one-cikan-her-seyi-anlattik/'],
   ['/yayin-platformlari-yaz-takvimini-guncelledi-2/', '/yayin-platformlari-yaz-takvimini-guncelledi/'],
@@ -73,13 +78,15 @@ const DYNAMIC_HEAD = `
 .acartechs-news-feed article a,.acartechs-trending-list a,.acartechs-feature-slide a{transition:transform .25s ease,box-shadow .25s ease}
 .acartechs-news-feed article:hover a,.acartechs-trending-list a:hover{transform:translateY(-2px)}
 .acartechs-fresh-pill{display:none!important}
-.acartechs-adsense-shell.is-ad-empty,.acartechs-adsense-shell.is-ad-checking{display:block!important}
-.acartechs-adsense-shell.is-ad-empty .acartechs-adsense-unit,.acartechs-adsense-shell.is-ad-checking .acartechs-adsense-unit{background:linear-gradient(120deg,#061b31 0%,#0a477a 48%,#2188f6 78%,#26c9f4 100%)!important;border:1px dashed rgba(255,255,255,.44)!important;border-radius:8px!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);position:relative}
-.acartechs-adsense-shell.is-ad-empty .acartechs-adsense-unit:before,.acartechs-adsense-shell.is-ad-checking .acartechs-adsense-unit:before{background:repeating-linear-gradient(90deg,rgba(255,255,255,.18) 0 2px,transparent 2px 34px);content:"";inset:0;opacity:.38;position:absolute;z-index:0}
-.acartechs-adsense-shell.is-ad-empty .acartechs-adsense-unit:after,.acartechs-adsense-shell.is-ad-checking .acartechs-adsense-unit:after{align-items:center;color:#fff;content:"ACARTECHS REKLAM ALANI";display:flex;font-size:clamp(18px,2vw,28px);font-weight:900;inset:0;justify-content:center;letter-spacing:.02em;position:absolute;text-align:center;text-shadow:0 8px 22px rgba(2,6,23,.35);z-index:1}
-.acartechs-adsense-shell.placement-sidebar.is-ad-empty .acartechs-adsense-unit:after,.acartechs-adsense-shell.placement-sidebar.is-ad-checking .acartechs-adsense-unit:after{content:"ACARTECHS\\A REKLAM ALANI";font-size:24px;line-height:1.18;white-space:pre-line}
-.acartechs-adsense-shell.is-ad-filled .acartechs-adsense-unit:before,.acartechs-adsense-shell.is-ad-filled .acartechs-adsense-unit:after{display:none!important}
-.acartechs-adsense-shell .adsbygoogle{position:relative;z-index:2}
+.acartechs-topbar,.acartechs-nav,.acartechs-nav-list .sub-menu{position:relative;z-index:40}
+.acartechs-nav-list .sub-menu{z-index:60!important}
+.acartechs-login-modal,.acartechs-modal-card{z-index:10050!important}
+.acartechs-arcade-banner,.acartechs-arcade-thumb,.acartechs-arcade-banner-cta{position:relative;z-index:8}
+.acartechs-adsense-shell{position:relative!important;z-index:1!important;clear:both;margin:28px 0}
+.acartechs-adsense-shell.is-ad-empty,.acartechs-adsense-shell.is-ad-checking{display:none!important;min-height:0!important;margin:0!important}
+.acartechs-adsense-shell:not(.is-ad-filled) .acartechs-adsense-unit{background:transparent!important;border:0!important}
+.acartechs-adsense-shell:not(.is-ad-filled) .acartechs-adsense-unit:before,.acartechs-adsense-shell:not(.is-ad-filled) .acartechs-adsense-unit:after{content:none!important;display:none!important}
+.acartechs-adsense-shell .adsbygoogle{position:relative;z-index:1}
 body.acar-ready .acartechs-home{animation:acarFade .45s ease}
 @keyframes acarFade{from{opacity:.001;transform:translateY(4px)}to{opacity:1;transform:none}}
 .acartechs-back-top{position:fixed;right:18px;bottom:22px;z-index:9999;width:44px;height:44px;border:0;border-radius:999px;background:linear-gradient(135deg,#2188f6,#26c9f4);color:#fff;font-size:20px;cursor:pointer;box-shadow:0 10px 28px rgba(33,136,246,.35);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
@@ -199,8 +206,8 @@ const DYNAMIC_BODY = `
         shell.classList.add('is-ad-filled');
         return;
       }
-      if (status === 'unfilled' || unit.childElementCount === 0) {
-        shell.classList.remove('is-ad-filled');
+      if (status === 'unfilled' || (!hasFrame && unit.childElementCount === 0)) {
+        shell.classList.remove('is-ad-filled', 'is-ad-checking');
         shell.classList.add('is-ad-empty');
       }
     });
@@ -282,9 +289,30 @@ function withSearchNoindex(html) {
   return html.replace('<head>', "<head>\n<meta name='robots' content='noindex, follow' />");
 }
 
+function withCorporateNav(html) {
+  if (html.includes('href="/kunye/"')) {
+    return html;
+  }
+  return html.replaceAll(
+    '<li><a href="/hakkimizda/">Hakkımızda</a></li>',
+    '<li><a href="/hakkimizda/">Hakkımızda</a></li>\n\t\t\t\t\t<li><a href="/kunye/">Künye</a></li>\n\t\t\t\t\t<li><a href="/yayin-ilkeleri/">Yayın İlkeleri</a></li>'
+  );
+}
+
+function withPolicyStylesheet(html) {
+  if (html.includes('acartechs-publisher-policy.css')) {
+    return html;
+  }
+  const tag = '<link rel="stylesheet" href="/assets/acartechs-publisher-policy.css">\n';
+  if (html.includes('</head>')) {
+    return html.replace('</head>', `${tag}</head>`);
+  }
+  return html;
+}
+
 function withDynamicPolish(html) {
   if (html.includes('id="acartechs-dynamic-js"')) {
-    return html;
+    return withCorporateNav(withPolicyStylesheet(html));
   }
   let out = html;
   if (out.includes('</head>')) {
@@ -295,9 +323,8 @@ function withDynamicPolish(html) {
     out = out.slice(0, bodyClose) + `${DYNAMIC_BODY}
 ` + out.slice(bodyClose);
   }
-  // Soft human byline fallback in HTML source
   out = out.replace(/acaradmin/gi, 'Acartechs Editör');
-  return out;
+  return withCorporateNav(withPolicyStylesheet(out));
 }
 
 export default {
@@ -318,6 +345,15 @@ export default {
       url.protocol = 'https:';
       url.hostname = 'acartechs.com';
       return Response.redirect(url.toString(), 301);
+    }
+
+    if (url.pathname === '/ads.txt' || url.pathname === '/ads.txt/') {
+      return new Response('google.com, pub-4367344438750629, DIRECT, f08c47fec0942fa0\n', {
+        headers: {
+          'content-type': 'text/plain; charset=utf-8',
+          'cache-control': 'public, max-age=300',
+        },
+      });
     }
 
     if (url.pathname === '/robots.txt') {

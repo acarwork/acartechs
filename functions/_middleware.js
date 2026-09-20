@@ -17,6 +17,11 @@ const REDIRECTS = new Map([
   ['/oyun-abonelik-servislerine-yeni-yapimlar-eklendi-2/', '/oyun-abonelik-servislerine-yeni-yapimlar-eklendi/'],
   ['/oyuncu-ekipmanlarinda-fiyat-performans-secimleri-2/', '/oyuncu-ekipmanlarinda-fiyat-performans-secimleri/'],
   ['/playstation-plus-haziran-katalogunda-final-fantasy-xvi-one-cikti-2/', '/playstation-plus-haziran-katalogunda-final-fantasy-xvi-one-cikti/'],
+  ['/playstation-plus-haziran-kataloguna-final-fantasy-xvi-ve-sonic-x-shadow-generations-eklendi/', '/playstation-plus-haziran-katalogunda-final-fantasy-xvi-one-cikti/'],
+  ['/bagimsiz-oyunlardan-haftanin-dikkat-cekenleri/', '/bagimsiz-oyunlar-yaratici-fikirleriyle-one-cikiyor/'],
+  ['/haftanin-oyun-indirimleri-oyuncularin-ilgisini-cekiyor/', '/haftanin-oyun-firsatlari-ve-ucretsiz-yapimlari-aciklandi/'],
+  ['/oyuncu-ekipmanlarinda-fiyat-performans-secenekleri-araniyor/', '/oyuncu-ekipmanlarinda-fiyat-performans-secimleri/'],
+  ['/konsol-guncellemeleri-sosyal-ozellikleri-gelistiriyor/', '/konsol-oyunculari-icin-sistem-guncellemesi-yayinlandi/'],
   ['/populer-dizinin-yeni-sezon-tarihi-aciklandi-2/', '/populer-dizinin-yeni-sezon-tarihi-aciklandi/'],
   ['/teknoloji-dunyasinda-bugun-one-cikan-her-seyi-anlattik-2/', '/teknoloji-dunyasinda-bugun-one-cikan-her-seyi-anlattik/'],
   ['/yayin-platformlari-yaz-takvimini-guncelledi-2/', '/yayin-platformlari-yaz-takvimini-guncelledi/'],
@@ -59,14 +64,16 @@ function withAdReviewCleanup(html) {
   }
 
   const style = `<style id="acartechs-ad-review-cleanup">
-.acartechs-adsense-shell.is-ad-empty,.acartechs-adsense-shell.is-ad-checking{display:block!important}
-.acartechs-adsense-shell.is-ad-empty .acartechs-adsense-unit,.acartechs-adsense-shell.is-ad-checking .acartechs-adsense-unit{background:linear-gradient(120deg,#061b31 0%,#0a477a 48%,#2188f6 78%,#26c9f4 100%)!important;border:1px dashed rgba(255,255,255,.44)!important;border-radius:8px!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);position:relative}
-.acartechs-adsense-shell.is-ad-empty .acartechs-adsense-unit:before,.acartechs-adsense-shell.is-ad-checking .acartechs-adsense-unit:before{background:repeating-linear-gradient(90deg,rgba(255,255,255,.18) 0 2px,transparent 2px 34px);content:"";inset:0;opacity:.38;position:absolute;z-index:0}
-.acartechs-adsense-shell.is-ad-empty .acartechs-adsense-unit:after,.acartechs-adsense-shell.is-ad-checking .acartechs-adsense-unit:after{align-items:center;color:#fff;content:"ACARTECHS REKLAM ALANI";display:flex;font-size:clamp(18px,2vw,28px);font-weight:900;inset:0;justify-content:center;letter-spacing:.02em;position:absolute;text-align:center;text-shadow:0 8px 22px rgba(2,6,23,.35);z-index:1}
-.acartechs-adsense-shell.placement-sidebar.is-ad-empty .acartechs-adsense-unit:after,.acartechs-adsense-shell.placement-sidebar.is-ad-checking .acartechs-adsense-unit:after{content:"ACARTECHS\\A REKLAM ALANI";font-size:24px;line-height:1.18;white-space:pre-line}
-.acartechs-adsense-shell.is-ad-filled .acartechs-adsense-unit:before,.acartechs-adsense-shell.is-ad-filled .acartechs-adsense-unit:after{display:none!important}
-.acartechs-adsense-shell .adsbygoogle{position:relative;z-index:2}
-</style>`;
+.acartechs-topbar,.acartechs-nav,.acartechs-nav-list .sub-menu{position:relative;z-index:40}
+.acartechs-nav-list .sub-menu{z-index:60!important}
+.acartechs-login-modal,.acartechs-modal-card{z-index:10050!important}
+.acartechs-arcade-banner,.acartechs-arcade-thumb{position:relative;z-index:8}
+.acartechs-adsense-shell{position:relative!important;z-index:1!important;clear:both}
+.acartechs-adsense-shell.is-ad-empty,.acartechs-adsense-shell.is-ad-checking{display:none!important;min-height:0!important;margin:0!important}
+.acartechs-adsense-shell:not(.is-ad-filled) .acartechs-adsense-unit:before,.acartechs-adsense-shell:not(.is-ad-filled) .acartechs-adsense-unit:after{content:none!important;display:none!important}
+.acartechs-adsense-shell .adsbygoogle{position:relative;z-index:1}
+</style>
+<link rel="stylesheet" href="/assets/acartechs-publisher-policy.css">`;
 
   const script = `<script id="acartechs-ad-review-cleanup-script">
 (function(){
