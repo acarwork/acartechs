@@ -3,13 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>API kullaniminda hız ve güvenilirlik neden – AcarTechs</title>
+	<title>API seçimi: gecikme, kota ve hata bütçesi – AcarTechs</title>
 <meta name='robots' content='max-image-preview:large' />
 <link rel="canonical" href="https://acartechs.com/api-kullaniminda-hiz-ve-guvenilirlik-neden-onemli/">
-		<meta name="description" content="API kullaniminda hiz ve güvenilirlik neden önemli?: Uygulamalar arasi veri akisi arttikca API performansi ve hata yonetimi kullanici deneyimini dogrudan...">
+		<meta name="description" content="Geliştirici için AcarTechs, ‘hızlı API’ reklamını p95 gecikme, kota ve kesinti günlüğüyle okur.">
 		<meta property="og:site_name" content="Acartechs">
-		<meta property="og:title" content="API kullaniminda hız ve güvenilirlik neden – AcarTechs">
-		<meta property="og:description" content="API kullaniminda hiz ve güvenilirlik neden önemli?: Uygulamalar arasi veri akisi arttikca API performansi ve hata yonetimi kullanici deneyimini dogrudan...">
+		<meta property="og:title" content="API seçimi: gecikme, kota ve hata bütçesi – AcarTechs">
+		<meta property="og:description" content="Geliştirici için AcarTechs, ‘hızlı API’ reklamını p95 gecikme, kota ve kesinti günlüğüyle okur.">
 		<meta property="og:type" content="article">
 		<meta property="og:url" content="https://acartechs.com/api-kullaniminda-hiz-ve-guvenilirlik-neden-onemli/">
 				<meta name="twitter:card" content="summary_large_image">
@@ -163,8 +163,8 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 
 			<header class="acartechs-single-hero">
 				<span class="acartechs-single-label">Yazılım</span>
-				<h1>API kullaniminda hiz ve güvenilirlik neden önemli?</h1>
-				<p>Uygulamalar arasi veri akisi arttikca API performansi ve hata yonetimi kullanici deneyimini dogrudan etkiliyor.</p>
+				<h1>API seçimi: gecikme, kota ve hata bütçesi</h1>
+				<p>Demo milisaniyesi, fatura günündeki p95 değildir.</p>
 			</header>
 
 			<div class="acartechs-single-meta">
@@ -200,7 +200,28 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 					</div>
 
 			<div class="acartechs-single-body">
-				<p>Uygulamalar arasi veri akisi arttikca API performansi ve hata yonetimi kullanici deneyimini dogrudan etkiliyor.</p>		<p>Bu icerik siteyi baslangic seviyesinde doldurmak icin hazirlandi. Yayin oncesi baslik, metin ve gorsel detaylarini panelden duzenleyebilirsin.</p>			</div>
+<p>API haberleri yeni uç nokta ve ‘daha hızlı bölge’ ile gelir. Üretimde sizi yoran, mutlu yol değil; 429, 5xx ve 1.8 saniyelik kuyruktur. AcarTechs, entegrasyon kararını üç sayıya bağlar: p95 gecikme, aylık kota, hata bütçesi.</p>
+<p>Tek bölge, sizin kullanıcılarınızın uzağındaysa ilk bayt (TTFB) şişer. Yeniden deneme (retry) körse, kesintide kendi kendinizi DDoS’larsınız. Gizli anahtar mobil uygulamada ise kota başkasının olur.</p>
+<h2>Sözleşmeden önce</h2>
+<p>Statü sayfası ve geçmiş 90 gün kesinti. SLA cümlesi değil, kredi nasıl işliyor. Webhook imzası ve idempotency anahtarı var mı? Yoksa çift tahsilat sizde kalır. Fiyat, ‘bin istek’ değil, sizin gerçek tepe saatinizle çarpılmalıdır.</p>
+
+<aside class="acartechs-adsense-shell is-horizontal placement-article" aria-label="Reklam">
+			<span class="acartechs-ad-disclosure">Reklam</span>
+			<div class="acartechs-adsense-unit is-horizontal">
+				<ins class="adsbygoogle"
+					style="display:block"
+					data-ad-client="ca-pub-4367344438750629"
+					data-ad-slot="5763121236"
+					data-ad-format="auto"
+					data-full-width-responsive="true"></ins>
+			</div>
+		</aside>
+
+<h2>Kim için, ne zaman?</h2>
+<p>Küçük ekip için yönetilen kuyruk, kendi retry yazmaktan ucuzdur. Büyük ekip için çok sağlayıcı, tek sağlayıcı indiriminden daha az uykusuzluk verebilir.</p>
+<ul><li>Anahtarı istemciye gömmeyin</li><li>p95 ölçün, ortalamayı değil</li><li>Retry’e jitter koyun</li></ul>
+<p>API, slayttaki milisaniye değil; fatura günündeki hata yüzdesidir.</p>
+</div>
 		</article>
 
 		<aside class="acartechs-single-sidebar">
