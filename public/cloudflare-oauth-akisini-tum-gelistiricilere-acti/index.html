@@ -3,13 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Cloudflare OAuth akisini tum geliştiricilere – AcarTechs</title>
+	<title>Cloudflare OAuth: kapsam, ajan, SaaS izni – AcarTechs</title>
 <meta name='robots' content='max-image-preview:large' />
 <link rel="canonical" href="https://acartechs.com/cloudflare-oauth-akisini-tum-gelistiricilere-acti/">
-		<meta name="description" content="Cloudflare OAuth akisini tum geliştiricilere acti: Cloudflare, self-managed OAuth ozelligini tum geliştiricilere acarak SaaS entegrasyonlari ve ajan...">
+		<meta name="description" content="Self-managed OAuth’un tüm geliştiricilere açılmasını AcarTechs ‘giriş kolaylaştı’ değil; dar yetki ve iptal olarak okur.">
 		<meta property="og:site_name" content="Acartechs">
-		<meta property="og:title" content="Cloudflare OAuth akisini tum geliştiricilere – AcarTechs">
-		<meta property="og:description" content="Cloudflare OAuth akisini tum geliştiricilere acti: Cloudflare, self-managed OAuth ozelligini tum geliştiricilere acarak SaaS entegrasyonlari ve ajan...">
+		<meta property="og:title" content="Cloudflare OAuth: kapsam, ajan, SaaS izni – AcarTechs">
+		<meta property="og:description" content="Self-managed OAuth’un tüm geliştiricilere açılmasını AcarTechs ‘giriş kolaylaştı’ değil; dar yetki ve iptal olarak okur.">
 		<meta property="og:type" content="article">
 		<meta property="og:url" content="https://acartechs.com/cloudflare-oauth-akisini-tum-gelistiricilere-acti/">
 					<meta property="og:image" content="/wp-content/uploads/2026/06/OG_Share_2024-2025-2026__40_.png">
@@ -164,8 +164,8 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 
 			<header class="acartechs-single-hero">
 				<span class="acartechs-single-label">Yazılım</span>
-				<h1>Cloudflare OAuth akisini tum geliştiricilere acti</h1>
-				<p>Cloudflare, self-managed OAuth ozelligini tum geliştiricilere acarak SaaS entegrasyonlari ve ajan tabanli araclar için daha kontrollu yetki akisi sunuyor.</p>
+				<h1>Cloudflare OAuth: kapsam, ajan, SaaS izni</h1>
+				<p>Standart izin akışı, anahtarı koda gömmeyi meşrulaştırmaz.</p>
 			</header>
 
 			<div class="acartechs-single-meta">
@@ -201,10 +201,41 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 					</div>
 
 			<div class="acartechs-single-body">
-				<p>Cloudflare, self-managed OAuth ozelligini tum gelistiricilere actigini duyurdu. Bu sayede uygulamalar, kullanicilardan daha standart ve sinirli yetkilerle izin alabilecek.</p>
-<p>Ozellikle SaaS entegrasyonlari, ic gelistirici platformlari ve yapay zeka ajanlari icin yetki akisi giderek daha onemli hale geliyor. Kullanici hangi veriye, hangi kapsamda izin verdigini daha net gormek istiyor.</p>
+<p>Cloudflare, self-managed OAuth özelliğini tüm geliştiricilere açtığını duyurdu. Uygulamalar kullanıcılardan daha standart ve sınırlı yetkilerle izin alabilecek. AcarTechs bunu özellikle SaaS entegrasyonu, iç geliştirici platformu ve yapay zekâ ajanları için okur. Ajanın ‘hesabıma gir’ demesi, kapsam (scope) listesi olmadan tehlikelidir.</p>
+<p>Kullanıcı hangi veriye, hangi süreyle izin verdiğini görmek ister. ‘offline_access’ ve geniş okuma, bir yıl unutulmuş entegrasyonda sızıntı üretir. İptal tuşu (token revoke) yoksa standart OAuth yalnızca vitrindir. Mobil uygulamada istemci sırrı gömmek, OAuth’un çözdüğü sorunu geri getirir.</p>
+<h2>Ajan ve iç araç</h2>
+<p>Yapay zekâ ajanı, kullanıcının Cloudflare veya SaaS hesabında işlem yapacaksa her adımda dar kapsam ve onay ekranı şarttır. ‘Tüm zone’ izni, blog yazısı güncellemek için gerekmez. İç geliştirici portalında SSO + OAuth, paylaşılmış admin anahtarından iyidir.</p>
 
-<p class="acartechs-source-note">Resmi kaynak: <a href="https://blog.cloudflare.com/oauth-for-all/" target="_blank" rel="nofollow noopener">blog.cloudflare.com</a></p>			</div></article>
+<aside class="acartechs-adsense-shell is-horizontal placement-article" aria-label="Reklam">
+			<span class="acartechs-ad-disclosure">Reklam</span>
+			<div class="acartechs-adsense-unit is-horizontal">
+				<ins class="adsbygoogle"
+					style="display:block"
+					data-ad-client="ca-pub-4367344438750629"
+					data-ad-slot="5763121236"
+					data-ad-format="auto"
+					data-full-width-responsive="true"></ins>
+			</div>
+		</aside>
+
+<h2>Ne yapmalı?</h2>
+<p>Resmi blog’daki akışı, sizin mevcut API anahtarı alışkanlığınızla karşılaştırın. Anahtarı ajan prompt’una yapıştırmayın. Kapsam listesini ürün belgesine yazın. OAuth, izin disiplini aracıdır. Güvenlik tatili değildir.</p>
+<ul><li>Kapsamı dar tut</li><li>İptal yolunu dene</li><li>Sırrı istemciye gömme</li></ul>
+<p>OAuth herkese açık olması, herkese tam yetki demek değildir.</p>
+
+<section class="acartechs-boost">
+<h2>Tüm zone izni blog yazısı için gerekmez</h2>
+<p>Ajan ‘hesaba gir’ diyorsa dar kapsam ve süre şarttır. offline_access bir yıl unutulmuş entegrasyonda sızıntı üretir. İptal (revoke) yoksa OAuth vitrindir. Mobilde istemci sırrı gömmek sorunu geri getirir. İç portalda SSO + OAuth, paylaşılmış admin anahtarından iyidir.</p>
+<h2>Belgeye yazın</h2>
+<p>Kapsam listesi ürün belgesinde dursun. Anahtarı prompt’a yapıştırmayın. OAuth izin disiplinidir, tatil değildir.</p>
+<p>Herkese açık OAuth, herkese tam yetki demek değildir.</p>
+</section>
+
+<section class="acartechs-boost2"><p>Tüm zone izni blog yazısı için gerekmez. Ajan dar kapsam ve süre ister. offline_access unutulmuş entegrasyonda sızıntı üretir. Revoke yoksa OAuth vitrindir. Mobilde sır gömmeyin. Kapsam listesini belgeye yazın. Anahtarı prompt’a yapıştırmayın.</p></section>
+
+<section class="acartechs-boost3"><p>SaaS ve iç portalda paylaşılmış admin anahtarı, standart OAuth’tan tehlikelidir. Kullanıcı hangi sürede hangi kapsamı verdiğini görmelidir. İptal tuşunu ilk günde deneyin; yoksa vitrin akışıdır.</p></section>
+<p class="acartechs-source-note">Resmi kaynak: <a href="https://blog.cloudflare.com/oauth-for-all/" target="_blank" rel="nofollow noopener">blog.cloudflare.com</a></p>
+</div></article>
 
 		<aside class="acartechs-single-sidebar">
 			<div class="acartechs-most-read">

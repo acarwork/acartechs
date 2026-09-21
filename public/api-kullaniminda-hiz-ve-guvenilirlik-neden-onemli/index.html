@@ -221,6 +221,35 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 <p>Küçük ekip için yönetilen kuyruk, kendi retry yazmaktan ucuzdur. Büyük ekip için çok sağlayıcı, tek sağlayıcı indiriminden daha az uykusuzluk verebilir.</p>
 <ul><li>Anahtarı istemciye gömmeyin</li><li>p95 ölçün, ortalamayı değil</li><li>Retry’e jitter koyun</li></ul>
 <p>API, slayttaki milisaniye değil; fatura günündeki hata yüzdesidir.</p>
+<section class="acartechs-depth">
+<h2>Demo milisaniyesi fatura günündeki p95 değildir</h2>
+<p>Üretimde yoran mutlu yol değil; 429, 5xx ve 1.8 saniyelik kuyruktur. Tek bölge kullanıcılarınızın uzağındaysa TTFB şişer. Retry körse kesintide kendinizi DDoS’larsınız. Gizli anahtar mobil uygulamada ise kota başkasının olur.</p>
+
+<aside class="acartechs-adsense-shell is-horizontal placement-article" aria-label="Reklam">
+			<span class="acartechs-ad-disclosure">Reklam</span>
+			<div class="acartechs-adsense-unit is-horizontal">
+				<ins class="adsbygoogle"
+					style="display:block"
+					data-ad-client="ca-pub-4367344438750629"
+					data-ad-slot="5763121236"
+					data-ad-format="auto"
+					data-full-width-responsive="true"></ins>
+			</div>
+		</aside>
+<h2>Statü sayfası ve 90 gün kesinti</h2>
+<p>SLA cümlesi değil kredi nasıl işliyor bak. Webhook imzası ve idempotency yoksa çift tahsilat sizde kalır. Fiyat ‘bin istek’ değil sizin tepe saatinizle çarpılsın. Küçük ekip için yönetilen kuyruk kendi retry yazmaktan ucuzdur.</p>
+<h2>Anahtarı istemciye gömme</h2>
+<p>p95 ölç, ortalamayı değil. Retry’e jitter koy. Büyük ekip için çok sağlayıcı, tek sağlayıcı indiriminden az uykusuzluk verebilir. API slayttaki milisaniye değil fatura günündeki hata yüzdesidir.</p>
+<ul><li>Anahtarı istemciye gömme</li><li>p95 ölç</li><li>Retry’e jitter koy</li></ul>
+<p>API seçimi p95, kota ve hata bütçesidir. Demo değildir.</p>
+</section>
+<section class="acartechs-boost">
+<h2>Retry körse kendinizi DDoS’larsınız</h2>
+<p>p95, kota, 90 gün kesinti. SLA kredi nasıl işliyor. Webhook imzası ve idempotency yoksa çift tahsilat sizde. Anahtar mobildeyse kota başkasının. Fiyat tepe saatinizle çarpılsın. Küçük ekip yönetilen kuyruk, büyük ekip çok sağlayıcı.</p>
+<h2>Jitter</h2>
+<p>Ortalama milisaniye fatura günü değildir. API hata yüzdesidir.</p>
+<p>Demo p95 değildir.</p>
+</section>
 </div></article>
 
 		<aside class="acartechs-single-sidebar">

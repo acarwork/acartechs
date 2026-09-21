@@ -101,6 +101,8 @@ const REDIRECTS = new Map([
   ['/bulut-depolama-servislerinde-yeni-kapasite-paketleri/', '/bulut-depolama-servisleri-kapasite-paketlerini-guncelliyor/'],
   ['/belgesel-turunde-haftanin-dikkat-ceken-onerileri/', '/belgesel-onerileri-teknoloji-ve-doga-meraklilarini-hedefliyor/'],
   ['/akilli-ev-urunlerinde-uyumluluk-sorunu-azaliyor/', '/akilli-ev-cihazlari-daha-uyumlu-hale-geliyor/'],
+  ['/google-i-o-2026-gelistiriciler-icin-ajan-odakli-yeni-donemi-one-cikardi/', '/google-i-o-2026-gelistirici-oturumlarinda-yapay-zeka-araclari-one-cikti/'],
+  ['/android-haziran-guncellemesi-kisilestirme-ve-guvenlik-ozelliklerini-genisletti/', '/android-haziran-drop-guvenlik-ve-kisisellestirme-ozelliklerini-buyuttu/'],
 ]);
 
 const DYNAMIC_HEAD = `

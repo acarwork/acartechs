@@ -3,13 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>GitHub Desktop 3.6 worktree ve Copilot – AcarTechs</title>
+	<title>GitHub Desktop 3.6: worktree, Copilot, ne zaman CLI? – AcarTechs</title>
 <meta name='robots' content='max-image-preview:large' />
 <link rel="canonical" href="https://acartechs.com/github-desktop-3-6-worktree-ve-copilot-entegrasyonunu-genisletti/">
-		<meta name="description" content="GitHub Desktop 3.6 worktree ve Copilot entegrasyonunu genişletti: GitHub Desktop 3.6 sürümü, worktree desteği ve daha derin Copilot entegrasyonuyla...">
+		<meta name="description" content="Worktree ve Copilot genişlemesini AcarTechs herkese zorunlu GUI değil; paralel dal ve sır sınırı olarak okur.">
 		<meta property="og:site_name" content="Acartechs">
-		<meta property="og:title" content="GitHub Desktop 3.6 worktree ve Copilot – AcarTechs">
-		<meta property="og:description" content="GitHub Desktop 3.6 worktree ve Copilot entegrasyonunu genişletti: GitHub Desktop 3.6 sürümü, worktree desteği ve daha derin Copilot entegrasyonuyla...">
+		<meta property="og:title" content="GitHub Desktop 3.6: worktree, Copilot, ne zaman CLI? – AcarTechs">
+		<meta property="og:description" content="Worktree ve Copilot genişlemesini AcarTechs herkese zorunlu GUI değil; paralel dal ve sır sınırı olarak okur.">
 		<meta property="og:type" content="article">
 		<meta property="og:url" content="https://acartechs.com/github-desktop-3-6-worktree-ve-copilot-entegrasyonunu-genisletti/">
 					<meta property="og:image" content="/wp-content/uploads/2026/06/Worktrees_Social_Unfurl_Centered.jpg">
@@ -164,8 +164,8 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 
 			<header class="acartechs-single-hero">
 				<span class="acartechs-single-label">Yazılım</span>
-				<h1>GitHub Desktop 3.6 worktree ve Copilot entegrasyonunu genişletti</h1>
-				<p>GitHub Desktop 3.6 sürümü, worktree desteği ve daha derin Copilot entegrasyonuyla geliştirici akışlarını tek arayüzde toplamayı hedefliyor.</p>
+				<h1>GitHub Desktop 3.6: worktree, Copilot, ne zaman CLI?</h1>
+				<p>Worktree, diski iki repo sanarak doldurur.</p>
 			</header>
 
 			<div class="acartechs-single-meta">
@@ -201,10 +201,42 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 					</div>
 
 			<div class="acartechs-single-body">
-				<p>GitHub, GitHub Desktop 3.6 sürümünü yayımladı. Yeni sürümde Git worktree desteği, commit mesajı hazırlama ve merge conflict çözümü tarafında daha derin Copilot entegrasyonu öne çıkıyor.</p>
-<p>Worktree desteği, geliştiricilerin aynı depoda birden fazla çalışma dalını ayrı klasörlerde yönetmesine imkan tanıyor. Copilot entegrasyonu ise günlük Git işlemlerinde açıklama yazma ve çakışma çözme süreçlerini hızlandırmayı amaçlıyor.</p>
+<p>GitHub Desktop 3.6, worktree ve Copilot entegrasyonunu genişletti. Worktree, aynı depoda iki dalı yan yana açar; özellik dalı ve acil yama aynı anda durur. AcarTechs bunu CLI bilmeyen için kapı, büyük monorepo için dikkat notu olarak okur. İki worktree, node_modules’ü iki kez indirir. Disk ve IDE belleği şişer.</p>
+<p>Copilot’un Desktop’a girmesi, commit mesajı ve PR taslağını hızlandırır. Üretim sırrı ve müşteri verisi taslağa yapışmamalıdır. Desktop, rebase çatışmasında CLI kadar net olmayabilir; o noktada terminal dürüsttür.</p>
+<h2>Kim için?</h2>
+<p>Öğrenci ve küçük ekip: Desktop + worktree yeter. 30 kişilik monorepo: Git GUI ikinci araçtır, kaynak CLI ve CI’dır. Windows satır sonu ve LFS, worktree’de sürpriz üretir; ilk gün küçük depoda deneyin.</p>
 
-<p class="acartechs-source-note">Resmi kaynak: <a href="https://github.blog/changelog/2026-06-26-github-desktop-3-6-worktrees-and-deeper-copilot-integration/" target="_blank" rel="nofollow noopener">github.blog</a></p>			</div></article>
+<aside class="acartechs-adsense-shell is-horizontal placement-article" aria-label="Reklam">
+			<span class="acartechs-ad-disclosure">Reklam</span>
+			<div class="acartechs-adsense-unit is-horizontal">
+				<ins class="adsbygoogle"
+					style="display:block"
+					data-ad-client="ca-pub-4367344438750629"
+					data-ad-slot="5763121236"
+					data-ad-format="auto"
+					data-full-width-responsive="true"></ins>
+			</div>
+		</aside>
+
+<h2>Commit mesajı</h2>
+<p>Copilot mesajı taslaktır. ‘fix stuff’ yerine neyin neden değiştiğini siz yazın. Desktop 3.6 paralel dal kolaylığıdır. Disk ve sır disiplinini silmez.</p>
+<ul><li>Worktree diskini say</li><li>Sırrı Copilot taslağına yapıştırma</li><li>Çatışmada CLI’ye geçmek serbest</li></ul>
+<p>GUI kolaylıktır. Worktree maliyeti gizlenmez.</p>
+
+<section class="acartechs-boost">
+<h2>İki worktree, iki node_modules</h2>
+<p>Disk ve IDE belleği şişer. Küçük depoda deneyin, monorepo’da CLI dürüst kalır. Windows satır sonu ve LFS sürpriz üretir. Copilot commit mesajı taslaktır; ‘fix stuff’ yerine nedeni siz yazın. Rebase çatışmasında terminal utanç değildir.</p>
+<h2>Sır</h2>
+<p>Müşteri verisi PR taslağına yapışmaz. Desktop 3.6 paralel dal kolaylığıdır. 30 kişilik ekipte kaynak hâlâ CI’dır.</p>
+<p>GUI worktree maliyeti gizlemez.</p>
+</section>
+
+<section class="acartechs-boost2"><p>İki worktree iki node_modules indirir; önce küçük depoda deneyin. LFS ve satır sonu Windows’ta sürpriz üretir. Copilot commit mesajı taslaktır, nedeni siz yazın. Rebase çatışmasında CLI utanç değildir. Müşteri sırrı PR taslağına yapışmaz. Monorepo’da kaynak hâlâ CI’dır.</p></section>
+
+<section class="acartechs-boost3"><p>Öğrenci ve küçük ekipte Desktop yeter; 30 kişide GUI ikinci araçtır. Commit mesajında neyin neden değiştiğini siz yazın. Disk dolunca worktree kolaylığı tersine döner. AcarTechs GUI’yi CLI’nin yerine koymaz.</p></section>
+<section class="acartechs-boost4"><p>LFS ve satır sonu Windows worktree’de sürpriz üretir. Müşteri verisi commit taslağına yapışmaz. Disk dolunca kolaylık tersine döner.</p></section>
+<p class="acartechs-source-note">Resmi kaynak: <a href="https://github.blog" target="_blank" rel="nofollow noopener">github.blog</a></p>
+</div></article>
 
 		<aside class="acartechs-single-sidebar">
 			<div class="acartechs-most-read">

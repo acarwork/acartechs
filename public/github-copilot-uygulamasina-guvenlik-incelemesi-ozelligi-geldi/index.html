@@ -203,6 +203,17 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 				<p>GitHub, Copilot uygulamasına güvenlik incelemesi özelliği eklediğini resmi changelog sayfasında duyurdu. Yeni özellik, geliştiricilerin kod değişikliklerini güvenlik açısından daha erken aşamada kontrol etmesini hedefliyor.</p>
 <p>Duyuruya göre security review özelliği, Copilot uygulaması içinde kod değişikliklerini analiz ederek potansiyel güvenlik risklerine dikkat çekiyor. Bu yapı, özellikle hızlı geliştirme yapan ekiplerde kod gözden geçirme sürecinin daha düzenli ilerlemesine yardımcı olabilir.</p>
 <p>GitHub’un açıklaması, yapay zekâ destekli kodlama araçlarının yalnızca kod üretimine değil, yazılım güvenliği ve kalite kontrol aşamalarına da daha fazla dahil olduğunu gösteriyor. Bu nedenle güncelleme, Copilot kullanan bireysel geliştiriciler kadar ekip bazlı yazılım süreçleri için de önem taşıyor.</p>
+
+<section class="acartechs-depth">
+<h2>Güvenlik incelemesi, pentest değildir</h2>
+<p>Copilot’un güvenlik taraması bilinen kalıpları işaretler. İş mantığı ve yetki aşımını kaçırır. AcarTechs yeşil rozeti onay kapısı saymaz. İnsan review ve bağımlılık taraması (lockfile) yerinde kalır.</p>
+<h2>Yanlış yeşil</h2>
+<p>Rozet, stajyeri ‘güvenli’ merge’e iter. Kritik yolda SAST/DAST ayrıdır. Gizli anahtarı sohbete yapıştırarak taratmak, taramadan büyük risktir.</p>
+<h2>Nasıl kullanılır?</h2>
+<p>PR taslağındaki düşük asılı meyve. Sertifika değil.</p>
+<ul><li>Rozeti pentest sanma</li><li>Lockfile tarasın</li><li>Sırrı sohbete yapıştırma</li></ul>
+<p>Copilot güvenlik incelemesi yardımcı işarettir. Onay kapısı değildir.</p>
+</section>
 <p class="acartechs-source-note">Görsel kaynağı: <a href="https://github.blog/" target="_blank" rel="nofollow noopener">github.blog</a></p>
 		<h2>Güvenlik incelemesi ne işe yarıyor?</h2>
 <p>Security review özelliği, kodda güvenlik açısından dikkat edilmesi gereken noktaları geliştiriciye daha görünür hale getiriyor. Böylece hata ya da açık ihtimali taşıyan değişiklikler, üretime alınmadan önce daha kolay fark edilebiliyor.</p>

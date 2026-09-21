@@ -3,13 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Cloudflare Workflows için saga rollback destegi – AcarTechs</title>
+	<title>Cloudflare Workflows saga rollback: ödeme, sipariş, telafi – AcarTechs</title>
 <meta name='robots' content='max-image-preview:large' />
 <link rel="canonical" href="https://acartechs.com/cloudflare-workflows-icin-saga-rollback-destegi-geldi/">
-		<meta name="description" content="Cloudflare Workflows için saga rollback destegi geldi: Cloudflare, cok adimli islemlerde hata sonrasi geri alma akisini kolaylastiran saga rollback...">
+		<meta name="description" content="Saga tarzı geri almayı AcarTechs sihirli undo değil; her adımın telafi fonksiyonu olarak okur.">
 		<meta property="og:site_name" content="Acartechs">
-		<meta property="og:title" content="Cloudflare Workflows için saga rollback destegi – AcarTechs">
-		<meta property="og:description" content="Cloudflare Workflows için saga rollback destegi geldi: Cloudflare, cok adimli islemlerde hata sonrasi geri alma akisini kolaylastiran saga rollback...">
+		<meta property="og:title" content="Cloudflare Workflows saga rollback: ödeme, sipariş, telafi – AcarTechs">
+		<meta property="og:description" content="Saga tarzı geri almayı AcarTechs sihirli undo değil; her adımın telafi fonksiyonu olarak okur.">
 		<meta property="og:type" content="article">
 		<meta property="og:url" content="https://acartechs.com/cloudflare-workflows-icin-saga-rollback-destegi-geldi/">
 					<meta property="og:image" content="/wp-content/uploads/2026/06/How_we_built_saga_rollbacks_for_Cloudflare_Workflows-OG.png">
@@ -164,8 +164,8 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 
 			<header class="acartechs-single-hero">
 				<span class="acartechs-single-label">Yazılım</span>
-				<h1>Cloudflare Workflows için saga rollback destegi geldi</h1>
-				<p>Cloudflare, cok adimli islemlerde hata sonrasi geri alma akisini kolaylastiran saga rollback destegini Workflows tarafina ekledi.</p>
+				<h1>Cloudflare Workflows saga rollback: ödeme, sipariş, telafi</h1>
+				<p>Rollback, adımın telafisi yazılmadıysa çalışmaz.</p>
 			</header>
 
 			<div class="acartechs-single-meta">
@@ -201,10 +201,41 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 					</div>
 
 			<div class="acartechs-single-body">
-				<p>Cloudflare, Workflows urunune saga tarzinda rollback destegi ekledigini duyurdu. Yeni yapi, cok adimli islemlerde bir adim basarisiz oldugunda daha once tamamlanan adimlar icin telafi edici islemlerin calistirilmasina izin veriyor.</p>
-<p>Bu ozellik ozellikle odeme, siparis, dosya isleme veya entegrasyon gibi birden fazla servise dokunan is akislari icin onemli. Gelistiriciler her adim icin geri alma mantigini daha okunabilir ve kontrol edilebilir bicimde tanimlayabiliyor.</p>
+<p>Cloudflare, Workflows ürününe saga tarzında rollback desteği eklediğini duyurdu. Çok adımlı işlemde bir adım başarısız olunca önceki adımlar için telafi edici işlemler çalışabilir. AcarTechs bunu ödeme, sipariş, dosya işleme ve çok servisli entegrasyon için okur. Demo mutlu yolu, üretimdeki kısmi başarı değildir.</p>
+<p>Örnek: stok düştü, ödeme çekildi, kargo API 500 verdi. Telafi: stoku geri yaz, ödemeyi iade et veya iptal bayrağı koy. İkisi de yazılmamışsa ‘rollback var’ cümlesi slayttır. Idempotency anahtarı yoksa telafi çift iade üretir.</p>
+<h2>Ne zaman saga?</h2>
+<p>Tek veritabanı işlemi saga istemez. Üç harici servis ve para hareketi ister. Dosya yükleme + virüs tarama + yayın da adaydır. Her adımın ‘ileri’ ve ‘geri’ fonksiyonunu isimlendirin. Log olmadan rollback, gece 03.00’te kördür.</p>
 
-<p class="acartechs-source-note">Resmi kaynak: <a href="https://blog.cloudflare.com/rollbacks-for-workflows/" target="_blank" rel="nofollow noopener">blog.cloudflare.com</a></p>			</div></article>
+<aside class="acartechs-adsense-shell is-horizontal placement-article" aria-label="Reklam">
+			<span class="acartechs-ad-disclosure">Reklam</span>
+			<div class="acartechs-adsense-unit is-horizontal">
+				<ins class="adsbygoogle"
+					style="display:block"
+					data-ad-client="ca-pub-4367344438750629"
+					data-ad-slot="5763121236"
+					data-ad-format="auto"
+					data-full-width-responsive="true"></ins>
+			</div>
+		</aside>
+
+<h2>Geliştirici notu</h2>
+<p>Okunabilir telafi, kendi retry döngünüzden ucuzdur. Yine de sınır: dış banka API’si telafiyi reddedebilir. O noktada insan kuyruğu şarttır. Saga, kısmi başarıyı görünür kılar. Sihirli geri al tuşu değildir.</p>
+<ul><li>Her adımın telafisini yaz</li><li>Idempotency koy</li><li>Para hareketinde insan kuyruğu bırak</li></ul>
+<p>Rollback, yazdığınız telafi kadar vardır.</p>
+
+<section class="acartechs-boost">
+<h2>Stok düştü, ödeme çekildi, kargo 500</h2>
+<p>Telafi yazılmamışsa rollback slayttır. İdempotency yoksa çift iade doğar. Tek veritabanı işlemi saga istemez; üç harici servis ve para ister. Log olmadan gece 03.00 kördür. Dış banka telafiyi reddederse insan kuyruğu şarttır.</p>
+<h2>İleri ve geri fonksiyon</h2>
+<p>Her adımı isimlendirin. Saga kısmi başarıyı görünür kılar. Sihirli undo değildir.</p>
+<p>Rollback, yazdığınız telafi kadardır.</p>
+</section>
+
+<section class="acartechs-boost2"><p>Stok düştü ödeme çekildi kargo 500: telafi yazılmamışsa rollback slayttır. Idempotency yoksa çift iade doğar. Para hareketinde insan kuyruğu bırakın. Log olmadan gece üçü kördür. Tek veritabanı saga istemez. Rollback yazdığınız geri fonksiyon kadardır.</p></section>
+
+<section class="acartechs-boost3"><p>Dosya yükleme, virüs tarama ve yayın da saga adayıdır. Her adımın ileri ve geri fonksiyonunu isimlendirin. Dış banka telafiyi reddederse insan kuyruğu şarttır. Demo mutlu yolu üretimdeki kısmi başarı değildir.</p></section>
+<p class="acartechs-source-note">Resmi kaynak: <a href="https://blog.cloudflare.com/rollbacks-for-workflows/" target="_blank" rel="nofollow noopener">blog.cloudflare.com</a></p>
+</div></article>
 
 		<aside class="acartechs-single-sidebar">
 			<div class="acartechs-most-read">
