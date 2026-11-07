@@ -1,6 +1,6 @@
 {
   "name": "sayfa-kitap-okuyucu",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "AcarTechs Sayfa masaüstü kitap okuyucu",
   "main": "main.cjs",
   "author": "AcarTechs",
@@ -60,4 +60,4 @@
     "npmRebuild": false,
     "compression": "normal"
   }
-}\n
+}

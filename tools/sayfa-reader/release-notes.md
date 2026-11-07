@@ -1,10 +1,10 @@
-# Sayfa Kitap Okuyucu 1.0.1
+# Sayfa Kitap Okuyucu 1.0.2
 
 A Windows x64 desktop reader from AcarTechs. This release installs per user and adds Start menu and optional desktop shortcuts.
 
 ## Installation
 
-- Run `Sayfa-Kitap-Okuyucu-1.0.1-Windows-x64-Kurulum.exe` to install per user. The setup wizard can create a desktop shortcut and adds a Start menu shortcut. It can be uninstalled from Windows Settings.
+- Run `Sayfa-Kitap-Okuyucu-1.0.2-Windows-x64-Kurulum.exe` to install per user. The setup wizard can create a desktop shortcut and adds a Start menu shortcut. It can be uninstalled from Windows Settings.
 - The setup wizard can be removed later from Windows Settings > Apps.
 
 Library cards now have a three-dot menu to open, mark as finished, or remove a book. PDF rendering cancels outdated draws and limits oversized canvas memory use.
@@ -25,3 +25,10 @@ Library cards now have a three-dot menu to open, mark as finished, or remove a b
 - These EXE files are not code-signed; Windows SmartScreen may show a warning.
 
 SHA-256: `FCA92D36267574620A6DD1EAE90E5CD956A3601B8982154C80D1E677A8F9E738`
+
+
+## 1.0.2 update
+
+Book imports are now saved in sequence with a UI yield between files to keep large imports responsive. PDF page rendering now cancels outdated page draws and caps canvas memory.
+
+SHA-256: `9285E77C65E1C07512AD7E37F334C85C474F1E023072D7F7408861E73CFBEA28`
