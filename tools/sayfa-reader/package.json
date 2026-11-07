@@ -1,0 +1,63 @@
+{
+  "name": "sayfa-kitap-okuyucu",
+  "version": "1.0.1",
+  "description": "AcarTechs Sayfa masaüstü kitap okuyucu",
+  "main": "main.cjs",
+  "author": "AcarTechs",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win nsis",
+    "dist:portable": "electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "^38.2.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.acartechs.sayfa",
+    "productName": "Sayfa Kitap Okuyucu",
+    "asar": true,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.cjs",
+      "preload.cjs",
+      "reader.html",
+      "vendor/**",
+      "!node_modules/**"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "portable": {
+      "artifactName": "Sayfa-Kitap-Okuyucu-${version}-Windows-x64.exe"
+    },
+    "nsis": {
+      "artifactName": "Sayfa-Kitap-Okuyucu-${version}-Windows-x64-Kurulum.exe",
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Sayfa Kitap Okuyucu",
+      "uninstallDisplayName": "Sayfa Kitap Okuyucu"
+    },
+    "npmRebuild": false,
+    "compression": "normal"
+  }
+}\n
